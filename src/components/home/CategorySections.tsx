@@ -3,17 +3,20 @@ import Image from "next/image";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getCategoryById, posts } from "@/lib/blog-data";
+import { getCategoryBySlug } from "@/services/category";
+import { format } from "date-fns";
 
 interface CategorySectionProps {
-  categoryId: string;
+  categorySlug: string;
 }
 
-export function CategorySection({ categoryId }: CategorySectionProps) {
-  const category = getCategoryById(categoryId);
-  const categoryPosts = posts.filter(post => post.categoryId === categoryId);
-
-  if (!category) return null;
+export async function CategorySection({ categorySlug }: CategorySectionProps) {
+  const response = await getCategoryBySlug(categorySlug, { limit: "10" });
+  
+  if (!response?.success || !response.data) return null;
+  
+  const category = response.data;
+  const categoryPosts = category.posts || [];
 
   return (
     <section className="py-12 space-y-8">
@@ -24,11 +27,11 @@ export function CategorySection({ categoryId }: CategorySectionProps) {
             <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">{category.name}</h2>
             <div className="w-2 h-2 rounded-full bg-green-500 mb-1" />
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed font-medium capitalize">
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-3xl leading-relaxed font-medium">
             {category.description}
           </p>
         </div>
-        <Link href={`/category/${categoryId}`}>
+        <Link href={`/category/${categorySlug}`}>
           <Button variant="outline" size="sm" className="rounded-full border-slate-200 dark:border-slate-800 font-bold text-[10px] uppercase tracking-widest h-9 px-5 group">
             View {category.name} <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
           </Button>
@@ -42,25 +45,33 @@ export function CategorySection({ categoryId }: CategorySectionProps) {
             categoryPosts.map((post) => (
               <Link 
                 key={post.slug} 
-                href={`/category/${categoryId}/${post.slug}`}
+                href={`/category/${categorySlug}/${post.slug}`}
                 className="shrink-0 w-[340px] snap-start group bg-card rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="relative aspect-video overflow-hidden">
-                   <Image src={post.imageUrl} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                   <Badge className="absolute bottom-2 right-2 bg-black/60 text-[9px] h-4 px-1 border-0">{post.readTime}</Badge>
+                <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
+                   {post.coverImage ? (
+                     <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                   ) : (
+                     <div className="absolute inset-0 flex items-center justify-center text-slate-200 dark:text-slate-800 font-black text-2xl uppercase opacity-20">
+                        {category.name}
+                     </div>
+                   )}
+                   <Badge className="absolute bottom-2 right-2 bg-black/60 text-[9px] h-4 px-1 border-0">{post.readTime || "5 min read"}</Badge>
                 </div>
                 <div className="space-y-3 p-4">
                    <div className="flex items-center gap-2">
                       <div className="w-5 h-5 rounded-full bg-slate-50 dark:bg-slate-800 border flex items-center justify-center">
                          <Image src="/next.svg" alt="Icon" width={10} height={10} className="opacity-50 dark:invert" />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{post.author.split(',')[0]}</span>
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Admin</span>
                    </div>
                    <h3 className="font-bold text-sm text-slate-900 dark:text-white leading-tight line-clamp-2 h-10 group-hover:text-primary transition-colors">
                       {post.title}
                    </h3>
                    <div className="flex items-center justify-between pt-2 border-t border-slate-50 dark:border-slate-800/50">
-                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{post.date}</span>
+                      <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        {format(new Date(category.createdAt || "2026-01-20T10:00:00Z"), "MMM d, yyyy")}
+                      </span>
                       <ArrowRight className="w-3 h-3 text-primary opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
                    </div>
                 </div>

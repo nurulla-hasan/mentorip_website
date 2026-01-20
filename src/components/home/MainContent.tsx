@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/services/post";
+import { getAllCategories } from "@/services/category";
 import { LatestNews } from "./LatestNews";
 import { CategorySection } from "./CategorySections";
 import Link from "next/link";
@@ -11,6 +12,9 @@ import { format } from "date-fns";
 export async function MainDashboardContent() {
   const response = await getAllPosts({ page: "1", limit: "5" });
   const allPosts = response?.success ? response.data : [];
+
+  const catResponse = await getAllCategories();
+  const allCategories = catResponse?.success ? catResponse.data : [];
 
   const heroPost = allPosts[0];
   const widePost = allPosts[1];
@@ -227,9 +231,9 @@ export async function MainDashboardContent() {
 
       {/* Category Specific Sections */}
       <div className="space-y-4">
-        <CategorySection categoryId="trademark" />
-        <CategorySection categoryId="patent" />
-        <CategorySection categoryId="design" />
+        {allCategories.slice(0, 5).map((category) => (
+          <CategorySection key={category._id} categorySlug={category.slug} />
+        ))}
       </div>
     </div>
   );
