@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { NewsletterBox } from "@/components/category/NewsletterBox";
+// import { NewsletterBox } from "@/components/category/NewsletterBox";
 import { processHtmlForToc } from "@/components/tools/toc-utils";
 import { notFound } from "next/navigation";
 import { Share2, Clock } from "lucide-react";
@@ -67,7 +67,7 @@ export default async function DynamicPostPage({
         <aside className="w-full lg:w-[320px] shrink-0 space-y-6 sticky top-24">
           <div className="space-y-6">
             {toc.length > 0 && <TableOfContents toc={toc} />}
-            <NewsletterBox />
+            {/* <NewsletterBox /> */}
           </div>
         </aside>
       </div>
