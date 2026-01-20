@@ -12,6 +12,7 @@ export interface PostDetail {
   category: Pick<Category, "_id" | "name" | "slug" | "description" | "imageUrl" | "iconName">;
   views?: number;
   status?: string;
+  createdAt: string;
   relatedPosts?: Array<{
     _id: string;
     title: string;

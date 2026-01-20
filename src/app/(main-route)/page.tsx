@@ -1,5 +1,5 @@
 import { MainDashboardContent } from "@/components/home/MainContent";
 
-export default function Home() {
+export default async function Home() {
   return <MainDashboardContent />;
 }

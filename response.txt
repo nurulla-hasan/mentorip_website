@@ -1,28 +1,79 @@
 {
     "success": true,
-    "message": "Post retrieved successfully!",
-    "data": {
-        "_id": "6964d8a7ecd95fcdfa69dd2f",
-        "title": "Next.js 15: The Ultimate Guide for Modern Web Development",
-        "subtitle": "Web development has evolved rapidly. In this massive guide, we will explore why Next.js is the best choice for SEO, performance, and developer experience in 2026.",
-        "slug": "nextjs-15-the-ultimate-guide",
-        "coverImage": "https://res.cloudinary.com/dweesppci/image/upload/v1768216742/recycle-mart/images/2bpqayxpxjx-1768216742530-post-screenshot-2026-01-02-162143.png",
-        "tag": [
-            "Education",
-            "Love"
-        ],
-        "readTime": "2 min",
-        "content": "<img src=\"https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"><h2><strong>Introduction to Next.js</strong></h2><p>Next.js is a React framework that enables several extra features, including server-side rendering and generating static websites. It's the go-to solution for production-grade React applications.</p><blockquote><p><strong><em>\"Next.js gives you the best developer experience with all the features you need for production: hybrid static &amp; server rendering, TypeScript support, smart bundling, route pre-fetching, and more.\"</em></strong></p></blockquote><h2><strong>Core Features</strong></h2><p>There are several core features that make Next.js stand out from the crowd. Let's dive into them.</p><h3><strong>Server Actions</strong></h3><p>Server Actions allow you to run asynchronous code directly on the server. They eliminate the need to create API endpoints to mutate data. This is a game-changer for form handling.</p><h3><strong>Partial Prerendering (PPR)</strong></h3><p>PPR combines the best of static and dynamic rendering. It allows you to keep the shell of your application static while streaming in dynamic parts. This ensures fast initial loads while keeping data fresh.</p><h2><strong>Data Fetching Patterns</strong></h2><p>Understanding how to fetch data is crucial. Next.js extends the native fetch API to allow for caching and revalidating.</p><h3><strong>Static Site Generation (SSG)</strong></h3><p>Perfect for blogs and documentation. Pages are built once at build time and reused on every request.</p><h3><strong>Server-Side Rendering (SSR)</strong></h3><p>Use this when data changes frequently. The page is generated on the server for every request.</p><h2><strong>SEO Optimization Techniques</strong></h2><p>Search Engine Optimization is critical. Here is how you can master it with Next.js using the built-in tools.</p><h3><strong>Metadata API</strong></h3><p>The Metadata API allows you to define your application metadata (e.g., meta and link tags) inside your layout or page. It is fully typed and supports streaming.</p><h3><strong>Sitemap and Robots</strong></h3><p>Generating sitemaps and robots.txt files is straightforward. You can generate them dynamically based on your database content using built-in route handlers.</p><h2><strong>Styling with Tailwind CSS</strong></h2><p>Tailwind CSS works perfectly with Next.js. It allows for rapid UI development without leaving your HTML. The utility-first approach helps maintain consistency across the project. Features include:</p><ul><li><p>Just-in-Time (JIT) engine for fast builds.</p></li><li><p>Automatic unused CSS purging.</p></li><li><p>Easy responsiveness with breakpoints.</p></li><li><p>Dark mode support out of the box.</p></li></ul><h2><strong>Advanced Routing</strong></h2><p>The App Router introduced a new way to handle routing, making it more intuitive and powerful.</p>",
-        "category": {
-            "_id": "6964b0d104ffc724c1b0474f",
-            "name": "Design",
-            "slug": "updated-category",
-            "description": "Protecting the aesthetic and functional design of products in the Bangladeshi market.",
-            "imageUrl": "https://res.cloudinary.com/dweesppci/image/upload/v1768206634/recycle-mart/images/itud8p9dk9-1768206634739-category-moscot.webp",
-            "iconName": "Palette"
+    "message": "Posts retrieved successfully!",
+    "meta": {
+        "page": 1,
+        "limit": 10,
+        "total": 3,
+        "totalPage": 1
+    },
+    "data": [
+        {
+            "_id": "6964d8a7ecd95fcdfa69dd2f",
+            "title": "Next.js 15: The Ultimate Guide for Modern Web Development",
+            "subtitle": "Web development has evolved rapidly. In this massive guide, we will explore why Next.js is the best choice for SEO, performance, and developer experience in 2026.",
+            "slug": "nextjs-15-the-ultimate-guide",
+            "coverImage": "https://res.cloudinary.com/dweesppci/image/upload/v1768743856/mentor-ip/images/fa2xnhf5vgo-1768743856001-post-screenshot-2026-01-18-194358.png",
+            "tag": [
+                "Education",
+                "Love"
+            ],
+            "readTime": "2 min",
+            "content": "<img src=\"https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&amp;w=1170&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"><h2><strong>Introduction to Next.js</strong></h2><p>Next.js is a React framework that enables several extra features, including server-side rendering and generating static websites. It's the go-to solution for production-grade React applications.</p><blockquote><p><strong><em>\"Next.js gives you the best developer experience with all the features you need for production: hybrid static &amp; server rendering, TypeScript support, smart bundling, route pre-fetching, and more.\"</em></strong></p></blockquote><h2><strong>Core Features</strong></h2><p>There are several core features that make Next.js stand out from the crowd. Let's dive into them.</p><h3><strong>Server Actions</strong></h3><p>Server Actions allow you to run asynchronous code directly on the server. They eliminate the need to create API endpoints to mutate data. This is a game-changer for form handling.</p><h3><strong>Partial Prerendering (PPR)</strong></h3><p>PPR combines the best of static and dynamic rendering. It allows you to keep the shell of your application static while streaming in dynamic parts. This ensures fast initial loads while keeping data fresh.</p><h2><strong>Data Fetching Patterns</strong></h2><p>Understanding how to fetch data is crucial. Next.js extends the native fetch API to allow for caching and revalidating.</p><h3><strong>Static Site Generation (SSG)</strong></h3><p>Perfect for blogs and documentation. Pages are built once at build time and reused on every request.</p><h3><strong>Server-Side Rendering (SSR)</strong></h3><p>Use this when data changes frequently. The page is generated on the server for every request.</p><h2><strong>SEO Optimization Techniques</strong></h2><p>Search Engine Optimization is critical. Here is how you can master it with Next.js using the built-in tools.</p><h3><strong>Metadata API</strong></h3><p>The Metadata API allows you to define your application metadata (e.g., meta and link tags) inside your layout or page. It is fully typed and supports streaming.</p><h3><strong>Sitemap and Robots</strong></h3><p>Generating sitemaps and robots.txt files is straightforward. You can generate them dynamically based on your database content using built-in route handlers.</p><h2><strong>Styling with Tailwind CSS</strong></h2><p>Tailwind CSS works perfectly with Next.js. It allows for rapid UI development without leaving your HTML. The utility-first approach helps maintain consistency across the project. Features include:</p><ul><li><p>Just-in-Time (JIT) engine for fast builds.</p></li><li><p>Automatic unused CSS purging.</p></li><li><p>Easy responsiveness with breakpoints.</p></li><li><p>Dark mode support out of the box.</p></li></ul><h2><strong>Advanced Routing</strong></h2><p>The App Router introduced a new way to handle routing, making it more intuitive and powerful.</p>",
+            "category": {
+                "_id": "6964b0d104ffc724c1b0474f",
+                "name": "Design",
+                "slug": "updated-category",
+                "description": "Protecting the aesthetic and functional design of products in the Bangladeshi market.",
+                "imageUrl": "https://res.cloudinary.com/dweesppci/image/upload/v1768206634/recycle-mart/images/itud8p9dk9-1768206634739-category-moscot.webp",
+                "iconName": "Palette"
+            },
+            "views": 10,
+            "status": "published"
         },
-        "views": 0,
-        "status": "published",
-        "relatedPosts": []
-    }
+        {
+            "_id": "6964b07d04ffc724c1b04740",
+            "title": "Post Title3",
+            "subtitle": "Post Subtitle",
+            "slug": "post-slug-3",
+            "coverImage": "https://res.cloudinary.com/dweesppci/image/upload/v1768206461/recycle-mart/images/okpdxarit9-1768206461435-post-moscot.webp",
+            "tag": [
+                "tag1"
+            ],
+            "readTime": "5 min",
+            "content": "Content",
+            "category": {
+                "_id": "69647e9d162addcbb63a8901",
+                "name": "Category",
+                "slug": "category",
+                "description": "'Description is required!'",
+                "imageUrl": "https://res.cloudinary.com/dweesppci/image/upload/v1768193697/recycle-mart/images/8dbgjtumgb-1768193689413-post-moscot.webp",
+                "iconName": "Xfile"
+            },
+            "views": 5,
+            "status": "published"
+        },
+        {
+            "_id": "6964b03017b08bbe04dcf574",
+            "title": "Post Title2",
+            "subtitle": "Post Subtitle",
+            "slug": "post-slug-2",
+            "coverImage": "https://res.cloudinary.com/dweesppci/image/upload/v1768206390/recycle-mart/images/n1n9v9pbu5i-1768206381334-post-moscot.webp",
+            "tag": [
+                "tag1"
+            ],
+            "readTime": "5 min",
+            "content": "Content",
+            "category": {
+                "_id": "69647e9d162addcbb63a8901",
+                "name": "Category",
+                "slug": "category",
+                "description": "'Description is required!'",
+                "imageUrl": "https://res.cloudinary.com/dweesppci/image/upload/v1768193697/recycle-mart/images/8dbgjtumgb-1768193689413-post-moscot.webp",
+                "iconName": "Xfile"
+            },
+            "views": 0,
+            "status": "published"
+        }
+    ]
 }

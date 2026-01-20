@@ -1,19 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { buildQueryString } from "@/lib/buildQueryString";
 import { serverFetch } from "@/lib/fetcher";
 
-export const getPostBySlug = async (slug: string) => {
+// GET ALL POSTS (published only)
+export const getAllPosts = async (
+  query: Record<string, string | string[] | undefined> = {}
+) => {
   try {
-    const result = await serverFetch(`/post/${slug}`, {
-      method: "GET",
+    return await serverFetch(`/post/admin/all${buildQueryString(query)}`, {
+      revalidate: 300,
     });
-    return result;
-  } catch (error: any) {
+  } catch {
     return {
       success: false,
-      message: error?.message || "Failed to fetch post",
+      data: [],
+      meta: { total: 0, page: 1, limit: 10, totalPage: 0 },
     };
   }
 };
 
+// GET POST BY SLUG
+export const getPostBySlug = async (slug: string): Promise<any> => {
+  try {
+    return await serverFetch(`/post/${slug}`, {});
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Failed to load post";
+    return { success: false, message };
+  }
+};
