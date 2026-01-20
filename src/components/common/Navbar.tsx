@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sidebar } from "@/components/common/Sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
@@ -117,6 +117,22 @@ export function Navbar() {
                         </Link>
                       );
                     })}
+                    {isLoggedIn && (
+                      <Link
+                        href="/profile"
+                        className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-md transition-all ${
+                          pathname === "/profile"
+                            ? "bg-primary/5 text-primary"
+                            : "text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-900"
+                        }`}
+                      >
+                        <Avatar className="w-5 h-5">
+                          <AvatarImage src={currentUser?.image} alt={currentUser?.name} />
+                          <AvatarFallback className="text-[8px]">{getInitials(currentUser?.name || "")}</AvatarFallback>
+                        </Avatar>
+                        Profile
+                      </Link>
+                    )}
                   </nav>
                   <div className="border-t pt-6">
                     <ScrollArea className="h-[400px]">
@@ -182,6 +198,7 @@ export function Navbar() {
             <DropdownMenuTrigger asChild>
               <button type="button" aria-label="User menu">
                 <Avatar className="size-9 border">
+                  <AvatarImage src={currentUser?.image} alt={currentUser?.name} />
                   <AvatarFallback>
                     {getInitials(currentUser?.name || "User")}
                   </AvatarFallback>
@@ -202,9 +219,11 @@ export function Navbar() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer font-bold text-sm">
-                    <User className="text-primary" />
-                    <span>View Profile</span>
+                  <DropdownMenuItem asChild className="cursor-pointer font-bold text-sm">
+                    <Link href="/profile" className="flex items-center gap-2 w-full">
+                      <User className="text-primary w-4 h-4" />
+                      <span>View Profile</span>
+                    </Link>
                   </DropdownMenuItem>
                 </>
               ) : (

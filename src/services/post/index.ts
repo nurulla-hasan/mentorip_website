@@ -4,12 +4,12 @@
 import { buildQueryString } from "@/lib/buildQueryString";
 import { serverFetch } from "@/lib/fetcher";
 
-// GET ALL POSTS (published only)
+// GET ALL POSTS
 export const getAllPosts = async (
   query: Record<string, string | string[] | undefined> = {}
 ) => {
   try {
-    return await serverFetch(`/post/admin/all${buildQueryString(query)}`, {
+    return await serverFetch(`/post${buildQueryString(query)}`, {
       revalidate: 300,
     });
   } catch {

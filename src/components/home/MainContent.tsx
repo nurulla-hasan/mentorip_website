@@ -62,7 +62,7 @@ export async function MainDashboardContent() {
                   </div>
                 </div>
 
-                <CardContent className="px-0 pt-8">
+                <CardContent className="px-0">
                   <div className="flex items-center gap-3 mb-4">
                     <h2 className="text-2xl font-black text-slate-900 dark:text-white group-hover:text-primary transition-colors leading-tight tracking-tight">
                       {heroPost.title}
