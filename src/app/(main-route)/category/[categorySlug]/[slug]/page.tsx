@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 // import { NewsletterBox } from "@/components/category/NewsletterBox";
 import { processHtmlForToc } from "@/components/tools/toc-utils";
 import { notFound } from "next/navigation";
-import { Share2, Clock } from "lucide-react";
+import { ShareButton } from "@/components/category/ShareButton";
+import { Clock } from "lucide-react";
 import TableOfContents from "@/components/category/TableOfContents";
 import { getPostBySlug } from "@/services/post";
 
@@ -35,13 +35,7 @@ export default async function DynamicPostPage({
               </span>
             </div>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className="px-3 text-[11px] font-bold"
-          >
-            <Share2 className="w-3.5 h-3.5" /> Share
-          </Button>
+          <ShareButton title={post.title} />
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
