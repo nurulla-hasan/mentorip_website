@@ -21,6 +21,7 @@ import {
   LucideIcon,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
+import { Skeleton } from "../ui/skeleton";
 import type { Category } from "@/types/category.type";
 import { getAllCategories } from "@/services/category";
 
@@ -34,14 +35,22 @@ const iconMap: Record<string, LucideIcon> = {
 export function Sidebar() {
   const pathname = usePathname();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await getAllCategories();
-      if (res?.success && Array.isArray(res?.data)) {
-        setCategories(res.data as Category[]);
-      } else {
+      setIsLoading(true);
+      try {
+        const res = await getAllCategories();
+        if (res?.success && Array.isArray(res?.data)) {
+          setCategories(res.data as Category[]);
+        } else {
+          setCategories([]);
+        }
+      } catch {
         setCategories([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -65,31 +74,40 @@ export function Sidebar() {
         <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Categories</h3>
       </div>
       <div className="flex flex-col space-y-1 mb-6">
-        {sidebarCategories.map((cat, i) => {
-          const href = cat.slug === "" ? "/" : `/category/${cat.slug}`;
-          const isActive = cat.slug === "" ? pathname === "/" : pathname.startsWith(href);
-          return (
-            <Link 
-              key={i} 
-              href={href} 
-              className={`text-sm py-2 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 ${
-                isActive
-                  ? "bg-primary/5 font-semibold text-primary border-primary" 
-                  : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <cat.icon className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} />
-                <span>{cat.name}</span>
-              </div>
-              <span className={`text-[10px] px-1.5 py-0.5 rounded transition-opacity ${
-                isActive ? "bg-primary/10 text-primary opacity-100" : "bg-primary/10 text-primary opacity-0 group-hover:opacity-100"
-              }`}>
-                {i === 0 ? "New" : "Explore"}
-              </span>
-            </Link>
-          );
-        })}
+        {isLoading ? (
+          Array.from({ length: 18 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-3 px-4 py-2">
+              <Skeleton className="w-4 h-4 rounded" />
+              <Skeleton className="h-4 w-24 rounded" />
+            </div>
+          ))
+        ) : (
+          sidebarCategories.map((cat, i) => {
+            const href = cat.slug === "" ? "/" : `/category/${cat.slug}`;
+            const isActive = cat.slug === "" ? pathname === "/" : pathname.startsWith(href);
+            return (
+              <Link 
+                key={i} 
+                href={href} 
+                className={`text-sm py-2 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 ${
+                  isActive
+                    ? "bg-primary/5 font-semibold text-primary border-primary" 
+                    : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <cat.icon className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} />
+                  <span>{cat.name}</span>
+                </div>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded transition-opacity ${
+                  isActive ? "bg-primary/10 text-primary opacity-100" : "bg-primary/10 text-primary opacity-0 group-hover:opacity-100"
+                }`}>
+                  {i === 0 ? "New" : "Explore"}
+                </span>
+              </Link>
+            );
+          })
+        )}
       </div>
       
       <Separator className="my-4 opacity-50" />
