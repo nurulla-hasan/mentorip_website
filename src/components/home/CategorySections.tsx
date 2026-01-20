@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { posts, getCategoryById } from "@/lib/blog-data";
+import { getCategoryById, posts } from "@/lib/blog-data";
 
 interface CategorySectionProps {
   categoryId: string;
@@ -43,9 +43,9 @@ export function CategorySection({ categoryId }: CategorySectionProps) {
               <Link 
                 key={post.slug} 
                 href={`/category/${categoryId}/${post.slug}`}
-                className="flex-shrink-0 w-[340px] snap-start group bg-card rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="shrink-0 w-[340px] snap-start group bg-card rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="relative aspect-[16/9] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
                    <Image src={post.imageUrl} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                    <Badge className="absolute bottom-2 right-2 bg-black/60 text-[9px] h-4 px-1 border-0">{post.readTime}</Badge>
                 </div>

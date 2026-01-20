@@ -1,4 +1,3 @@
-"use client";
 
 import { 
   Users, 
@@ -18,13 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-
-const stats = [
-  { label: "Years of Experience", value: "25+" },
-  { label: "Successful Cases", value: "10k+" },
-  { label: "Global Associates", value: "350+" },
-  { label: "Success Rate", value: "99%" },
-];
+import { getWhoWeAre } from "@/services/about";
 
 const timeline = [
   { year: "2000", title: "The Foundation", desc: "Founded under the name 'Law & Legal' by Dr. Qumrul Hossain, specializing in domestic pharmaceutical law." },
@@ -49,7 +42,26 @@ const practices = [
   { name: "Enforcement", icon: FileBadge }
 ];
 
-export default function AboutPage() {
+
+
+export default async function AboutPage() {
+  // Fetch dynamic data for "Who We Are" section
+  const whoWeAreResponse = await getWhoWeAre();
+  const whoWeAreData = whoWeAreResponse?.data || null;
+
+  // Build stats array from API response
+  const stats = whoWeAreData ? [
+    { label: whoWeAreData.slot1Label, value: whoWeAreData.slot1Value },
+    { label: whoWeAreData.slot2Label, value: whoWeAreData.slot2Value },
+    { label: whoWeAreData.slot3Label, value: whoWeAreData.slot3Value },
+    { label: whoWeAreData.slot4Label, value: whoWeAreData.slot4Value },
+  ] : [
+    { label: "Years of Experience", value: "25+" },
+    { label: "Successful Cases", value: "10k+" },
+    { label: "Global Associates", value: "350+" },
+    { label: "Success Rate", value: "99%" },
+  ];
+
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
@@ -88,17 +100,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Narrative Section */}
+      {/* Narrative Section - Dynamic "Who We Are" */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
-            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">WHO WE ARE</h2>
+            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">
+              WHO WE ARE
+            </h2>
             <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
-              A Legacy of Excellence in Intellectual Property
+              {whoWeAreData?.title}
             </h3>
           </div>
           <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium italic">
-            &quot;Our story began in 2000, built on integrity, trust, and deep legal expertise. Today, we stand as a cross-border IP powerhouse.&quot;
+            {whoWeAreData?.subtitle}
           </p>
           <div className="grid grid-cols-2 gap-6">
              {stats.map((stat, i) => (
@@ -119,6 +133,7 @@ export default function AboutPage() {
            <div className="absolute inset-0 bg-primary/20 mix-blend-multiply opacity-0 group-hover:opacity-40 transition-opacity" />
         </div>
       </section>
+
 
       {/* Leadership Section */}
       <section className="space-y-16">

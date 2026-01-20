@@ -1,11 +1,8 @@
-"use client";
 
 import { 
   Users, 
   Globe2, 
   ShieldCheck, 
-  Zap,
-  Building2,
   Cpu,
   Car,
   ShoppingBag,
@@ -19,49 +16,124 @@ import {
   Sparkles,
   Award,
   BarChart3,
-  Search
+  LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { getClientele, getWeServe, getJurisdictions } from "@/services/client";
 
-const stats = [
-  { label: "Active Clients", value: "7,000+", icon: Users },
-  { label: "Global Associates", value: "350+", icon: Globe2 },
-  { label: "Industries Served", value: "12+", icon: BarChart3 },
-  { label: "Success Rate", value: "99%", icon: Award },
-];
-
-const industries = [
-  { name: "Consumer Electronics", icon: Cpu, desc: "Protecting next-gen tech and hardware innovations." },
-  { name: "Automotive", icon: Car, desc: "Securing designs and trademarks for global mobility leaders." },
-  { name: "Fashion", icon: ShoppingBag, desc: "Empowering luxury and retail brands against counterfeiting." },
-  { name: "FMCG", icon: ShoppingBasket, desc: "Safeguarding consumer brand identities across markets." },
-  { name: "Pharmaceuticals", icon: Stethoscope, desc: "Specialized IP support for healthcare and life sciences." },
-  { name: "Hospitality", icon: Hotel, desc: "Brand management for international hotels and resorts." },
-  { name: "Media & Tech", icon: Monitor, desc: "Digital assets and content copyright protection." },
-  { name: "Industrial Manufacturing", icon: Factory, desc: "Patent and industrial design security for creators." },
-];
+// Icon mapping for industries - maps string names to icon components
+const iconMap: Record<string, LucideIcon> = {
+  Cpu,
+  Car,
+  ShoppingBag,
+  ShoppingBasket,
+  Stethoscope,
+  Hotel,
+  Monitor,
+  Factory,
+  Users,
+  Globe2,
+  ShieldCheck,
+  BarChart3,
+  Award,
+};
 
 const brands = [
   "Apple", "Samsung", "Tesla", "Nike", "Nestlé", "Novartis", "Hilton", "BMW", "Marico", "Unilever"
 ];
 
-const trademarkJurisdictions = [
-  "Bangladesh", "India", "Pakistan", "Afghanistan", "Nepal", "China", "Thailand", "Malaysia", "Singapore", "UAE", "UK", "EU"
-];
+export default async function ClientsPage() {
+  // Fetch all dynamic data
+  const clienteleResponse = await getClientele();
+  const weServeResponse = await getWeServe();
+  const jurisdictionsResponse = await getJurisdictions();
 
-export default function ClientsPage() {
+  const clienteleData = clienteleResponse?.data || null;
+  const weServeData = weServeResponse?.data || null;
+  const jurisdictionsData = jurisdictionsResponse?.data || null;
+
+  // Build stats array from clientele API
+  const stats = clienteleData ? [
+    { label: clienteleData.stat1Title, value: clienteleData.stat1Value, icon: Users },
+    { label: clienteleData.stat2Title, value: clienteleData.stat2Value, icon: Globe2 },
+    { label: clienteleData.stat3Title, value: clienteleData.stat3Value, icon: BarChart3 },
+    { label: clienteleData.stat4Title, value: clienteleData.stat4Value, icon: Award },
+  ] : [
+    { label: "Active Clients", value: "7,000+", icon: Users },
+    { label: "Global Associates", value: "350+", icon: Globe2 },
+    { label: "Industries Served", value: "12+", icon: BarChart3 },
+    { label: "Success Rate", value: "99%", icon: Award },
+  ];
+
+  // Build industries array from weServe API (supports up to 8 cards)
+  const industries = weServeData ? [
+    weServeData.card1Title && {
+      name: weServeData.card1Title,
+      icon: iconMap[weServeData.card1IconName] || Cpu,
+      desc: weServeData.card1Description,
+    },
+    weServeData.card2Title && {
+      name: weServeData.card2Title,
+      icon: iconMap[weServeData.card2IconName] || Car,
+      desc: weServeData.card2Description,
+    },
+    weServeData.card3Title && {
+      name: weServeData.card3Title,
+      icon: iconMap[weServeData.card3IconName] || ShoppingBag,
+      desc: weServeData.card3Description,
+    },
+    weServeData.card4Title && {
+      name: weServeData.card4Title,
+      icon: iconMap[weServeData.card4IconName] || ShoppingBasket,
+      desc: weServeData.card4Description,
+    },
+    weServeData.card5Title && {
+      name: weServeData.card5Title,
+      icon: iconMap[weServeData.card5IconName] || Stethoscope,
+      desc: weServeData.card5Description,
+    },
+    weServeData.card6Title && {
+      name: weServeData.card6Title,
+      icon: iconMap[weServeData.card6IconName] || Hotel,
+      desc: weServeData.card6Description,
+    },
+    weServeData.card7Title && {
+      name: weServeData.card7Title,
+      icon: iconMap[weServeData.card7IconName] || Monitor,
+      desc: weServeData.card7Description,
+    },
+    weServeData.card8Title && {
+      name: weServeData.card8Title,
+      icon: iconMap[weServeData.card8IconName] || Factory,
+      desc: weServeData.card8Description,
+    },
+  ].filter(Boolean) : [
+    { name: "Consumer Electronics", icon: Cpu, desc: "Protecting next-gen tech and hardware innovations." },
+    { name: "Automotive", icon: Car, desc: "Securing designs and trademarks for global mobility leaders." },
+    { name: "Fashion", icon: ShoppingBag, desc: "Empowering luxury and retail brands against counterfeiting." },
+    { name: "FMCG", icon: ShoppingBasket, desc: "Safeguarding consumer brand identities across markets." },
+    { name: "Pharmaceuticals", icon: Stethoscope, desc: "Specialized IP support for healthcare and life sciences." },
+    { name: "Hospitality", icon: Hotel, desc: "Brand management for international hotels and resorts." },
+    { name: "Media & Tech", icon: Monitor, desc: "Digital assets and content copyright protection." },
+    { name: "Industrial Manufacturing", icon: Factory, desc: "Patent and industrial design security for creators." },
+  ];
+
+  // Get jurisdictions from API
+  const trademarkJurisdictions = jurisdictionsData?.countries || [
+    "Bangladesh", "India", "Pakistan", "Afghanistan", "Nepal", "China", "Thailand", "Malaysia", "Singapore", "UAE", "UK", "EU"
+  ];
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
       <section className="relative h-[500px] rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
         <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900">
-           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
+           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
+                style={{ backgroundImage: 'radial-linear(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-linear(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
         </div>
         
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-10">
@@ -73,7 +145,7 @@ export default function ClientsPage() {
             VALUED BY <span className="text-blue-600 dark:text-blue-400">GLOBAL LEADERS</span>.
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl italic">
-            "Your innovation is our priority. Join the elite circle of over 7,000 clients who trust MentorIP."
+            &quot;Your innovation is our priority. Join the elite circle of over 7,000 clients who trust MentorIP.&quot;
           </p>
         </div>
       </section>
@@ -85,12 +157,12 @@ export default function ClientsPage() {
               <div className="space-y-4">
                 <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR CLIENTELE</h2>
                 <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
-                  A Diverse Portfolio of <br /> Global Excellence
+                  {clienteleData?.title || "A Diverse Portfolio of Global Excellence"}
                 </h3>
               </div>
               <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium">
                 <p>
-                  MentorIP proudly represents a diverse and prestigious global clientele — from breakthrough innovators to some of the world’s most recognizable brands. 
+                  {clienteleData?.subtitle || "MentorIP proudly represents a diverse and prestigious global clientele — from breakthrough innovators to some of the world's most recognizable brands."}
                 </p>
                 <div className="pt-4 grid grid-cols-2 gap-6">
                    {stats.map((stat, i) => (
@@ -107,7 +179,7 @@ export default function ClientsPage() {
            </div>
 
            <div className="relative group/box">
-              <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-blue-500/20 blur-3xl opacity-50 transition-opacity group-hover/box:opacity-80" />
+              <div className="absolute -inset-4 bg-linear-to-tr from-primary/20 to-blue-500/20 blur-3xl opacity-50 transition-opacity group-hover/box:opacity-80" />
               <Card className="relative border-slate-100 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-[2.5rem] overflow-hidden shadow-2xl group-hover/box:shadow-primary/10 transition-shadow">
                  <CardContent className="p-10 space-y-8">
                     <div className="flex items-center gap-4 group/head">
@@ -143,9 +215,9 @@ export default function ClientsPage() {
       <section className="space-y-16">
         <div className="text-center space-y-4 group/sec">
           <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">SECTORS</h2>
-          <h3 className="text-4xl font-black text-slate-900 dark:text-white group-hover/sec:scale-105 transition-transform duration-700">Industries We Serve</h3>
+          <h3 className="text-4xl font-black text-slate-900 dark:text-white group-hover/sec:scale-105 transition-transform duration-700">{weServeData?.title || "Industries We Serve"}</h3>
           <p className="text-slate-500 max-w-2xl mx-auto font-medium italic">
-            Cross-industry expertise tailored to the unique challenges of each sector.
+            {weServeData?.subtitle || "Cross-industry expertise tailored to the unique challenges of each sector."}
           </p>
         </div>
 
@@ -177,12 +249,11 @@ export default function ClientsPage() {
                      Jurisdictions
                   </Badge>
                   <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
-                    Strategic Global <br />
-                    <span className="text-primary dark:text-amber-400 font-serif italic text-5xl">Reach</span>
+                    {jurisdictionsData?.title || "Strategic Global Reach"}
                   </h3>
                </div>
                <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic group-hover/juris:translate-x-2 transition-transform">
-                 Providing high-standard legal solutions across key growth markets in Asia and Europe.
+                 {jurisdictionsData?.subtitle || "Providing high-standard legal solutions across key growth markets in Asia and Europe."}
                </p>
                
                <div className="space-y-6">
@@ -192,7 +263,7 @@ export default function ClientsPage() {
                         <p className="font-black text-slate-900 dark:text-white uppercase tracking-wider text-xs">Trademark Services</p>
                      </div>
                      <div className="flex flex-wrap gap-2">
-                        {trademarkJurisdictions.map(city => (
+                        {trademarkJurisdictions.map((city: string) => (
                            <span key={city} className="px-3 py-1 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 text-[11px] text-slate-600 dark:text-slate-300 font-bold hover:bg-primary hover:text-white hover:border-primary transition-all cursor-default">{city}</span>
                         ))}
                      </div>
@@ -235,7 +306,7 @@ export default function ClientsPage() {
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto">
          <div className="bg-slate-50 dark:bg-slate-900 p-10 md:p-16 rounded-[3rem] border border-slate-100 dark:border-white/5 text-center space-y-8 relative overflow-hidden shadow-2xl group/cta">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
             <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover/cta:scale-105 transition-transform duration-500">Protect Your Brand Locally & Globally</h4>
             <p className="text-slate-600 dark:text-slate-400 font-medium italic text-lg max-w-2xl mx-auto">
                 Join our prestigious circle of global clients. Let us secure your intellectual interests with precision.
@@ -243,7 +314,7 @@ export default function ClientsPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
                 <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn-main overflow-hidden relative">
                     <span className="relative z-10 flex items-center gap-2">Get Expert Advice <ChevronRight className="w-4 h-4 group-hover/btn-main:translate-x-1 transition-transform" /></span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-600 to-primary bg-[length:200%_100%] animate-gradient-x opacity-0 group-hover/btn-main:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn-main:opacity-100 transition-opacity" />
                 </Button>
                 <Button variant="outline" size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
                     Contact Us
