@@ -8,6 +8,7 @@ import { Badge } from "../ui/badge";
 import { Clock, MoveRight } from "lucide-react";
 import Image from "next/image";
 import { format } from "date-fns";
+import { NewsletterSection } from "./NewsletterSection";
 
 export async function MainDashboardContent() {
   const response = await getAllPosts({ page: "1", limit: "5" });
@@ -25,10 +26,10 @@ export async function MainDashboardContent() {
       {/* Top Hero Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Main Hero Section - Takes up 2 columns */}
-        <div className="xl:col-span-2 space-y-8">
+        <div className="xl:col-span-2 space-y-">
           {heroPost ? (
             <Link href={`/category/${heroPost.category?.slug}/${heroPost.slug}`}>
-              <Card className="pt-0 group overflow-hidden border-0 bg-transparent shadow-none cursor-pointer">
+              <Card className="px-6 rounded-4xl group cursor-pointer">
                 {/* Visual Header */}
                 <div className="relative aspect-video w-full rounded-4xl overflow-hidden shadow-2xl shadow-blue-500/10">
                   {heroPost.coverImage ? (
@@ -68,11 +69,11 @@ export async function MainDashboardContent() {
                       {heroPost.title}
                     </h2>
                   </div>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6 line-clamp-2 font-medium">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-2 font-medium">
                     {heroPost.subtitle}
                   </p>
                   <div className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 gap-4">
-                    <span className="text-slate-500 dark:text-slate-300">By Admin</span>
+                    <span className="text-slate-500 dark:text-slate-300">By MENTORiP</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-slate-800" />
                     <span>{format(new Date(heroPost.createdAt || "2026-01-20T10:00:00Z"), "MMM d, yyyy")}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-slate-800" />
@@ -97,7 +98,7 @@ export async function MainDashboardContent() {
 
           {/* Wide Featured Post */}
           {widePost ? (
-            <Link href={`/category/${widePost.category?.slug}/${widePost.slug}`} className="block group">
+            <Link href={`/category/${widePost.category?.slug}/${widePost.slug}`} className="block group mt-6">
               <Card className="border-0 bg-slate-500/5 dark:bg-slate-400/5 hover:bg-slate-500/10 dark:hover:bg-slate-400/10 transition-all duration-500 rounded-4xl overflow-hidden">
                 <CardContent>
                   <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -227,11 +228,11 @@ export async function MainDashboardContent() {
       <LatestNews />
       
       {/* Newsletter Section */}
-      {/* <NewsletterSection /> */}
+      <NewsletterSection />
 
       {/* Category Specific Sections */}
       <div className="space-y-4">
-        {allCategories.slice(0, 5).map((category) => (
+        {allCategories.map((category) => (
           <CategorySection key={category._id} categorySlug={category.slug} />
         ))}
       </div>

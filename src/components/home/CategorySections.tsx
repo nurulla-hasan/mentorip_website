@@ -38,15 +38,15 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
         </Link>
       </div>
 
-      {/* Horizontal List */}
-      <div className="relative group/scroll">
-        <div className="flex overflow-x-auto gap-4 pb-6 no-scrollbar snap-x scroll-smooth">
+      {/* Grid Layout */}
+      <div className="relative group">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {categoryPosts.length > 0 ? (
-            categoryPosts.map((post) => (
+            categoryPosts.slice(0, 4).map((post) => (
               <Link 
                 key={post.slug} 
                 href={`/category/${categorySlug}/${post.slug}`}
-                className="shrink-0 w-[340px] snap-start group bg-card rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-card rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
                    {post.coverImage ? (
@@ -82,12 +82,6 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Coming soon: posts for {category.name}</p>
             </div>
           )}
-        </div>
-        
-        {/* Right Gradient/Arrow hint for scroll */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full w-12 bg-linear-to-l from-white dark:from-slate-950 to-transparent pointer-events-none opacity-0 group-hover/scroll:opacity-100 transition-opacity" />
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white dark:bg-slate-900 border shadow-lg flex items-center justify-center opacity-0 group-hover/scroll:opacity-100 transition-opacity translate-x-4 group-hover/scroll:translate-x-0 pointer-events-none">
-           <ChevronRight className="w-4 h-4 text-slate-400" />
         </div>
       </div>
     </section>

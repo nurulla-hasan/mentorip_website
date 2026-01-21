@@ -2,35 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Globe, 
-  Search, 
-  Palette, 
-  Building2, 
-  HelpCircle, 
-  Image as ImageIcon, 
-  BookOpen, 
-  Newspaper, 
-  ShieldCheck, 
-  FileCode, 
-  Copyright, 
-  Zap,
-  Microscope,
-  LucideIcon,
-} from "lucide-react";
 import { Separator } from "../ui/separator";
 import { Skeleton } from "../ui/skeleton";
+import { DynamicIcon } from "./DynamicIcon";
 import type { Category } from "@/types/category.type";
 import { getAllCategories } from "@/services/category";
-
-// Icon mapping helper
-const iconMap: Record<string, LucideIcon> = {
-  FileText, Globe, Search, Palette, Building2, 
-  HelpCircle, ImageIcon, BookOpen, Newspaper, 
-  ShieldCheck, FileCode, Copyright, Zap, Microscope
-};
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -59,10 +35,10 @@ export function Sidebar() {
 
   const sidebarCategories = useMemo(() => {
     return [
-      { name: "All Posts", icon: LayoutDashboard, slug: "" },
+      { name: "All Posts", iconName: "LayoutDashboard", slug: "" },
       ...categories.map((cat) => ({
         name: cat.name,
-        icon: iconMap[cat.iconName] || FileText,
+        iconName: cat.iconName,
         slug: cat.slug,
       })),
     ];
@@ -96,7 +72,10 @@ export function Sidebar() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <cat.icon className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} />
+                  <DynamicIcon 
+                    name={cat.iconName} 
+                    className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} 
+                  />
                   <span>{cat.name}</span>
                 </div>
                 <span className={`text-[10px] px-1.5 py-0.5 rounded transition-opacity ${
