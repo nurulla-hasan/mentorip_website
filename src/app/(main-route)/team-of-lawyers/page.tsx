@@ -96,7 +96,7 @@ export default async function TeamOfLawyers() {
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
-      <section className="relative h-[400px] rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
+      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
         <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900">
            <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
@@ -108,53 +108,97 @@ export default async function TeamOfLawyers() {
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
             Our Professionals <Sparkles className="w-3 h-3 ml-2" />
           </Badge>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9]">
+          <h1 className="text-3xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9]">
             THE <span className="text-primary italic">EXPERTISE</span><br /> 
             BEHIND <span className="text-blue-600 dark:text-blue-400">MENTORIP</span>.
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl italic">
+          <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
             &quot;A collaborative team of elite attorneys, specialists, and support staff dedicated to your intellectual interests.&quot;
           </p>
         </div>
       </section>
 
-      {/* Head of Chambers Spotlight */}
-      <section className="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-12 lg:p-16 border border-slate-100 dark:border-white/5 shadow-sm group/head">
-         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-            <div className="relative group/img max-w-sm mx-auto w-full">
-               <div className="absolute -inset-2 bg-linear-to-tr from-primary to-blue-600 rounded-[2.5rem] blur opacity-10 group-hover/head:opacity-30 transition-opacity" />
-               <div className="aspect-4/5 bg-white dark:bg-slate-800 rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl relative">
-                  <Image 
-                    src="/Barrister Shaleh Akram Somrat.png" 
-                    alt="Barrister Shaleh Akram Somrat"
-                    fill
-                    className="object-cover group-hover/img:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 text-center text-white">
-                     <p className="font-black text-xl uppercase tracking-tight">Shaleh Akram Somrat</p>
-                     <p className="text-[10px] text-primary font-bold uppercase tracking-[0.3em] mt-1">Head of Chambers</p>
+      {/* Head of Chambers Spotlight - Newspaper Style */}
+      <section className="space-y-12">
+        {/* Newspaper Header */}
+        <div className="space-y-6 border-b-2 border-slate-900 dark:border-white/20 pb-10">
+           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="space-y-4">
+                 <Badge variant="outline" className="border-primary/30 text-primary dark:text-amber-400 font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
+                    LEADERSHIP • FEATURE
+                 </Badge>
+                 <h3 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+                   ARCHITECTING THE FUTURE OF<br />
+                   <span className="text-primary font-serif italic text-3xl md:text-8xl">IP Law in Bangladesh</span>
+                 </h3>
+              </div>
+              <div className="hidden md:block text-right">
+                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PUBLISHED</p>
+                 <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">JANUARY 2026 EDITION</p>
+              </div>
+           </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          {/* Image Sidebar */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="relative group/leader">
+              <div className="absolute -inset-1 bg-slate-900 dark:bg-white/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
+              <div className="aspect-3/4 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl relative group/img">
+                <Image 
+                  src="/Barrister Shaleh Akram Somrat.png" 
+                  alt="Barrister Shaleh Akram Somrat"
+                  fill
+                  className="object-cover group-hover/img:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent h-1/3" />
+              </div>
+              <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
+                 <p className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
+                 <p className="text-[11px] text-primary dark:text-amber-400 font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
+              </div>
+            </div>
+
+            {/* Accolades/Quick Facts */}
+            <div className="space-y-4 pt-4">
+               <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 relative group/item">
+                  <div className="absolute top-4 right-4 text-primary opacity-20">
+                     <Zap className="w-5 h-5" />
                   </div>
+                  <h5 className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 font-mono">CASE 01</h5>
+                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-tight">First successful Patent Appeal challenging Patent Office traditional practices.</p>
+               </div>
+               <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 relative group/item">
+                  <div className="absolute top-4 right-4 text-primary opacity-20">
+                     <Zap className="w-5 h-5" />
+                  </div>
+                  <h5 className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 font-mono">ENFORCEMENT</h5>
+                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-tight">Successfully protected global brands against billions in counterfeit operations.</p>
                </div>
             </div>
-            
-            <div className="lg:col-span-2 space-y-8">
-               <div className="space-y-4">
-                  <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">LEADERSHIP</h2>
-                  <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
-                    Architecting the Future of <br />
-                    <span className="text-primary font-serif italic text-5xl">IP Law in Bangladesh</span>
-                  </h3>
-               </div>
-               <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium italic">
-                 &quot;With a proven track record in navigating the complex processes of Patent, Copyright, and Trademark registrations, Barrister Akram is highly regarded for his landmark achievements in the field.&quot;
-               </p>
-               <div className="flex gap-4">
-                  <Button variant="outline" className="rounded-full h-12 px-6 font-black text-[10px] uppercase tracking-widest border-slate-200 dark:border-white/10">Full Profile</Button>
-                  <Button className="rounded-full h-12 px-6 font-black text-[10px] uppercase tracking-widest shadow-lg">Contact Head</Button>
-               </div>
+          </div>
+          
+          {/* Article Content */}
+          <div className="lg:col-span-8">
+            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
+              <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
+                Barrister Shaleh Akram is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. His interest in IP law began during his LL.M. in IP at the University of Dhaka, where he published a research paper titled “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” A regular contributor to national newspapers, Barrister Akram has authored numerous articles on Intellectual Property law, including contributions to the prestigious Springer international journal. To date, he has published 14 articles in major national dailies.
+              </p>
+              <p className="mb-6">
+                Notable among his recent publications is “Preventing Import-Export of Counterfeited Goods through Intellectual Property Mechanisms”, which appeared in The Daily Star on March 3, 2020. Other significant pieces include “Intellectual Property – The Next Corporate Mechanism” (The Daily Observer, November 12, 2015), “Brexit and its Aftermath – A Bangladesh Perspective” (The Daily Observer, August 18, 2016), “Are Software Patents Valid?” (The Daily Observer, January 19, 2017), and “Domain Name Disputes and Cybersquatting” (The Daily Star, May 21, 2019). He is also the author of “The Fundamentals of Legal Drafting and Conveyancing”, a book published by Shams Publications.
+              </p>
+              <p className="mb-6">
+                With his extensive knowledge and experience in legal and corporate drafting, opinion writing, and agreement drafting, Barrister Akram is highly regarded in the field of Intellectual Property. He has successfully filed and registered numerous patents and has a proven track record in navigating the complex processes of Patent, Copyright, Trademark, and Design registrations, as well as in handling IP-related litigation.
+              </p>
+              <p className="mb-6">
+                One of his landmark achievements was his handling of a complex Patent Appeal that challenged traditional practices of the Patent Office. The case involved an International Patent Application (Patent No. 1OO6093) filed by a Japanese national, which had been rejected due to the expiration of the statutory 21-month filing period under the Patents and Designs Act, 1911. Despite this, MentorIP took on the case, filing an administrative appeal. After extensive hearings on legal points, the appeal was successful, leading to the unprecedented acceptance of the patent, making it the first case where the Patent Department relaxed its strict time limits.
+              </p>
+              <p>
+                Barrister Akram is also trusted by numerous multinational companies (MNCs) operating in Bangladesh for his expertise in Intellectual Property Rights (IPR) protection. One of his most praised contributions was his work in safeguarding the copyrights of the well-known coconut oil brand “Parachute”. By orchestrating a raid on a secret counterfeit factory, he helped confiscate large quantities of counterfeit goods and successfully had deceptive copyright applications canceled, saving the company billions. His efforts were widely recognized and appreciated by Marico (Bangladesh) Limited.
+              </p>
             </div>
-         </div>
+          </div>
+        </div>
       </section>
  
       {/* Attorneys Grid */}
@@ -167,15 +211,16 @@ export default async function TeamOfLawyers() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
            {attorneys.map((member: Attorney, i: number) => (
              <Card key={i} className="py-0 group border-slate-100 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-50 dark:bg-slate-800">
+                <div className="relative aspect-3/4 w-full overflow-hidden bg-slate-50 dark:bg-slate-800">
                    {member.image ? (
                      <Image 
                        src={member.image} 
                        alt={member.name} 
                        fill 
+                       unoptimized
                        className="object-cover group-hover:scale-110 transition-transform duration-700" 
                      />
                    ) : (

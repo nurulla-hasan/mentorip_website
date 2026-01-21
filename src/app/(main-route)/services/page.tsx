@@ -4,11 +4,7 @@ import {
   ShieldCheck, 
   Zap, 
   Scale, 
-  Building2, 
-  FileBadge, 
   Shapes, 
-  Gavel, 
-  CheckCircle2,
   ArrowRight,
   Phone,
   LayoutGrid,
@@ -24,8 +20,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
 
 const serviceCategories = [
   {
@@ -89,30 +84,30 @@ export default function ServicesPage() {
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
-      <section className="relative h-[500px] rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
+      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
         <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950">
-           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-950 dark:to-slate-950" />
+           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-950 dark:to-slate-950" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+                style={{ backgroundImage: 'radial-linear(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
            {/* Animated Mesh Effect */}
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
+           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-linear(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
         </div>
         
         <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-10">
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
             Expertise & Solutions
           </Badge>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] transition-transform duration-700 group-hover/hero:scale-[1.02]">
+          <h1 className="text-xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9] transition-transform duration-700 group-hover/hero:scale-[1.02]">
             COMPREHENSIVE <span className="text-primary italic">IP</span>,<br /> 
             FOUNDED ON <span className="text-blue-600 dark:text-blue-400">PRECISION</span>.
           </h1>
           <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl italic">
-            "Navigating the legal landscape to protect your most valuable assets with global standards."
+            &quot;Navigating the legal landscape to protect your most valuable assets with global standards.&quot;
           </p>
           <div className="flex gap-4">
              <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-xl group/btn overflow-hidden relative active:scale-95 transition-all">
                 <span className="relative z-10 flex items-center gap-2">Explore Services <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" /></span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-blue-600 to-primary bg-[length:200%_100%] animate-gradient-x opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-linear-x opacity-0 group-hover/btn:opacity-100 transition-opacity" />
              </Button>
           </div>
         </div>
@@ -137,7 +132,7 @@ export default function ServicesPage() {
                 
                 <div className="relative space-y-6">
                    <div className="flex items-center justify-between">
-                      <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary group-hover:rotate-[360deg] transition-all duration-700">
+                      <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary group-hover:rotate-360 transition-all duration-700">
                         <cat.icon className="w-7 h-7 text-slate-400 group-hover:text-white" />
                       </div>
                       <LayoutGrid className="w-4 h-4 text-slate-100 dark:text-slate-800" />
@@ -164,7 +159,7 @@ export default function ServicesPage() {
 
       {/* Process Section */}
       <section className="bg-slate-50 dark:bg-slate-950 rounded-[3rem] p-12 lg:p-20 border border-slate-100 dark:border-white/5 shadow-2xl relative overflow-hidden group/process">
-         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] dark:opacity-[0.07] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #10b981 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] dark:opacity-[0.07] pointer-events-none" style={{ backgroundImage: 'radial-linear(circle at 1px 1px, #10b981 1px, transparent 0)', backgroundSize: '40px 40px' }} />
          
          <div className="relative max-w-5xl mx-auto space-y-20">
             <div className="text-center space-y-4">
@@ -175,13 +170,13 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                {processes.map((p, i) => (
                  <div key={i} className="relative group/step text-center space-y-6">
-                    <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-white/10 flex items-center justify-center mx-auto shadow-xl group-hover/step:border-primary group-hover/step:rotate-12 group-hover/step:scale-110 transition-all duration-500 relative z-10">
+                    <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-4xl border border-slate-100 dark:border-white/10 flex items-center justify-center mx-auto shadow-xl group-hover/step:border-primary group-hover/step:rotate-12 group-hover/step:scale-110 transition-all duration-500 relative z-10">
                        <p.icon className="w-8 h-8 text-primary group-hover/step:scale-110 transition-transform" />
                        <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-[10px] font-black text-white shadow-lg">
                           {p.step}
                        </div>
                     </div>
-                    {i < 3 && <div className="hidden md:block absolute top-12 left-[60%] w-[90%] h-[2px] bg-gradient-to-r from-primary/20 via-primary/5 to-transparent z-0 group-hover/process:scale-x-110 transition-transform origin-left" />}
+                    {i < 3 && <div className="hidden md:block absolute top-12 left-[60%] w-[90%] h-[2px] bg-linear-to-r from-primary/20 via-primary/5 to-transparent z-0 group-hover/process:scale-x-110 transition-transform origin-left" />}
                     <div className="space-y-2">
                        <h5 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover/step:text-primary transition-colors">{p.title}</h5>
                        <p className="text-[11px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed px-4 opacity-80 group-hover/step:opacity-100 transition-opacity">{p.desc}</p>
@@ -233,7 +228,7 @@ export default function ServicesPage() {
       {/* Final CTA */}
       <section className="max-w-4xl mx-auto">
          <div className="bg-slate-50 dark:bg-slate-950 p-10 md:p-16 rounded-[3rem] border border-slate-100 dark:border-white/10 text-center space-y-8 relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] group/cta">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
             <h4 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:scale-[1.01] transition-transform">Ready to Secure Your Innovation?</h4>
             <p className="text-slate-600 dark:text-slate-400 font-medium italic text-lg max-w-2xl mx-auto">
                Protect your inventions, brands, and creative outputs with a team that values precision. Contact our experts today.
@@ -241,7 +236,7 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
                 <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn-cta overflow-hidden relative">
                     <span className="relative z-10 flex items-center gap-2">Book Consultation <Phone className="w-4 h-4" /></span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary to-blue-600 opacity-0 group-hover/btn-cta:opacity-100 transition-opacity" />
+                    <div className="absolute inset-0 bg-linear-to-r from-primary to-blue-600 opacity-0 group-hover/btn-cta:opacity-100 transition-opacity" />
                 </Button>
                 <Button variant="outline" size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
                     View Portfolio

@@ -4,6 +4,21 @@ import { serverFetch } from "@/lib/fetcher";
 
 
 // GET CLIENTELE
+export const getClients = async () => {
+  try {
+    return await serverFetch(`/client`, {
+      revalidate: 300,
+    });
+  } catch {
+    return {
+      success: false,
+      data: {},
+    };
+  }
+};
+
+
+// GET CLIENTELE
 export const getClientele = async () => {
   try {
     return await serverFetch(`/our-clientele-comp/retrieve`, {

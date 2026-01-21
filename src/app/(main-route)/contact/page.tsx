@@ -100,7 +100,7 @@ export default async function ContactPage() {
    return (
       <div className="pb-20 space-y-24">
          {/* Hero Section */}
-         <section className="relative h-[450px] rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
+         <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
             <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950">
                <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-950 dark:to-slate-950" />
                <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
@@ -112,11 +112,11 @@ export default async function ContactPage() {
                <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
                   Get In Touch <Sparkles className="w-3 h-3 ml-2" />
                </Badge>
-               <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
+               <h1 className="text-xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
                   WE&apos;RE HERE TO <span className="text-primary italic">HELP</span>.<br />
                   ANYTIME, <span className="text-blue-600 dark:text-blue-400">ANYWHERE</span>.
                </h1>
-               <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl italic">
+               <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
                   &quot;Reach out to MentorIP for expert guidance on trademarks, patents, and all your IP needs globally.&quot;
                </p>
             </div>
@@ -124,7 +124,7 @@ export default async function ContactPage() {
 
          {/* Main Contact Grid */}
          <section className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Left: Contact Info */}
+            {/* Left: Contact Info */} 
             <div className="lg:col-span-2 space-y-12">
                <div className="space-y-4">
                   <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR LOCATIONS</h2>
@@ -142,8 +142,8 @@ export default async function ContactPage() {
                               <office.icon className="w-5 h-5 text-slate-300 group-hover:text-primary transition-colors group-hover:rotate-12" />
                            </div>
                            <div className="space-y-1">
-                              <h4 className="text-lg font-black text-slate-900 dark:text-white leading-tight italic">{office.name}</h4>
-                              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Key Person: {office.person}</p>
+                              <h4 className="text-lg font-black text-slate-900 dark:text-white leading-tight">{office.name}</h4>
+                              <p className="text-xs font-bold text-slate-400">Key Person: {office.person}</p>
                            </div>
                            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
                               {office.address}

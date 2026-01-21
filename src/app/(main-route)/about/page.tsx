@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import Link from "next/link";
 import { getWhoWeAre } from "@/services/about";
 
 const timeline = [
@@ -65,134 +66,149 @@ export default async function AboutPage() {
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
-      <section className="relative h-[500px] rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
+      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
         <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900">
            <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                 style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-gradient(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
+           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-linear(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
         </div>
         
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-10">
+        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-8 md:space-y-10">
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
             The MentorIP Story
           </Badge>
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
+          <h1 className="text-xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
             PROTECTING <span className="text-primary italic">IDEAS</span>.<br /> 
             EMPOWERING <span className="text-blue-600 dark:text-blue-400">BRANDS</span>.
           </h1>
-          <div className="flex gap-6 pt-4">
+          
+          <div className="grid grid-cols-2 md:flex items-center justify-center gap-6 md:gap-8 pt-4 w-full md:w-auto">
              <div className="flex flex-col items-center group/stat">
-                <span className="text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">25+</span>
-                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Years</span>
+                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">25+</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Years</span>
              </div>
-             <Separator orientation="vertical" className="h-10 bg-slate-200 dark:bg-white/10" />
+             
+             <Separator orientation="vertical" className="hidden md:block h-10 bg-slate-200 dark:bg-white/10" />
+             
              <div className="flex flex-col items-center group/stat">
-                <span className="text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">7,000+</span>
-                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Clients</span>
+                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">7,000+</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Clients</span>
              </div>
-             <Separator orientation="vertical" className="h-10 bg-slate-200 dark:bg-white/10" />
-             <div className="flex flex-col items-center group/stat">
-                <span className="text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">350+</span>
-                <span className="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Associates</span>
+             
+             <Separator orientation="vertical" className="hidden md:block h-10 bg-slate-200 dark:bg-white/10" />
+             
+             <div className="flex flex-col items-center group/stat col-span-2 md:col-span-1 border-t md:border-0 pt-4 md:pt-0">
+                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">350+</span>
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Associates</span>
              </div>
           </div>
         </div>
       </section>
 
       {/* Narrative Section - Dynamic "Who We Are" */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="lg:col-span-8 space-y-10">
           <div className="space-y-4">
-            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">
+            <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-black text-[10px] px-4 py-1.5 rounded-full">
               WHO WE ARE
-            </h2>
-            <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
+            </Badge>
+            <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
               {whoWeAreData?.title}
             </h3>
           </div>
-          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium italic">
+          
+          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium max-w-2xl">
             {whoWeAreData?.subtitle}
           </p>
-          <div className="grid grid-cols-2 gap-6">
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
              {stats.map((stat, i) => (
-               <Card key={i} className="border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 rounded-4xl p-8 space-y-2 group hover:bg-primary hover:border-primary transition-all duration-500 shadow-sm hover:shadow-primary/20 hover:-translate-y-1">
-                 <p className="text-4xl font-black text-slate-900 dark:text-white group-hover:text-white tracking-tighter transition-colors">{stat.value}</p>
-                 <p className="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 group-hover:text-white/80 transition-colors">{stat.label}</p>
-               </Card>
+               <div key={i} className="relative group/stat p-6 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:border-primary/50 transition-all duration-500 overflow-hidden">
+                 <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity" />
+                 <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter group-hover/stat:scale-110 transition-transform duration-500">{stat.value}</p>
+                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-2">{stat.label}</p>
+               </div>
              ))}
           </div>
         </div>
-        <div className="relative aspect-square rounded-[3rem] overflow-hidden group shadow-2xl">
-           <Image 
-              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000" 
-              alt="Legal Expertise" 
-              fill 
-              className="object-cover group-hover:scale-110 transition-transform duration-1000" 
+
+        <div className="lg:col-span-4 relative aspect-3/4 rounded-4xl md:rounded-[3rem] overflow-hidden group shadow-2xl border-4 border-white dark:border-slate-800">
+           <Image
+              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000"
+              alt="Legal Expertise"
+              fill
+              className="object-cover group-hover:scale-110 transition-transform duration-1000"
            />
-           <div className="absolute inset-0 bg-primary/20 mix-blend-multiply opacity-0 group-hover:opacity-40 transition-opacity" />
+           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-slate-900/40 to-transparent" />
         </div>
       </section>
 
 
-      {/* Leadership Section */}
-      <section className="space-y-16">
-        <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
-          <div className="lg:col-span-2 relative p-4 group/leader">
-            <div className="absolute -inset-1 bg-linear-to-tr from-primary to-blue-600 rounded-[2.6rem] blur opacity-20 group-hover/leader:opacity-40 transition-opacity" />
-            <div className="aspect-4/5 bg-white dark:bg-slate-800 rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-700/50 shadow-2xl relative group/img">
-              <Image 
-                src="/Barrister Shaleh Akram Somrat.png" 
-                alt="Barrister Shaleh Akram Somrat"
-                fill
-                className="object-cover group-hover/img:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 dark:from-slate-950/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-center bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/20 shadow-xl group-hover/img:translate-y-[-5px] transition-transform">
-                 <p className="text-slate-900 dark:text-white font-black text-base tracking-tight uppercase">Barrister Shaleh Akram Somrat</p>
-                 <p className="text-xs text-primary dark:text-amber-400 font-bold uppercase tracking-[0.2em] mt-1.5">Head of Chambers, MentorIP</p>
+      {/* Leadership Section - Newspaper Style */}
+      <section className="space-y-12">
+        {/* Newspaper Header */}
+        <div className="space-y-6 border-b-2 border-slate-900 dark:border-white/20 pb-10">
+           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div className="space-y-4">
+                 <Badge variant="outline" className="border-primary/30 text-primary dark:text-amber-400 font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
+                    OUR FOUNDER • EDITORIAL
+                 </Badge>
+                 <h3 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+                   ARCHITECT OF GLOBAL<br />
+                   <span className="text-primary dark:text-amber-400 font-serif italic text-3xl md:text-8xl">IP Strategy</span>
+                 </h3>
+              </div>
+              <div className="hidden md:block text-right">
+                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PUBLISHED</p>
+                 <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">JANUARY 2026 EDITION</p>
+              </div>
+           </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          {/* Image Sidebar */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="relative group/leader">
+              <div className="absolute -inset-1 bg-slate-900 dark:bg-white/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
+              <div className="aspect-3/4 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl relative group/img">
+                <Image
+                  src="/Barrister Shaleh Akram Somrat.png"
+                  alt="Barrister Shaleh Akram Somrat"
+                  fill
+                  unoptimized
+                  className="object-cover group-hover/img:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent h-1/3" />
+              </div>
+              <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
+                 <p className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
+                 <p className="text-[11px] text-primary dark:text-amber-400 font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
               </div>
             </div>
           </div>
-          
-          <div className="lg:col-span-3 space-y-8 px-6 lg:px-0">
-            <div className="space-y-4">
-              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary dark:text-amber-400">OUR FOUNDER</h2>
-              <h3 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
-                Architect of Global <br />
-                <span className="text-primary dark:text-amber-400 font-serif italic text-5xl">IP Strategy</span>
-              </h3>
-            </div>
-            
-            <div className="space-y-6 text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-              <p>
-                Barrister Shaleh Akram Somrat is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. A regular contributor to national newspapers and the prestigious <span className="text-slate-900 dark:text-slate-200">Springer international journal</span>, he has authored numerous articles and the book <span className="italic">“The Fundamentals of Legal Drafting and Conveyancing.”</span>
+
+          {/* Article/Biography Content */}
+          <div className="lg:col-span-8">
+            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
+              <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
+                Barrister Shaleh Akram is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. His interest in IP law began during his LL.M. in IP at the University of Dhaka, where he published a research paper titled “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” A regular contributor to national newspapers, Barrister Akram has authored numerous articles on Intellectual Property law, including contributions to the prestigious Springer international journal. To date, he has published 14 articles in major national dailies.
+              </p>
+              <p className="mb-6">
+                Notable among his recent publications is “Preventing Import-Export of Counterfeited Goods through Intellectual Property Mechanisms”, which appeared in The Daily Star on March 3, 2020. Other significant pieces include “Intellectual Property – The Next Corporate Mechanism” (The Daily Observer, November 12, 2015), “Brexit and its Aftermath – A Bangladesh Perspective” (The Daily Observer, August 18, 2016), “Are Software Patents Valid?” (The Daily Observer, January 19, 2017), and “Domain Name Disputes and Cybersquatting” (The Daily Star, May 21, 2019). He is also the author of “The Fundamentals of Legal Drafting and Conveyancing”, a book published by Shams Publications.
+              </p>
+              <p className="mb-6">
+                With his extensive knowledge and experience in legal and corporate drafting, opinion writing, and agreement drafting, Barrister Akram is highly regarded in the field of Intellectual Property. He has successfully filed and registered numerous patents and has a proven track review in navigating the complex processes of Patent, Copyright, Trademark, and Design registrations, as well as in handling IP-related litigation.
+              </p>
+              <p className="mb-6">
+                One of his landmark achievements was his handling of a complex Patent Appeal that challenged traditional practices of the Patent Office. The case involved an International Patent Application (Patent No. 1OO6093) filed by a Japanese national, which had been rejected due to the expiration of the statutory 21-month filing period under the Patents and Designs Act, 1911. Despite this, MentorIP took on the case, filing an administrative appeal. After extensive hearings on legal points, the appeal was successful, leading to the unprecedented acceptance of the patent, making it the first case where the Patent Department relaxed its strict time limits.
               </p>
               <p>
-                With over a decade of experience, he has a proven track record in navigating complex processes of Patent, Copyright, and Trademark registrations, as well as handling high-stakes IP litigation.
+                Barrister Akram is also trusted by numerous multinational companies (MNCs) operating in Bangladesh for his expertise in Intellectual Property Rights (IPR) protection. One of his most praised contributions was his work in safeguarding the copyrights of the well-known coconut oil brand “Parachute”. By orchestrating a raid on a secret counterfeit factory, he helped confiscate large quantities of counterfeit goods and successfully had deceptive copyright applications canceled, saving the company billions. His efforts were widely recognized and appreciated by Marico (Bangladesh) Limited.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-sm group/card hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all">
-                 <div className="w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center shrink-0 group-hover/card:bg-primary group-hover/card:rotate-12 transition-all">
-                    <Zap className="w-5 h-5 text-primary group-hover/card:text-white" />
-                 </div>
-                 <div>
-                    <p className="text-slate-900 dark:text-white font-bold group-hover/card:text-primary transition-colors">Landmark Patent Victory</p>
-                    <p className="text-xs text-slate-500 mt-1">First-ever successful appeal leading to Patent Office relaxation of strict time limits.</p>
-                 </div>
-              </div>
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-sm group/card hover:border-amber-400 dark:hover:border-amber-400 hover:shadow-lg hover:-translate-y-1 transition-all">
-                 <div className="w-10 h-10 rounded-full bg-amber-400/10 dark:bg-amber-400/20 flex items-center justify-center shrink-0 group-hover/card:bg-amber-400 group-hover/card:-rotate-12 transition-all">
-                    <ShieldCheck className="w-5 h-5 text-amber-600 dark:text-amber-400 group-hover/card:text-white" />
-                 </div>
-                 <div>
-                    <p className="text-slate-900 dark:text-white font-bold group-hover/card:text-amber-600 dark:group-hover/card:text-amber-400 transition-colors">IPR Enforcement</p>
-                    <p className="text-xs text-slate-500 mt-1">Orchestrated landmark raids protecting global brands like &quot;Parachute&quot; from counterfeiting.</p>
-                 </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
       </section>
@@ -212,7 +228,7 @@ export default async function AboutPage() {
                 </div>
                 
                 <div className="md:ml-24 flex-1 p-8 rounded-4xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800/50 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm hover:shadow-xl">
-                    <h4 className="text-xl font-black text-slate-900 dark:text-white mb-2 italic group-hover/step:text-primary transition-colors">{step.title}</h4>
+                    <h4 className="text-xl font-black text-slate-900 dark:text-white mb-2 group-hover/step:text-primary transition-colors">{step.title}</h4>
                     <p className="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">{step.desc}</p>
                 </div>
               </div>
@@ -227,7 +243,7 @@ export default async function AboutPage() {
              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR NETWORK</h2>
              <h3 className="text-4xl font-black text-slate-900 dark:text-white group-hover:translate-x-2 transition-transform cursor-default">Global Presence</h3>
            </div>
-           <p className="max-w-md text-slate-500 dark:text-slate-400 font-medium italic">
+           <p className="max-w-md text-slate-500 dark:text-slate-400 font-medium">
              Connecting with innovators across continents through our specialized international liaison offices.
            </p>
         </div>
@@ -239,7 +255,7 @@ export default async function AboutPage() {
                    <office.icon className="w-6 h-6 text-slate-400 group-hover:text-white" />
                 </div>
                 <div className="space-y-1">
-                   <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight italic">{office.country}</h4>
+                   <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">{office.country}</h4>
                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{office.city}</p>
                    <p className="text-[10px] text-primary font-black uppercase tracking-[0.2em] pt-2">{office.type}</p>
                 </div>
@@ -268,7 +284,7 @@ export default async function AboutPage() {
                     <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover/item:bg-primary transition-all duration-500 group-hover/item:rotate-[-10deg]">
                        <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-white" />
                     </div>
-                    <p className="text-sm font-black text-slate-800 dark:text-slate-200 uppercase tracking-tight group-hover/item:text-primary transition-colors italic">{item.name}</p>
+                    <p className="text-sm font-black text-slate-800 dark:text-slate-200 uppercase tracking-tight group-hover/item:text-primary transition-colors">{item.name}</p>
                  </div>
                ))}
             </div>
@@ -280,18 +296,16 @@ export default async function AboutPage() {
             <div className="bg-slate-50 dark:bg-slate-950 p-10 md:p-16 rounded-[3rem] border border-slate-100 dark:border-white/10 text-center space-y-8 relative overflow-hidden shadow-2xl group/cta">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
                 <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover/cta:scale-[1.01] transition-transform">Need expert legal guidance?</h4>
-                <p className="text-slate-600 dark:text-slate-400 font-medium italic text-lg max-w-2xl mx-auto">
+                <p className="text-slate-600 dark:text-slate-400 font-medium text-lg max-w-2xl mx-auto">
                   Whether you are protecting your innovation or launching a new business, we are here to help you navigate the legal landscape.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-                   <Button size="lg" className="rounded-full px-8 py-6 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn overflow-hidden relative">
-                      <span className="relative z-10 flex items-center gap-2">Contact Us Now <Phone className="w-4 h-4" /></span>
-                      <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
-                   </Button>
-                   <Button variant="outline" size="lg" className="rounded-full px-8 py-6 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
-                      <BookOpen className="w-4 h-4 mr-2" />
-                      View Portfolio
-                   </Button>
+                   <Link href="/contact">
+                      <Button size="lg" className="rounded-full px-8 py-6 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn overflow-hidden relative">
+                         <span className="relative z-10 flex items-center gap-2">Contact Us Now <Phone className="w-4 h-4" /></span>
+                         <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                      </Button>
+                   </Link>
                 </div>
             </div>
       </section>
