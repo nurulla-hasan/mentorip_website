@@ -12,7 +12,7 @@ export const getClients = async () => {
   } catch {
     return {
       success: false,
-      data: {},
+      data: [],
     };
   }
 };

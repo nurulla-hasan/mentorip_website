@@ -61,7 +61,7 @@ export default async function ClientsPage() {
   const clienteleData = clienteleResponse?.data || null;
   const weServeData = weServeResponse?.data || null;
   const jurisdictionsData = jurisdictionsResponse?.data || null;
-  const clientsData = (clientsResponse?.data as Client[]) || [];
+  const clientsData = Array.isArray(clientsResponse?.data) ? (clientsResponse.data as Client[]) : [];
 
   // Build stats array from clientele API
   const stats = clienteleData ? [
@@ -221,7 +221,7 @@ export default async function ClientsPage() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6">
-           {clientsData.map((client) => (
+           {clientsData?.map((client) => (
              <a 
                key={client._id} 
                href={client.websiteUrl} 
@@ -229,7 +229,7 @@ export default async function ClientsPage() {
                rel="noopener noreferrer"
                className="group/client relative aspect-video flex items-center justify-center p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/10 hover:border-primary/40 hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 overflow-hidden"
              >
-                <div className="relative z-10 w-full h-full flex items-center justify-center grayscale group-hover/client:grayscale-0 transition-all duration-500 scale-90 group-hover/client:scale-100">
+                <div className="relative z-10 w-full h-full flex items-center justify-center transition-all duration-500 scale-90 group-hover/client:scale-100">
                    {client.logoUrl && (
                      <Image 
                        src={client.logoUrl} 

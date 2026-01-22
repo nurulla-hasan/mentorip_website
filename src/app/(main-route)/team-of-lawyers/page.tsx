@@ -3,9 +3,7 @@ import {
   Users, 
   Award, 
   ShieldCheck, 
-  Zap, 
   Sparkles,
-  FileText,
   Briefcase,
   ArrowRight
 } from "lucide-react";
@@ -72,26 +70,7 @@ export default async function TeamOfLawyers() {
     qualifications: member.expertises || [],
     icon: ShieldCheck, // Default icon since API doesn't provide one
     image: member.image
-  })) : [
-    {
-      name: "M Nafis Manjoor Baree",
-      role: "Head of IP Documentation Wing",
-      qualifications: ["Barrister-at-Law (Lincoln’s Inn)", "Advocate, District & Session Judges’ Court", "Accredited Mediator, UK", "LLM in Int. Banking & Finance Law, UK"],
-      icon: FileText
-    },
-    {
-      name: "Kazi Mehedi Al Amin Shuvo",
-      role: "Senior Patent & Design Attorney",
-      qualifications: ["Advocate, Supreme Court of Bangladesh", "LL.B.(Hon's), University of Dhaka", "LL.M. (First class), University of Dhaka"],
-      icon: Zap
-    },
-    {
-      name: "Ayesha Akhter",
-      role: "Senior Trademark Attorney",
-      qualifications: ["Advocate, Supreme Court of Bangladesh", "LL.B.(Hon's), University of Dhaka", "LL.M. (First class), University of Dhaka"],
-      icon: ShieldCheck
-    }
-  ];
+  })) : [];
 
   return (
     <div className="pb-20 space-y-24">
@@ -158,24 +137,6 @@ export default async function TeamOfLawyers() {
                  <p className="text-[11px] text-primary dark:text-amber-400 font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
               </div>
             </div>
-
-            {/* Accolades/Quick Facts */}
-            <div className="space-y-4 pt-4">
-               <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 relative group/item">
-                  <div className="absolute top-4 right-4 text-primary opacity-20">
-                     <Zap className="w-5 h-5" />
-                  </div>
-                  <h5 className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 font-mono">CASE 01</h5>
-                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-tight">First successful Patent Appeal challenging Patent Office traditional practices.</p>
-               </div>
-               <div className="p-5 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 relative group/item">
-                  <div className="absolute top-4 right-4 text-primary opacity-20">
-                     <Zap className="w-5 h-5" />
-                  </div>
-                  <h5 className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 font-mono">ENFORCEMENT</h5>
-                  <p className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-tight">Successfully protected global brands against billions in counterfeit operations.</p>
-               </div>
-            </div>
           </div>
           
           {/* Article Content */}
@@ -233,11 +194,11 @@ export default async function TeamOfLawyers() {
 
                 <div className="p-8 pt-0 space-y-6 flex-1 flex flex-col">
                    <div className="space-y-2 relative z-10">
-                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight italic group-hover:text-primary transition-colors">{member.name}</h4>
+                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">{member.name}</h4>
                       <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{member.role}</p>
                    </div>
                    <Separator className="bg-slate-100 dark:bg-white/5" />
-                   <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed relative z-10 flex-1 italic">
+                   <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed relative z-10 flex-1">
                       {member.qualifications.join(", ")}
                    </p>
                 </div>
@@ -254,7 +215,7 @@ export default async function TeamOfLawyers() {
          <div className="relative space-y-16">
             <div className="text-center space-y-4">
                <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">WINGS</h2>
-               <h3 className="text-4xl font-black italic text-slate-900 dark:text-white transition-transform group-hover/ops:scale-105 duration-700">Operations & Research Team</h3>
+               <h3 className="text-4xl font-black text-slate-900 dark:text-white transition-transform group-hover/ops:scale-105 duration-700">Operations & Research Team</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -265,16 +226,16 @@ export default async function TeamOfLawyers() {
                           <member.icon className="w-6 h-6 text-primary" />
                        </div>
                        <div>
-                          <p className="font-black italic text-lg text-slate-900 dark:text-white">{member.name}</p>
+                          <p className="font-black text-lg text-slate-900 dark:text-white">{member.name}</p>
                           <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{member.role}</p>
                        </div>
                     </div>
                     {member.qualifications ? (
-                       <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic line-clamp-3">
+                       <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed line-clamp-3">
                          {member.qualifications.join(", ")}
                        </p>
                     ) : (
-                       <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic">{"desc" in member ? member.desc : ""}</p>
+                       <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">{"desc" in member ? member.desc : ""}</p>
                     )}
                  </div>
                ))}

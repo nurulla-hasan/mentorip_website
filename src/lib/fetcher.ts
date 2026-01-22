@@ -28,9 +28,9 @@ export const serverFetch = async (
 
   const url = `${process.env.NEXT_PUBLIC_BASE_API}${endpoint}`;
 
-  if (process.env.NODE_ENV === "development") {
-    console.log(`🚀 [API Request]: ${rest.method || "GET"} ${endpoint}`);
-  }
+  // if (process.env.NODE_ENV === "development") {
+  //   console.log(`🚀 [API Request]: ${rest.method || "GET"} ${endpoint}`);
+  // }
 
   const res = await fetch(url, {
     ...rest,
@@ -48,9 +48,9 @@ export const serverFetch = async (
   // Handle Non-OK responses
   if (!res.ok) {
     const errorData = await res.json().catch(() => ({}));
-    if (process.env.NODE_ENV === "development") {
-      console.error(`❌ [API Error]: ${endpoint}`, errorData);
-    }
+    // if (process.env.NODE_ENV === "development") {
+    //   console.error(`❌ [API Error]: ${endpoint}`, errorData);
+    // }
     throw new Error(errorData.message || `Fetch failed: ${res.statusText}`);
   }
 
