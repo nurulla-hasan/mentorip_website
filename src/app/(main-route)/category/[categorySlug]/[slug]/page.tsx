@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { ShareButton } from "@/components/category/ShareButton";
 import { Clock } from "lucide-react";
 import TableOfContents from "@/components/category/TableOfContents";
-import { getPostBySlug } from "@/services/post";
+import { getPostBySlug, trackPostView } from "@/services/post";
+import { NewsletterBox } from "@/components/category/NewsletterBox";
 
 export default async function DynamicPostPage({
   params,
@@ -17,6 +18,9 @@ export default async function DynamicPostPage({
     notFound();
   }
   const post = res.data;
+  
+  // Track post view
+  trackPostView(slug);
   const { processedHtml, toc } = processHtmlForToc(post.content || "");
 
 
@@ -61,7 +65,7 @@ export default async function DynamicPostPage({
         <aside className="w-full lg:w-[320px] shrink-0 space-y-6 sticky top-24">
           <div className="space-y-6">
             {toc.length > 0 && <TableOfContents toc={toc} />}
-            {/* <NewsletterBox /> */}
+            <NewsletterBox />
           </div>
         </aside>
       </div>

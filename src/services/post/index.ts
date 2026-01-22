@@ -31,3 +31,16 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
     return { success: false, message };
   }
 };
+
+// TRACK POST VIEW
+export const trackPostView = async (slug: string): Promise<any> => {
+  try {
+    return await serverFetch(`/post/${slug}/view`, {
+      method: "POST",
+    });
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Failed to track post view";
+    return { success: false, message };
+  }
+};

@@ -173,11 +173,11 @@ export default async function ContactPage() {
                               <MessageCircle className="w-6 h-6 text-primary animate-pulse" />
                            </div>
                            <div>
-                              <p className="text-lg font-black italic">Hotline & Socials</p>
+                              <p className="text-lg font-black">Hotline & Socials</p>
                               <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Stay Connected 24/7</p>
                            </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                            {hotlines.map((hotline: Hotline, i: number) => (
                               <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:bg-white/50 dark:hover:bg-white/10 transition-colors group/item cursor-pointer">
                                  <div className="flex items-center gap-3">
