@@ -49,7 +49,8 @@ const navLinks = [
   { name: "Our Clients", href: "/clients", icon: Users },
   { name: "Service & Practices", href: "/services", icon: Briefcase },
   { name: "Contact Us", href: "/contact", icon: Phone },
-  { name: "Team of Lawyers", href: "/team-of-lawyers", icon: ImageIcon },
+  { name: "Team of Lawyers", href: "/team-of-lawyers", icon: Users },
+  { name: "Gallery", href: "/gallery", icon: ImageIcon },
 ];
 
 export function Navbar() {
