@@ -212,7 +212,7 @@ export async function MainDashboardContent() {
 
             // Side Coming Soon placeholder
             return (
-              <Card key={`side-soon-${index}`} className="relative shadow-none bg-slate-50/50 dark:bg-slate-900/20 rounded-3xl overflow-hidden border-2 border-dashed border-slate-100 dark:border-slate-800/50 p-6 flex flex-col justify-center min-h-[160px]">
+              <Card key={`side-soon-${index}`} className="relative shadow-none bg-slate-50/50 dark:bg-slate-900/20 rounded-3xl overflow-hidden border-2 border-dashed border-slate-100 dark:border-slate-800/50 p-6 flex flex-col justify-center min-h-40">
                 <div className="space-y-2 opacity-50">
                   <div className="w-12 h-1 bg-slate-200 dark:bg-slate-800 rounded-full" />
                   <p className="text-[9px] font-black text-slate-300 dark:text-slate-700 uppercase tracking-[0.2em]">Update Loading...</p>
