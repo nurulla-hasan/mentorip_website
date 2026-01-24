@@ -172,7 +172,7 @@ export default async function TeamOfLawyers() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
            {attorneys.map((member: Attorney, i: number) => (
              <Card key={i} className="py-0 group border-slate-100 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
                 <div className="relative aspect-3/4 w-full overflow-hidden bg-slate-50 dark:bg-slate-800">

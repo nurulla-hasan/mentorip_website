@@ -227,7 +227,7 @@ export default async function ClientsPage() {
                href={client.websiteUrl} 
                target="_blank" 
                rel="noopener noreferrer"
-               className="group/client relative aspect-video flex items-center justify-center p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/10 hover:border-primary/40 hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 overflow-hidden"
+               className="group/client relative aspect-video flex items-center justify-center p-1 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/10 hover:border-primary/40 hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 overflow-hidden"
              >
                 <div className="relative z-10 w-full h-full flex items-center justify-center transition-all duration-500 scale-90 group-hover/client:scale-100">
                    {client.logoUrl && (
