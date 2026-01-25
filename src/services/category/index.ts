@@ -8,10 +8,7 @@ import type { ApiResponse, Category, CategoryWithPosts } from '@/types/category.
 
 export const getAllCategories = async (): Promise<ApiResponse<Category[]>> => {
   try {
-    const result = await serverFetch('/category', {
-      method: 'GET',
-      revalidate: 3600,
-    });
+    const result = await serverFetch('/category', {});
     return result;
   } catch (error: any) {
     return { success: false, message: error?.message || "Failed to fetch categories", data: [] };
@@ -21,9 +18,7 @@ export const getAllCategories = async (): Promise<ApiResponse<Category[]>> => {
 // GET SINGLE CATEGORY WITH POSTS (by slug)
 export const getCategoryBySlug = async (slug: string, query: Query = {}): Promise<ApiResponse<CategoryWithPosts | null>> => {
   try {
-    return await serverFetch(`/category/with-posts/${slug}${buildQueryString(query)}`, {
-      revalidate: 3600,
-    });
+    return await serverFetch(`/category/with-posts/${slug}${buildQueryString(query)}`, {});
   } catch {
     return {
       success: false,
