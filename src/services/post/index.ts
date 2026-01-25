@@ -9,9 +9,7 @@ export const getAllPosts = async (
   query: Record<string, string | string[] | undefined> = {}
 ) => {
   try {
-    return await serverFetch(`/post${buildQueryString(query)}`, {
-      revalidate: 300,
-    });
+    return await serverFetch(`/post${buildQueryString(query)}`, {});
   } catch {
     return {
       success: false,
