@@ -21,6 +21,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
 
 const serviceCategories = [
   {
@@ -105,7 +106,7 @@ export default function ServicesPage() {
             &quot;Navigating the legal landscape to protect your most valuable assets with global standards.&quot;
           </p>
           <div className="flex gap-4">
-             <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-xl group/btn overflow-hidden relative active:scale-95 transition-all">
+             <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-xl group/btn overflow-hidden relative active:scale-95 transition-all cursor-default">
                 <span className="relative z-10 flex items-center gap-2">Explore Services <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" /></span>
                 <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-linear-x opacity-0 group-hover/btn:opacity-100 transition-opacity" />
              </Button>
@@ -234,13 +235,17 @@ export default function ServicesPage() {
                Protect your inventions, brands, and creative outputs with a team that values precision. Contact our experts today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-                <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn-cta overflow-hidden relative">
-                    <span className="relative z-10 flex items-center gap-2">Book Consultation <Phone className="w-4 h-4" /></span>
-                    <div className="absolute inset-0 bg-linear-to-r from-primary to-blue-600 opacity-0 group-hover/btn-cta:opacity-100 transition-opacity" />
-                </Button>
-                <Button variant="outline" size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
-                    View Portfolio
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn-cta overflow-hidden relative">
+                      <span className="relative z-10 flex items-center gap-2">Book Consultation <Phone className="w-4 h-4" /></span>
+                      <div className="absolute inset-0 bg-linear-to-r from-primary to-blue-600 opacity-0 group-hover/btn-cta:opacity-100 transition-opacity" />
+                  </Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="outline" size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
+                      View Portfolio
+                  </Button>
+                </Link>
             </div>
          </div>
       </section>
