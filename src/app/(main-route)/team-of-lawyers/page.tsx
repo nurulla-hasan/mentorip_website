@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { 
   Users, 
-  Award, 
   ShieldCheck, 
   Sparkles,
   Briefcase,
@@ -12,12 +11,14 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { getTeamMembers } from "@/services/team";
 import { JoinTeamCTA } from "@/components/team/JoinTeamCTA";
+import { Key } from "react";
 
 interface TeamMember {
   name: string;
   designation: string;
   expertises: string[];
   image?: string;
+  type: string;
 }
 
 interface Attorney {
@@ -28,48 +29,38 @@ interface Attorney {
   image?: string;
 }
 
-const operations = [
-  {
-    name: "Mr. Yesin",
-    role: "IP Operations Manager",
-    desc: "Overseeing all day-to-day workflow, filing, and client relationships since 2018.",
-    icon: Briefcase
-  },
-  {
-    name: "Sajid Ahmed",
-    role: "Team Leader, IP Enforcement",
-    qualifications: ["LL.B. (Hon’s), University of London, UK"],
-    icon: Award
-  },
-  {
-    name: "Samiul Islam",
-    role: "Associate",
-    qualifications: ["LL.B. (Hon’s), University of Dhaka"],
-    icon: Users
-  }
-];
-
-const staff = [
-  { name: "MD RAIHAN ALI", pos: "Office Executive - Patents, Designs & Trademarks" },
-  { name: "MD HUMAYUN KABIR", pos: "Clerk – Patents, Designs & Trademarks" },
-  { name: "MD RABBI SARKER", pos: "Clerk – Patents, Designs & Trademarks" },
-  { name: "JAHANGIR ALOM", pos: "Clerk – High Court" },
-  { name: "MD HAFIZUL ISLAM", pos: "Clerk – Judges Court" },
-  { name: "MD SAFI", pos: "Messenger" },
-  { name: "ROBIUL ISLAM", pos: "Messenger" }
-];
-
 export default async function TeamOfLawyers() {
   const teamRes = await getTeamMembers();
   const teamData = teamRes?.success ? teamRes.data : [];
 
-  const attorneys: Attorney[] = teamData.length > 0 ? teamData.map((member: TeamMember) => ({
-    name: member.name,
-    role: member.designation,
-    qualifications: member.expertises || [],
-    icon: ShieldCheck, // Default icon since API doesn't provide one
-    image: member.image
-  })) : [];
+  const attorneys: Attorney[] = teamData
+    .filter((member: TeamMember) => member.type === "Attorneys & Specialities")
+    .map((member: TeamMember) => ({
+      name: member.name,
+      role: member.designation,
+      qualifications: member.expertises || [],
+      icon: ShieldCheck,
+      image: member.image
+    }));
+
+  const operationsMembers = teamData
+    .filter((member: TeamMember) => member.type === "Operations & Research Team")
+    .map((member: TeamMember) => ({
+      name: member.name,
+      role: member.designation,
+      qualifications: member.expertises || [],
+      icon: Briefcase,
+      image: member.image
+    }));
+
+  const staffMembers = teamData
+    .filter((member: TeamMember) => member.type === "Office Staffs")
+    .map((member: TeamMember) => ({
+      name: member.name,
+      pos: member.designation,
+      image: member.image,
+      expertise: member.expertises || []
+    }));
 
   return (
     <div className="pb-20 space-y-24">
@@ -157,7 +148,7 @@ export default async function TeamOfLawyers() {
                 Barrister Akram is also trusted by numerous multinational companies (MNCs) operating in Bangladesh for his expertise in Intellectual Property Rights (IPR) protection. One of his most praised contributions was his work in safeguarding the copyrights of the well-known coconut oil brand “Parachute”. By orchestrating a raid on a secret counterfeit factory, he helped confiscate large quantities of counterfeit goods and successfully had deceptive copyright applications canceled, saving the company billions. His efforts were widely recognized and appreciated by Marico (Bangladesh) Limited.
               </p>
             </div>
-          </div>
+          </div> 
         </div>
       </section>
  
@@ -218,24 +209,30 @@ export default async function TeamOfLawyers() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {operations.map((member, i) => (
+               {operationsMembers.map((member: Attorney, i: Key | null | undefined) => (
                  <div key={i} className="group/card p-8 rounded-4xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all hover:bg-white/50 dark:hover:bg-white/10 shadow-sm hover:shadow-xl">
                     <div className="flex items-center gap-4 mb-6">
-                       <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover/card:scale-110 group-hover/card:rotate-12 transition-all">
-                          <member.icon className="w-6 h-6 text-primary" />
+                       <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover/card:scale-110 group-hover/card:rotate-12 transition-all relative overflow-hidden">
+                          {member.image ? (
+                            <Image 
+                              src={member.image} 
+                              alt={member.name} 
+                              fill 
+                              unoptimized
+                              className="object-cover" 
+                            />
+                          ) : (
+                            <member.icon className="w-6 h-6 text-primary" />
+                          )}
                        </div>
                        <div>
                           <p className="font-black text-lg text-slate-900 dark:text-white">{member.name}</p>
                           <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{member.role}</p>
                        </div>
                     </div>
-                    {member.qualifications ? (
-                       <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed line-clamp-3">
-                         {member.qualifications.join(", ")}
-                       </p>
-                    ) : (
-                       <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">{"desc" in member ? member.desc : ""}</p>
-                    )}
+                    <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed line-clamp-3">
+                      {member.qualifications.join(", ")}
+                    </p>
                  </div>
                ))}
             </div>
@@ -254,11 +251,38 @@ export default async function TeamOfLawyers() {
             </p>
          </div>
 
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {staff.map((s, i) => (
-               <div key={i} className="flex flex-col p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-white/5 hover:border-primary/20 hover:bg-white dark:hover:bg-slate-800 transition-all group cursor-default">
-                  <p className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors">{s.name}</p>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{s.pos}</p>
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {staffMembers.map((s: { name: string; pos: string; image?: string; expertise: string[] }, i: number) => (
+               <div key={i} className="flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 hover:border-primary/20 hover:shadow-xl transition-all group cursor-default overflow-hidden relative">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0 border border-slate-100 dark:border-white/10 group-hover:scale-105 transition-transform">
+                      {s.image ? (
+                        <Image 
+                          src={s.image} 
+                          alt={s.name} 
+                          fill 
+                          unoptimized
+                          className="object-cover" 
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <Users className="w-6 h-6 text-slate-300 dark:text-slate-600 group-hover:text-primary/40 transition-colors" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors truncate">{s.name}</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5 truncate">{s.pos}</p>
+                    </div>
+                  </div>
+                  
+                  {s.expertise && s.expertise.length > 0 && (
+                    <div className="pt-3 border-t border-slate-50 dark:border-white/5">
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed italic">
+                        {s.expertise.join(", ")}
+                      </p>
+                    </div>
+                  )}
                </div>
             ))}
          </div>
