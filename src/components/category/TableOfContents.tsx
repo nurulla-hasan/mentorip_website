@@ -52,7 +52,8 @@ const TableOfContents = ({ toc }: TableOfContentsProps) => {
           Post Outline
         </h3>
       </div>
-      <ul className="divide-y divide-border/40">
+      {/* <ScrollArea className=""> */}
+      <ul className="divide-y divide-border/40 max-h-[43vh] overflow-y-auto">
         {toc.map((item) => (
           <li key={item.id}>
             <a
@@ -76,6 +77,7 @@ const TableOfContents = ({ toc }: TableOfContentsProps) => {
           </li>
         ))}
       </ul>
+      {/* </ScrollArea> */}
     </nav>
   );
 };

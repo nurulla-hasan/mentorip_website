@@ -1,4 +1,4 @@
-import { getValidAccessTokenForServerActions } from "@/lib/getValidAccessToken";
+import { getValidAccessTokenForServerActions, getValidAccessTokenForServerHandlerGet } from "@/lib/getValidAccessToken";
 
 export const serverFetch = async (
   endpoint: string,
@@ -8,8 +8,12 @@ export const serverFetch = async (
     revalidate?: number;
   } = {}
 ) => {
-  const accessToken = await getValidAccessTokenForServerActions();
   const { tags, revalidate, headers, ...rest } = options;
+  
+  const accessToken =
+    !rest.method || rest.method.toUpperCase() === "GET"
+      ? await getValidAccessTokenForServerHandlerGet()
+      : await getValidAccessTokenForServerActions();
   let body = options.body;
 
   const defaultHeaders: Record<string, string> = {

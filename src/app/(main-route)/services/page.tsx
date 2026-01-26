@@ -176,7 +176,7 @@ export default function ServicesPage() {
                           {p.step}
                        </div>
                     </div>
-                    {i < 3 && <div className="hidden md:block absolute top-12 left-[60%] w-[90%] h-[2px] bg-linear-to-r from-primary/20 via-primary/5 to-transparent z-0 group-hover/process:scale-x-110 transition-transform origin-left" />}
+                    {i < 3 && <div className="hidden md:block absolute top-12 left-[60%] w-[90%] h-0.5 bg-linear-to-r from-primary/20 via-primary/5 to-transparent z-0 group-hover/process:scale-x-110 transition-transform origin-left" />}
                     <div className="space-y-2">
                        <h5 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover/step:text-primary transition-colors">{p.title}</h5>
                        <p className="text-[11px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed px-4 opacity-80 group-hover/step:opacity-100 transition-opacity">{p.desc}</p>
