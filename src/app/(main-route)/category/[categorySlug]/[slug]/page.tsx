@@ -35,7 +35,7 @@ export default async function DynamicPostPage({
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted-foreground">
               <span className="font-medium">in {post.category?.name}</span>
               <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" /> {post.readTime}
+                <Clock className="w-3.5 h-3.5" /> {post.readTime} min read
               </span>
             </div>
           </div>

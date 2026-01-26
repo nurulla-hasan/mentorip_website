@@ -1,15 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
+import { subscribeNewsletter } from "@/services/subscription";
+import { toast } from "sonner";
 
 export function NewsletterBox() {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEmail("");
+    if (!email) return;
+
+    setLoading(true);
+    try {
+      const response = await subscribeNewsletter(email);
+      if (response?.success) {
+        toast.success("Subscribed successfully!");
+        setEmail("");
+      } else {
+        toast.error(response?.message || "Subscription failed");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,8 +48,12 @@ export function NewsletterBox() {
           required
           className="h-10"
         />
-        <Button type="submit" className="h-10 px-4 font-bold bg-pink-500 hover:bg-pink-600 text-white">
-          <Send />
+        <Button 
+          type="submit" 
+          disabled={loading}
+          className="h-10 px-4 font-bold bg-pink-500 hover:bg-pink-600 text-white"
+        >
+          <Send className={loading ? "animate-pulse" : ""} />
         </Button>
       </form>
     </div>
