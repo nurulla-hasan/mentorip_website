@@ -35,12 +35,15 @@ const offices = [
 ];
 
 const practices = [
-  { name: "Trademark Law", icon: ShieldCheck },
-  { name: "Patent Filing", icon: Zap },
-  { name: "Copyright Law", icon: BookOpen },
-  { name: "IP Litigation", icon: Gavel },
-  { name: "Corporate Law", icon: Building2 },
-  { name: "Enforcement", icon: FileBadge }
+  { name: "TRADEMARKS", icon: ShieldCheck },
+  { name: "PATENTS", icon: Zap },
+  { name: "INDUSTRIAL DESIGNS", icon: FileBadge },
+  { name: "COPYRIGHTS", icon: BookOpen },
+  { name: "IP LITIGATION", icon: Gavel },
+  { name: "BRAND PROTECTION", icon: ShieldCheck },
+  { name: "LICENSING", icon: FileBadge },
+  { name: "CORPORATE DOCUMENTATION", icon: Building2 },
+  { name: "IP WATCH", icon: Globe2 }
 ];
 
 
@@ -107,7 +110,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Narrative Section - Dynamic "Who We Are" */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
         <div className="lg:col-span-8 space-y-10">
           <div className="space-y-4">
             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-black text-[10px] px-4 py-1.5 rounded-full">
@@ -118,18 +121,27 @@ export default async function AboutPage() {
             </h3>
           </div>
           
-          <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium max-w-2xl">
-            {whoWeAreData?.subtitle}
-          </p>
+          <div className="relative border-y border-slate-200 dark:border-white/10 py-8">
+            {/* Newspaper Style Callout / Badge */}
+            {stats.slice(0, 1).map((stat, i) => (
+              <div key={i} className="float-left mr-10 mb-6 relative group/stat flex flex-col items-center justify-center p-10 md:p-14 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default shrink-0">
+                <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-lg" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-lg" />
+                
+                <p className="text-6xl md:text-8xl font-serif italic font-black leading-none tracking-tighter">
+                  {stat.value}
+                </p>
+                <div className="h-px w-20 bg-primary/40 my-6" />
+                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-center max-w-[150px] leading-tight opacity-80">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-             {stats.map((stat, i) => (
-               <div key={i} className="relative group/stat p-6 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                 <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity" />
-                 <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter group-hover/stat:scale-110 transition-transform duration-500">{stat.value}</p>
-                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-2">{stat.label}</p>
-               </div>
-             ))}
+            <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-serif text-justify">
+              {whoWeAreData?.subtitle}
+            </p>
+            <div className="clear-both" />
           </div>
         </div>
 
@@ -270,26 +282,41 @@ export default async function AboutPage() {
       </section>
 
       {/* Practice Areas */}
-      <section className="bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] p-12 lg:p-20 border border-slate-100 dark:border-slate-800 shadow-sm relative overflow-hidden group/practices">
-         <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-linear(#000_1px,transparent_1px)] bg-size-[30px_30px]" />
-         <div className="max-w-4xl mx-auto space-y-16 relative z-10">
-            <div className="text-center space-y-4">
-              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">CORE CAPABILITIES</h2>
-              <h3 className="text-4xl font-black text-slate-900 dark:text-white group-hover/practices:scale-105 transition-transform duration-700">Comprehensive IP Solutions</h3>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-               {practices.map((item, i) => (
-                 <div key={i} className="flex flex-col items-center gap-4 p-8 rounded-4xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary hover:shadow-xl hover:-translate-y-1 transition-all group/item cursor-pointer">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover/item:bg-primary transition-all duration-500 group-hover/item:rotate-[-10deg]">
-                       <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-white" />
-                    </div>
-                    <p className="text-sm font-black text-slate-800 dark:text-slate-200 uppercase tracking-tight group-hover/item:text-primary transition-colors">{item.name}</p>
+      <section className="relative p-12 md:p-20 rounded-[3rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 overflow-hidden shadow-sm">
+         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
+              style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+         
+         <div className="relative z-10 space-y-16">
+           <div className="text-center space-y-4">
+             <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 px-4 py-1.5 uppercase tracking-[0.3em] font-black text-[10px] rounded-full">
+               CORE CAPABILITIES
+             </Badge>
+             <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+               Comprehensive IP Solutions
+             </h3>
+           </div>
+ 
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             {practices.map((practice, i) => (
+               <div key={i} className="group/card relative p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-500 text-center flex flex-col items-center justify-center gap-6 min-h-[180px] shadow-sm hover:shadow-xl">
+                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover/card:opacity-100 transition-opacity">
+                    <span className="text-3xl font-serif italic font-black text-slate-900 dark:text-white">{i + 1}</span>
                  </div>
-               ))}
-            </div>
+                 
+                 <div className="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary group-hover/card:scale-110 transition-transform duration-500">
+                   <practice.icon className="w-6 h-6" />
+                 </div>
+                 
+                 <p className="text-sm md:text-xl font-black text-slate-900 dark:text-white uppercase leading-tight max-w-[200px]">
+                   {practice.name}
+                 </p>
+                 
+                 <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity rounded-2xl" />
+               </div>
+             ))}
+           </div>
          </div>
-      </section>
+       </section>
 
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto">
