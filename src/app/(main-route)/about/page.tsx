@@ -4,7 +4,6 @@ import {
   Gavel, 
   Globe2, 
   Zap, 
-  ArrowRight,
   ShieldCheck,
   Building2,
   BookOpen,
@@ -31,7 +30,16 @@ const offices = [
   { country: "Bangladesh", city: "Dhaka", type: "Headquarters", icon: MapPin },
   { country: "United Kingdom", city: "London", type: "Liaison Office", icon: Globe2 },
   { country: "UAE", city: "Dubai", type: "Liaison Office", icon: Zap },
-  { country: "India", city: "Delhi", type: "Liaison Office", icon: Users }
+  { country: "India", city: "Delhi", type: "Liaison Office", icon: Users },
+  { country: "Pakistan", city: "Islamabad", type: "Liaison Office", icon: Globe2 },
+  { country: "Afghanistan", city: "Kabul", type: "Liaison Office", icon: Globe2 },
+  { country: "Nepal", city: "Kathmandu", type: "Liaison Office", icon: Globe2 },
+  { country: "China", city: "Beijing", type: "Liaison Office", icon: Globe2 },
+  { country: "Thailand", city: "Bangkok", type: "Liaison Office", icon: Globe2 },
+  { country: "Malaysia", city: "Kuala Lumpur", type: "Liaison Office", icon: Globe2 },
+  { country: "Singapore", city: "Singapore", type: "Liaison Office", icon: Globe2 },
+  { country: "UK", city: "London", type: "Liaison Office", icon: Globe2 },
+  { country: "EU", city: "Brussels", type: "Liaison Office", icon: Globe2 }
 ];
 
 const practices = [
@@ -86,26 +94,6 @@ export default async function AboutPage() {
             EMPOWERING <span className="text-blue-600 dark:text-blue-400">BRANDS</span>.
           </h1>
           
-          <div className="grid grid-cols-2 md:flex items-center justify-center gap-6 md:gap-8 pt-4 w-full md:w-auto">
-             <div className="flex flex-col items-center group/stat">
-                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">25+</span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Years</span>
-             </div>
-             
-             <Separator orientation="vertical" className="hidden md:block h-10 bg-slate-200 dark:bg-white/10" />
-             
-             <div className="flex flex-col items-center group/stat">
-                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">7,000+</span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Clients</span>
-             </div>
-             
-             <Separator orientation="vertical" className="hidden md:block h-10 bg-slate-200 dark:bg-white/10" />
-             
-             <div className="flex flex-col items-center group/stat col-span-2 md:col-span-1 border-t md:border-0 pt-4 md:pt-0">
-                <span className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white group-hover/stat:text-primary transition-colors">350+</span>
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Associates</span>
-             </div>
-          </div>
         </div>
       </section>
 
@@ -271,11 +259,6 @@ export default async function AboutPage() {
                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{office.city}</p>
                    <p className="text-[10px] text-primary font-black uppercase tracking-[0.2em] pt-2">{office.type}</p>
                 </div>
-                <Separator className="bg-slate-100 dark:bg-slate-800" />
-                <div className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-widest cursor-pointer hover:gap-3 transition-all">
-                   <span>Get Directions</span>
-                   <ArrowRight className="w-3 h-3" />
-                </div>
              </Card>
            ))}
         </div>
@@ -327,7 +310,7 @@ export default async function AboutPage() {
                   Whether you are protecting your innovation or launching a new business, we are here to help you navigate the legal landscape.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-                   <Link href="/contact">
+                   <Link href="https://wa.me/8801760308093" target="_blank">
                       <Button size="lg" className="rounded-full px-8 py-6 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn overflow-hidden relative">
                          <span className="relative z-10 flex items-center gap-2">Contact Us Now <Phone className="w-4 h-4" /></span>
                          <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />

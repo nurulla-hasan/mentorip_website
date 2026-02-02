@@ -63,19 +63,6 @@ export default async function ClientsPage() {
   const jurisdictionsData = jurisdictionsResponse?.data || null;
   const clientsData = Array.isArray(clientsResponse?.data) ? (clientsResponse.data as Client[]) : [];
 
-  // Build stats array from clientele API
-  const stats = clienteleData ? [
-    { label: clienteleData.stat1Title, value: clienteleData.stat1Value, icon: Users },
-    { label: clienteleData.stat2Title, value: clienteleData.stat2Value, icon: Globe2 },
-    { label: clienteleData.stat3Title, value: clienteleData.stat3Value, icon: BarChart3 },
-    { label: clienteleData.stat4Title, value: clienteleData.stat4Value, icon: Award },
-  ] : [
-    { label: "Active Clients", value: "7,000+", icon: Users },
-    { label: "Global Associates", value: "350+", icon: Globe2 },
-    { label: "Industries Served", value: "12+", icon: BarChart3 },
-    { label: "Success Rate", value: "99%", icon: Award },
-  ];
-
   // Build industries array from weServe API (supports up to 8 cards)
   const industries = weServeData ? [
     weServeData.card1Title && {
@@ -153,7 +140,7 @@ export default async function ClientsPage() {
             VALUED BY <span className="text-blue-600 dark:text-blue-400">GLOBAL LEADERS</span>.
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
-            &quot;Your innovation is our priority. Join the elite circle of over 7,000 clients who trust MentorIP.&quot;
+            &quot;Your innovation is our priority. Join the elite circle of clients who trust MentorIP.&quot;
           </p>
         </div>
       </section>
@@ -171,28 +158,14 @@ export default async function ClientsPage() {
                 <span className="text-primary font-serif italic text-3xl md:text-7xl">Global Excellence</span>
               </h3>
             </div>
-            <div className="md:text-right space-y-2">
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">TRUSTED BY</p>
-              <p className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">7,000+ CLIENTS</p>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-             <div className="lg:col-span-7 space-y-8">
-               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                 {clienteleData?.subtitle || "MentorIP proudly represents a diverse and prestigious global clientele — from breakthrough innovators to some of the world's most recognizable brands. Our commitment to precision and confidentiality has made us the preferred partner for complex IP matters across borders."}
-               </p>
-               
-               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                  {stats.map((stat, i) => (
-                    <div key={i} className="relative group/stat p-6 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                      <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover/stat:opacity-100 transition-opacity" />
-                      <p className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter group-hover/stat:scale-110 transition-transform duration-500">{stat.value}</p>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mt-2">{stat.label}</p>
-                    </div>
-                  ))}
+               <div className="lg:col-span-7 space-y-8">
+                 <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                   {clienteleData?.subtitle || "MentorIP proudly represents a diverse and prestigious global clientele — from breakthrough innovators to some of the world's most recognizable brands. Our commitment to precision and confidentiality has made us the preferred partner for complex IP matters across borders."}
+                 </p>
                </div>
-             </div>
 
              <div className="lg:col-span-5 border-l-2 border-slate-900 dark:border-white/20 pl-10 hidden lg:block">
                 <p className="text-xs font-black text-slate-900 dark:text-white flex items-center gap-2 mb-6">
@@ -214,7 +187,7 @@ export default async function ClientsPage() {
                  PARTNERSHIPS • GLOBAL
               </Badge>
               <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
-                STRATEGIC<br />
+                 Mejor<br />
                 <span className="text-primary font-serif italic text-3xl md:text-7xl">Global Partners</span>
               </h3>
            </div>
@@ -358,15 +331,15 @@ export default async function ClientsPage() {
                 Join our prestigious circle of global clients. Let us secure your intellectual interests with precision.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-                <Link href="/services">
+                <Link href="https://wa.me/8801760308093" target="_blank">
                    <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn-main overflow-hidden relative w-full sm:w-auto">
                        <span className="relative z-10 flex items-center gap-2">Get Expert Advice <ChevronRight className="w-4 h-4 group-hover/btn-main:translate-x-1 transition-transform" /></span>
                        <div className="absolute inset-0 bg-linear-to-r from-primary via-blue-600 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn-main:opacity-100 transition-opacity" />
                    </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="mailto:info@mentorip.com">
                    <Button variant="outline" size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] border-slate-200 dark:border-white/20 bg-transparent text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all w-full sm:w-auto">
-                       Contact Us
+                       Email Us
                    </Button>
                 </Link>
             </div>
