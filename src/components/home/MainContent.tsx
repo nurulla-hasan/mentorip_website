@@ -38,6 +38,8 @@ export async function MainDashboardContent() {
                         src={heroPost.coverImage} 
                         alt={heroPost.title} 
                         fill 
+                        priority
+                        sizes="(max-width: 1280px) 100vw, 66vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-700" 
                       />
                       <div className="absolute inset-0 bg-linear-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
@@ -58,7 +60,7 @@ export async function MainDashboardContent() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-12 text-center select-none">
                     
                     <Badge className="absolute bottom-8 right-8 bg-black/40 hover:bg-black/60 text-white backdrop-blur-xl border-white/10 px-3 py-1 text-[10px] font-bold">
-                      <Clock className="w-3 h-3 mr-1.5 opacity-70" /> {heroPost.readTime} read
+                      <Clock className="w-3 h-3 mr-1.5 opacity-70" /> {heroPost.readTime}
                     </Badge>
                   </div>
                 </div>
@@ -108,6 +110,7 @@ export async function MainDashboardContent() {
                           src={widePost.coverImage} 
                           alt={widePost.title} 
                           fill 
+                          sizes="(max-width: 768px) 100vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-700" 
                         />
                       )}
@@ -132,7 +135,7 @@ export async function MainDashboardContent() {
                       <div className="flex items-center gap-4 pt-2">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
-                            <Image src="/next.svg" alt="M" width={10} height={10} className="opacity-50 dark:invert" />
+                            <Image src="/next.svg" alt="M" width={10} height={10} className="w-auto h-auto opacity-50 dark:invert" />
                           </div>
                           <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">MENTORIP</span>
                         </div>
@@ -165,7 +168,13 @@ export async function MainDashboardContent() {
                         <div className="flex gap-4 items-center">
                           <div className="w-20 h-20 rounded-2xl shrink-0 relative overflow-hidden flex items-center justify-center border-2 border-white/50 dark:border-slate-800/50 shadow-sm transition-transform duration-500 group-hover:scale-105 bg-slate-200 dark:bg-slate-800">
                              {post.coverImage ? (
-                               <Image src={post.coverImage} alt={post.title} fill className="object-cover" />
+                               <Image 
+                                 src={post.coverImage} 
+                                 alt={post.title} 
+                                 fill 
+                                 sizes="80px"
+                                 className="object-cover" 
+                               />
                              ) : (
                                <div className="text-center font-black leading-[0.8] text-primary/20">
                                  <span className="text-[10px]">MENTOR</span>

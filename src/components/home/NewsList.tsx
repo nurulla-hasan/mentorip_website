@@ -66,6 +66,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                   src={post.coverImage} 
                   alt={post.title} 
                   fill 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : (
@@ -84,7 +85,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
             <div className="flex flex-col flex-1 p-5">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-900/30 border border-slate-100 dark:border-slate-800 flex items-center justify-center">
-                  <Image src="/next.svg" alt="IP" width={12} height={12} className="opacity-70 dark:invert" />
+                  <Image src="/next.svg" alt="IP" width={12} height={12} className="w-auto h-auto opacity-70 dark:invert" />
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 truncate">
                   Admin

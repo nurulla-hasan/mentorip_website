@@ -50,7 +50,13 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
               >
                 <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
                    {post.coverImage ? (
-                     <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                     <Image 
+                       src={post.coverImage} 
+                       alt={post.title} 
+                       fill 
+                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                       className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                     />
                    ) : (
                      <div className="absolute inset-0 flex items-center justify-center text-slate-200 dark:text-slate-800 font-black text-2xl uppercase opacity-20">
                         {category.name}
@@ -61,7 +67,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                 <div className="space-y-3 p-4">
                    <div className="flex items-center gap-2">
                       <div className="w-5 h-5 rounded-full bg-slate-50 dark:bg-slate-800 border flex items-center justify-center">
-                         <Image src="/next.svg" alt="Icon" width={10} height={10} className="opacity-50 dark:invert" />
+                         <Image src="/next.svg" alt="Icon" width={10} height={10} className="w-auto h-auto opacity-50 dark:invert" />
                       </div>
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Admin</span>
                    </div>

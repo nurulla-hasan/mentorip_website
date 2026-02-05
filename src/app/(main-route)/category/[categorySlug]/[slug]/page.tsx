@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import { ShareButton } from "@/components/category/ShareButton";
 import { Clock } from "lucide-react";
 import TableOfContents from "@/components/category/TableOfContents";
-import { getPostBySlug, trackPostView } from "@/services/post";
+import { getPostBySlug } from "@/services/post";
 import { NewsletterBox } from "@/components/category/NewsletterBox";
+import PostViewTracker from "@/components/category/PostViewTracker";
 
 export default async function DynamicPostPage({
   params,
@@ -19,13 +20,12 @@ export default async function DynamicPostPage({
   }
   const post = res.data;
   
-  // Track post view
-  trackPostView(slug);
   const { processedHtml, toc } = processHtmlForToc(post.content || "");
 
 
   return (
     <div className="space-y-8">
+      <PostViewTracker slug={slug} />
       <header className="max-w-7xl mx-auto"> 
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
@@ -35,7 +35,7 @@ export default async function DynamicPostPage({
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted-foreground">
               <span className="font-medium">in {post.category?.name}</span>
               <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" /> {post.readTime} min read
+                <Clock className="w-3.5 h-3.5" /> {post.readTime}
               </span>
             </div>
           </div>

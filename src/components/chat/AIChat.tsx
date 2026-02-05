@@ -29,6 +29,7 @@ export function AIChat() {
   const [messages, setMessages] = useState<Message[]>(INITIAL_MESSAGES);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,13 +39,13 @@ export function AIChat() {
         behavior: "smooth",
       });
     }
-  }, [messages]);
+  }, [messages, isLoading]);
 
   const handleSend = async () => {
     if (!inputValue.trim() || isLoading) return;
 
     const userMessage: Message = {
-      // eslint-disable-next-line react-hooks/purity
+       
       id: Date.now().toString(),
       role: "user",
       content: inputValue,
@@ -55,31 +56,46 @@ export function AIChat() {
     setInputValue("");
     setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const assistantMessage: Message = {
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_API;
+      const response = await fetch(`${baseUrl}/chatbot`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: inputValue,
+          sessionId: sessionId,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.data) {
+        const assistantMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          role: "assistant",
+          content: result.data.reply,
+          timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, assistantMessage]);
+        if (result.data.sessionId) {
+          setSessionId(result.data.sessionId);
+        }
+      } else {
+        throw new Error(result.message || "Failed to get response");
+      }
+    } catch (error) {
+      console.error("Chat error:", error);
+      const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: getFakeResponse(inputValue),
+        content: "I'm sorry, I'm having trouble connecting right now. Please try again later.",
         timestamp: new Date(),
       };
-      setMessages((prev) => [...prev, assistantMessage]);
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
-  };
-
-  const getFakeResponse = (input: string) => {
-    const lowerInput = input.toLowerCase();
-    if (lowerInput.includes("trademark")) {
-      return "Trademarks are essential for protecting your brand identity. At Mentor IP, we help with registration, monitoring, and enforcement of trademarks in Bangladesh and internationally.";
-    } else if (lowerInput.includes("patent")) {
-      return "Patents protect your technical inventions. Our team specializes in drafting patent applications and navigating the complex IP laws to ensure your innovations are secure.";
-    } else if (lowerInput.includes("copyright")) {
-      return "Copyright protects original creative works. Whether it's software, literature, or art, we can assist you in securing your rights.";
-    } else if (lowerInput.includes("contact") || lowerInput.includes("phone") || lowerInput.includes("email")) {
-      return "You can reach us at info@mentorip.com or via WhatsApp at +880 1733-792305. We're also located at Suit-802, Level-8, Meherba Plaza, 33 Topkhana Road, Dhaka.";
-    } else {
-      return "That's an interesting question. As an IP law firm, Mentor IP handles various matters including Trademarks, Patents, Copyrights, and Designs. Would you like to know more about any of these specific services?";
     }
   };
 
