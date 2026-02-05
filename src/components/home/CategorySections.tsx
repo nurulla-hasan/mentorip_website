@@ -56,7 +56,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                         {category.name}
                      </div>
                    )}
-                   <Badge className="absolute bottom-2 right-2 bg-black/60 text-[9px] h-4 px-1 border-0">{post.readTime || "5 min read"}</Badge>
+                   <Badge className="absolute bottom-2 right-2 bg-black/60 text-[9px] h-4 px-1 border-0">{post.readTime}</Badge>
                 </div>
                 <div className="space-y-3 p-4">
                    <div className="flex items-center gap-2">

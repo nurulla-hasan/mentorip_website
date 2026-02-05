@@ -24,7 +24,7 @@ export function PostCard({
   tags = [],
   author = "MENTORIP, Bangladesh",
   date,
-  readTime = "3 min read",
+  readTime = "",
   baseHref = "category",
 }: PostCardProps) {
   const rootPath = baseHref.startsWith('/') ? baseHref : `/${baseHref}`;

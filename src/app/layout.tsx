@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import NextTopLoader from 'nextjs-toploader';
+import { AIChat } from "@/components/chat/AIChat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableSystem={false}
         >
           {children}
+          <AIChat />
         </ThemeProvider>
       </body>
     </html>
