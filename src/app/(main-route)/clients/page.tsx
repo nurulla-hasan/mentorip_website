@@ -24,6 +24,13 @@ import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { getClientele, getWeServe, getJurisdictions, getClients } from "@/services/client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Clients & Global Reach | MentorIP",
+  description: "MentorIP represents a prestigious global clientele across various industries including Tech, Fashion, Pharma, and more in multiple jurisdictions.",
+  keywords: ["MentorIP Clients", "Global IP Jurisdictions", "Industries We Serve", "IP Law Partnerships"],
+};
 
 interface Client {
   _id: string;

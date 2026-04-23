@@ -5,8 +5,47 @@ import { ShareButton } from "@/components/category/ShareButton";
 import { Clock } from "lucide-react";
 import TableOfContents from "@/components/category/TableOfContents";
 import { getPostBySlug } from "@/services/post";
+import { Metadata } from "next";
 import { NewsletterBox } from "@/components/category/NewsletterBox";
 import PostViewTracker from "@/components/category/PostViewTracker";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const res = await getPostBySlug(slug);
+
+  if (!res?.success || !res?.data) {
+    return {
+      title: "Post Not Found | MentorIP",
+      description: "The requested post could not be found.",
+    };
+  }
+
+  const post = res.data;
+
+  return {
+    title: `${post.title} | ${post.category?.name || 'Article'} | MentorIP`,
+    description: post.subtitle || post.content?.substring(0, 160).replace(/<[^>]*>/g, '') || "Read more about Intellectual Property Law at MentorIP.",
+    keywords: [...(post.tag || []), post.category?.name, "MentorIP", "IP Law", "Bangladesh"].filter(Boolean),
+    openGraph: {
+      title: post.title,
+      description: post.subtitle || post.content?.substring(0, 160).replace(/<[^>]*>/g, ''),
+      images: post.coverImage ? [{ url: post.coverImage }] : [],
+      type: "article",
+      publishedTime: post.createdAt,
+      authors: ["MentorIP"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.subtitle || post.content?.substring(0, 160).replace(/<[^>]*>/g, ''),
+      images: post.coverImage ? [post.coverImage] : [],
+    },
+  };
+}
 
 export default async function DynamicPostPage({
   params,

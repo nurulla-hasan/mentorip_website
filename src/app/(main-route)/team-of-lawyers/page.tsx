@@ -11,6 +11,13 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { getTeamMembers } from "@/services/team";
 import { JoinTeamCTA } from "@/components/team/JoinTeamCTA";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Team | MentorIP - Elite Attorneys & IP Specialists",
+  description: "Meet the collaborative team of elite attorneys, specialists, and support staff at MentorIP, dedicated to protecting your intellectual interests globally.",
+  keywords: ["MentorIP Team", "IP Attorneys Bangladesh", "Legal Specialists", "IP Law Experts"],
+};
 import { Key } from "react";
 
 interface TeamMember {

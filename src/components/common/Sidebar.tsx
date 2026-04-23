@@ -35,7 +35,7 @@ export function Sidebar() {
 
   const sidebarCategories = useMemo(() => {
     return [
-      { name: "All Posts", iconName: "LayoutDashboard", slug: "" },
+      { name: "All Poast", iconName: "LayoutDashboard", slug: "" },
       ...categories.map((cat) => ({
         name: cat.name,
         iconName: cat.iconName,
@@ -65,10 +65,10 @@ export function Sidebar() {
               <Link 
                 key={i} 
                 href={href} 
-                className={`text-sm py-2 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 ${
+                className={`text-sm py-2.5 px-4 rounded-xl transition-all group flex items-center justify-between border-l-4 font-bold ${
                   isActive
-                    ? "bg-primary/5 font-semibold text-primary border-primary" 
-                    : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
+                    ? "bg-primary/10 text-primary border-primary shadow-sm" 
+                    : "text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
                 }`}
               >
                 <div className="flex items-center gap-3">

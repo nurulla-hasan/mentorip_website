@@ -10,14 +10,22 @@ import {
   MapPin,
   FileBadge,
   Phone,
+  ExternalLink,
+  ChevronRight,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
 import { getWhoWeAre } from "@/services/about";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | MentorIP - Our Story & Global Expertise",
+  description: "Discover MentorIP's history, leadership under Barrister Shaleh Akram, and our international network of liaison offices protecting IP rights globally.",
+  keywords: ["About MentorIP", "IP Law History", "Barrister Shaleh Akram", "Intellectual Property Experts", "Global IP Network"],
+};
 
 const timeline = [
   { year: "2000", title: "The Foundation", desc: "Founded under the name 'Law & Legal' by Dr. Qumrul Hossain, specializing in domestic pharmaceutical law." },
@@ -116,7 +124,7 @@ export default async function AboutPage() {
                 <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-lg" />
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-lg" />
                 
-                <p className="text-6xl md:text-8xl font-serif italic font-black leading-none tracking-tighter">
+                <p className="text-6xl md:text-8xl font-black leading-none tracking-tighter">
                   {stat.value}
                 </p>
                 <div className="h-px w-20 bg-primary/40 my-6" />
@@ -126,9 +134,34 @@ export default async function AboutPage() {
               </div>
             ))}
 
-            <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-serif text-justify">
-              {whoWeAreData?.subtitle}
-            </p>
+            <div className="space-y-6">
+              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium text-justify">
+                {whoWeAreData?.subtitle}
+              </p>
+              
+              <div className="p-8 rounded-3xl bg-primary/5 border border-primary/10 space-y-4">
+                <h4 className="text-xl font-black text-primary flex items-center gap-2">
+                  <ExternalLink className="w-5 h-5" /> Client Portals
+                </h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                  For a complete view of your IP portfolio—and for details on how to renew all IP rights through one login in just a few clicks—please access the <strong>Client Portal</strong>.
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">
+                  Please use this link for a full overview of your IP portfolio and renewal instructions:
+                </p>
+                <Link href="https://app.mentorip.com/login" target="_blank" className="block">
+                   <Button className="mt-2 font-bold group">
+                      Access Client Portal <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                   </Button>
+                </Link>
+                <p className="text-xs text-primary bg-primary/5 p-2 rounded-lg inline-block">
+                  Portal Link: https://app.mentorip.com/login
+                </p>
+                <p className="text-xs text-muted-foreground pt-2 font-medium">
+                  If you have any questions, do not hesitate to reach out to your usual contact at MentorIP or by emailing info@mentorip.com
+                </p>
+              </div>
+            </div>
             <div className="clear-both" />
           </div>
         </div>
@@ -156,7 +189,7 @@ export default async function AboutPage() {
                  </Badge>
                  <h3 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
                    ARCHITECT OF GLOBAL<br />
-                   <span className="text-primary dark:text-amber-400 font-serif italic text-3xl md:text-8xl">IP Strategy</span>
+                   <span className="text-primary dark:text-amber-400 font-black text-3xl md:text-8xl">IP Strategy</span>
                  </h3>
               </div>
               <div className="hidden md:block text-right">
@@ -318,6 +351,53 @@ export default async function AboutPage() {
                    </Link>
                 </div>
             </div>
+      </section>
+      {/* Important Resources Section */}
+      <section id="resources" className="space-y-16">
+        <div className="text-center space-y-4">
+          <Badge variant="outline" className="border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
+            RESOURCES • USEFUL LINKS
+          </Badge>
+          <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+            Important <span className="text-primary italic font-serif">Resources</span>
+          </h3>
+          <p className="text-slate-500 max-w-2xl mx-auto font-medium">
+            Quick access to official intellectual property departments and international organizations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { name: "DPDT", full: "Department of Patents, Designs and Trademarks", url: "https://dpdt.gov.bd/" },
+            { name: "Copyright Office", full: "Copyright Office Bangladesh", url: "https://copyrightoffice.gov.bd/" },
+            { name: "Bangladesh Customs", full: "IPR Enforcement", url: "https://bangladeshcustoms.gov.bd/" },
+            { name: "Supreme Court", full: "Bangladesh Supreme Court", url: "https://supremecourt.gov.bd/" },
+            { name: "WIPO", full: "World Intellectual Property Organization", url: "https://www.wipo.int/portal/en/index.html" },
+            { name: "EPO", full: "European Patent Office", url: "https://www.epo.org/en" },
+            { name: "EUIPO", full: "European Union Intellectual Property Office", url: "https://www.euipo.europa.eu/en" },
+            { name: "USPTO", full: "US Patent and Trademark Office", url: "https://www.uspto.gov/" },
+            { name: "IP India", full: "Indian Patent Office/Registry", url: "https://ipindia.gov.bd/" },
+            { name: "INTA", full: "International Trademark Association", url: "https://www.inta.org/" }
+          ].map((link, i) => (
+            <Link 
+              key={i} 
+              href={link.url} 
+              target="_blank"
+              className="group p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xl font-black text-slate-900 dark:text-white group-hover:text-primary transition-colors">{link.name}</h4>
+                  <ExternalLink className="w-4 h-4 text-slate-300 group-hover:text-primary transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </div>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{link.full}</p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-slate-50 dark:border-white/5 flex items-center gap-2 text-[10px] font-black text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                VISIT OFFICIAL WEBSITE <ChevronRight className="w-3 h-3" />
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
     </div>
   );

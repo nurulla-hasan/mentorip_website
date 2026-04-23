@@ -1,7 +1,44 @@
 import { CategoryHeader } from "@/components/category/CategoryHeader";
 import { PostCard } from "@/components/category/PostCard";
-import { notFound } from "next/navigation";
 import { getCategoryBySlug } from "@/services/category";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ categorySlug: string }>;
+}): Promise<Metadata> {
+  const { categorySlug } = await params;
+  const res = await getCategoryBySlug(categorySlug);
+
+  if (!res?.success || !res?.data) {
+    return {
+      title: "Category Not Found | MentorIP",
+      description: "The requested category could not be found.",
+    };
+  }
+
+  const category = res.data;
+
+  return {
+    title: `${category.name} | MentorIP - Intellectual Property Law Firm`,
+    description: category.description || `Expert legal advice and resources on ${category.name}. MentorIP provides specialized intellectual property services in Bangladesh.`,
+    keywords: [category.name, "Intellectual Property", "IP Law", "Bangladesh", "MentorIP", "Legal Advice"],
+    openGraph: {
+      title: `${category.name} | MentorIP`,
+      description: category.description || `Explore specialized ${category.name} resources at MentorIP.`,
+      images: category.imageUrl ? [{ url: category.imageUrl }] : [],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${category.name} | MentorIP`,
+      description: category.description || `Explore specialized ${category.name} resources at MentorIP.`,
+      images: category.imageUrl ? [category.imageUrl] : [],
+    },
+  };
+}
 
 export default async function DynamicCategoryPage({
   params,
