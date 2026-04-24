@@ -101,7 +101,7 @@ export function UpdatePhoto({ initialImage, name }: UpdatePhotoProps) {
             size="sm"
             onClick={handleSave}
             disabled={isUploading}
-            className="h-8 px-3 rounded-lg font-bold text-[10px] uppercase tracking-wider"
+            className="h-8 px-3 rounded-lg font-bold text-[10px] uppercase"
           >
             {isUploading ? (
               <Loader2 className="w-3.5 h-3.5 animate-spin mr-1" />
@@ -115,7 +115,7 @@ export function UpdatePhoto({ initialImage, name }: UpdatePhotoProps) {
             variant="outline"
             onClick={handleCancel}
             disabled={isUploading}
-            className="h-8 px-3 rounded-lg font-bold text-[10px] uppercase tracking-wider"
+            className="h-8 px-3 rounded-lg font-bold text-[10px] uppercase"
           >
             <X className="w-3.5 h-3.5 mr-1" />
             Cancel

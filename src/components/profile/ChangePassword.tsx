@@ -67,7 +67,7 @@ export function ChangePassword() {
   return (
     <Card className="rounded-xl border shadow-sm">
       <CardHeader className="pb-3 border-b">
-        <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+        <CardTitle className="text-sm font-bold uppercase text-muted-foreground flex items-center gap-2">
           <KeyRound className="w-4 h-4 text-primary" />
           Update Password
         </CardTitle>
@@ -83,7 +83,7 @@ export function ChangePassword() {
               name="oldPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase tracking-tight text-muted-foreground">Current Password</FormLabel>
+                  <FormLabel className="text-xs font-bold uppercase text-muted-foreground">Current Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -111,7 +111,7 @@ export function ChangePassword() {
               name="newPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase tracking-tight text-muted-foreground">New Password</FormLabel>
+                  <FormLabel className="text-xs font-bold uppercase text-muted-foreground">New Password</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -139,7 +139,7 @@ export function ChangePassword() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase tracking-tight text-muted-foreground">Confirm New Password</FormLabel>
+                  <FormLabel className="text-xs font-bold uppercase text-muted-foreground">Confirm New Password</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
@@ -155,7 +155,7 @@ export function ChangePassword() {
 
             <Button 
               type="submit" 
-              className="w-full rounded-lg h-10 font-bold uppercase tracking-widest text-[10px] bg-primary hover:bg-primary/90"
+              className="w-full rounded-lg h-10 font-bold uppercase text-[10px] bg-primary hover:bg-primary/90"
               disabled={isLoading}
             >
               {isLoading ? (

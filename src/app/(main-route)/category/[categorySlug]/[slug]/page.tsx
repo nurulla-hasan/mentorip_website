@@ -68,7 +68,7 @@ export default async function DynamicPostPage({
       <header className="max-w-7xl mx-auto"> 
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h1 className="text-xl md:text-3xl font-semibold tracking-wider text-foreground">
+            <h1 className="text-xl md:text-3xl font-semibold text-foreground">
               {post.title}
             </h1>
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted-foreground">
@@ -85,7 +85,7 @@ export default async function DynamicPostPage({
           {(post.tag || []).map((tag: string) => (
             <span
               key={tag}
-              className="rounded-md border bg-muted/40 px-2.5 py-1 text-[11px] font-bold text-muted-foreground"
+              className="rounded-md border border-border bg-muted px-2.5 py-1 text-[11px] font-bold text-muted-foreground"
             >
               {tag}
             </span>

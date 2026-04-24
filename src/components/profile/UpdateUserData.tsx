@@ -66,7 +66,7 @@ export function UpdateUserData({ initialData }: UpdateUserDataProps) {
   return (
     <Card className="rounded-xl border shadow-sm h-full">
       <CardHeader className="pb-3 border-b">
-        <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+        <CardTitle className="text-sm font-bold uppercase text-muted-foreground flex items-center gap-2">
           <User className="w-4 h-4 text-primary" />
           Edit Information
         </CardTitle>
@@ -82,7 +82,7 @@ export function UpdateUserData({ initialData }: UpdateUserDataProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase tracking-tight text-muted-foreground">Full Name</FormLabel>
+                  <FormLabel className="text-xs font-bold uppercase text-muted-foreground">Full Name</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -103,7 +103,7 @@ export function UpdateUserData({ initialData }: UpdateUserDataProps) {
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase tracking-tight text-muted-foreground">Phone Number</FormLabel>
+                  <FormLabel className="text-xs font-bold uppercase text-muted-foreground">Phone Number</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
@@ -121,7 +121,7 @@ export function UpdateUserData({ initialData }: UpdateUserDataProps) {
 
             <Button 
               type="submit" 
-              className="w-full rounded-lg h-10 font-bold uppercase tracking-widest text-[10px] bg-primary hover:bg-primary/90"
+              className="w-full rounded-lg h-10 font-bold uppercase text-[10px] bg-primary hover:bg-primary/90"
               disabled={isLoading || !form.formState.isDirty}
             >
               {isLoading ? (

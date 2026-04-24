@@ -36,7 +36,7 @@ export default async function ProfilePage() {
         
         <div className="flex-1 text-center md:text-left space-y-2">
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-3">
-            <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
+            <h1 className="text-2xl md:text-4xl font-bold text-foreground">
               {userData.name}
             </h1>
             <Badge variant="secondary" className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] bg-primary/10 text-primary border-primary/20">
@@ -73,17 +73,17 @@ export default async function ProfilePage() {
               {/* Contact Info Readonly */}
               <Card className="rounded-xl border shadow-sm">
                 <CardHeader className="pb-3 border-b">
-                  <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <CardTitle className="text-xs font-bold uppercase text-muted-foreground">
                     Account Status
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-5 space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                       <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-tight">Public Email</p>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Public Email</p>
                       <p className="text-sm font-bold truncate text-foreground">
                         {userData.email}
                       </p>
@@ -91,12 +91,12 @@ export default async function ProfilePage() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-tight">Status</p>
-                      <p className="text-sm font-bold text-foreground uppercase italic">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Status</p>
+                      <p className="text-sm font-bold text-foreground uppercase">
                         Verified {userData.role}
                       </p>
                     </div>
@@ -107,17 +107,17 @@ export default async function ProfilePage() {
               {/* Security / Member Info */}
               <Card className="rounded-xl border shadow-sm">
                 <CardHeader className="pb-3 border-b">
-                  <CardTitle className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  <CardTitle className="text-xs font-bold uppercase text-muted-foreground">
                     Member Details
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-5 space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-600">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                       <Calendar className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-tight">Joined Date</p>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Joined Date</p>
                       <p className="text-sm font-bold text-foreground">
                         {userData.createdAt ? format(new Date(userData.createdAt), "MMMM yyyy") : "January 2026"}
                       </p>
@@ -133,7 +133,7 @@ export default async function ProfilePage() {
                       variant="destructive" 
                       size="sm"
                       type="submit"
-                      className="w-full font-bold gap-2 rounded-lg text-[10px] uppercase tracking-wider"
+                      className="w-full font-bold gap-2 rounded-lg text-[10px] uppercase"
                     >
                       <LogOut className="w-3.5 h-3.5" /> Secure Logout
                     </Button>
