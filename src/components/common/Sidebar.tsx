@@ -65,7 +65,7 @@ export function Sidebar() {
               <Link 
                 key={i} 
                 href={href} 
-                className={`text-sm py-2.5 px-4 rounded-xl transition-all group flex items-center justify-between border-l-4 font-bold ${
+                className={`text-sm py-2.5 px-4 rounded-xl transition-all group flex items-center justify-between border-l-4 font-semibold tracking-wider ${
                   isActive
                     ? "bg-primary/10 text-primary border-primary shadow-sm" 
                     : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"

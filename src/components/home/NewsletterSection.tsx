@@ -55,7 +55,7 @@ export function NewsletterSection() {
           <Button 
             type="submit"
             disabled={loading}
-            className="h-12 px-8 font-bold rounded-xl shadow-lg shadow-pink-500/20 w-full sm:w-auto transition-transform active:scale-95"
+            className="h-12 px-8 font-bold rounded-xl shadow-lg shadow-primary/20 w-full sm:w-auto transition-transform active:scale-95"
           >
             {loading ? "Subscribing..." : "Subscribe"}
           </Button>

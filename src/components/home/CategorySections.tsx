@@ -46,8 +46,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
       </div>
 
       {/* Grid Layout */}
-      <div className="relative group">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {categoryPosts.length > 0 ? (
             categoryPosts.slice(0, 4).map((post) => (
               <Link
@@ -62,7 +61,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                       alt={post.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-300 contrast-[0.95] brightness-[0.98]"
+                      className="object-cover contrast-[0.95] brightness-[0.98]"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-black text-2xl uppercase opacity-20">
@@ -111,7 +110,6 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
               </p>
             </div>
           )}
-        </div>
       </div>
     </section>
   );
