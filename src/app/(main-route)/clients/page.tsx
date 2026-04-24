@@ -199,7 +199,7 @@ export default async function ClientsPage() {
                  PARTNERSHIPS • GLOBAL
               </Badge>
               <h3 className="text-3xl md:text-4xl font-black text-foreground">
-                 Mejor<br />
+                 MEJOR<br />
                 <span className="text-primary text-2xl md:text-5xl">Global Partners</span>
               </h3>
            </div>
