@@ -109,10 +109,10 @@ export function AIChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="mb-4 w-[350px] sm:w-[400px] h-[650px] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-white/10 flex flex-col overflow-hidden"
+            className="mb-4 w-[350px] sm:w-[400px] h-[650px] bg-card rounded-3xl shadow-2xl border border-border flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 bg-primary text-white flex items-center justify-between">
+            <div className="p-4 bg-primary text-primary-foreground flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
                   <Bot className="w-6 h-6" />
@@ -129,7 +129,7 @@ export function AIChat() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/10 rounded-full h-8 w-8"
+                className="text-primary-foreground hover:bg-primary-foreground/10 rounded-full h-8 w-8"
               >
                 <X className="w-5 h-5" />
               </Button>
@@ -151,8 +151,8 @@ export function AIChat() {
                         className={cn(
                           "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
                           message.role === "assistant" 
-                            ? "bg-slate-100 dark:bg-white/5 text-primary" 
-                            : "bg-primary text-white"
+                            ? "bg-muted text-primary" 
+                            : "bg-primary text-primary-foreground"
                         )}
                       >
                         {message.role === "assistant" ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
@@ -161,8 +161,8 @@ export function AIChat() {
                         className={cn(
                           "p-3 rounded-2xl text-sm leading-relaxed shadow-sm",
                           message.role === "assistant"
-                            ? "bg-slate-100 dark:bg-white/5 text-slate-800 dark:text-slate-200 rounded-tl-none"
-                            : "bg-primary text-white rounded-tr-none"
+                            ? "bg-muted text-foreground rounded-tl-none"
+                            : "bg-primary text-primary-foreground rounded-tr-none"
                         )}
                       >
                         {message.content}
@@ -171,10 +171,10 @@ export function AIChat() {
                   ))}
                   {isLoading && (
                     <div className="flex gap-3 max-w-[85%]">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/5 text-primary flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-full bg-muted text-primary flex items-center justify-center">
                         <Bot className="w-4 h-4" />
                       </div>
-                      <div className="bg-slate-100 dark:bg-white/5 p-3 rounded-2xl rounded-tl-none shadow-sm">
+                      <div className="bg-muted p-3 rounded-2xl rounded-tl-none shadow-sm">
                         <Loader2 className="w-4 h-4 animate-spin text-primary" />
                       </div>
                     </div>
@@ -184,7 +184,7 @@ export function AIChat() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 border-t border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/5">
+            <div className="p-4 border-t border-border bg-muted/50">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -196,13 +196,13 @@ export function AIChat() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Ask about IP services..."
-                  className="bg-white dark:bg-slate-800 border-slate-200 dark:border-white/10 rounded-full px-4 h-11 text-sm"
+                  className="bg-background border-border rounded-full px-4 h-11 text-sm"
                 />
                 <Button
                   type="submit"
                   size="icon"
                   disabled={!inputValue.trim() || isLoading}
-                  className="rounded-full h-11 w-11 shrink-0 bg-primary hover:bg-primary/90 text-white shadow-lg active:scale-95 transition-all"
+                  className="rounded-full h-11 w-11 shrink-0 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg active:scale-95 transition-all"
                 >
                   <Send className="w-4 h-4" />
                 </Button>
@@ -222,8 +222,8 @@ export function AIChat() {
           className={cn(
             "h-16 w-16 rounded-full shadow-2xl p-0 transition-all duration-300 relative group overflow-hidden",
             isOpen 
-              ? "bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10" 
-              : "bg-primary text-white"
+              ? "bg-muted text-foreground border border-border" 
+              : "bg-primary text-primary-foreground"
           )}
         >
           {isOpen ? (

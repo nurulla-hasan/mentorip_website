@@ -47,7 +47,7 @@ export function Sidebar() {
   return (
     <aside className="w-full">
       <div className="px-4 mb-4">
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Categories</h3>
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Categories</h3>
       </div>
       <div className="flex flex-col space-y-1 mb-6">
         {isLoading ? (
@@ -68,7 +68,7 @@ export function Sidebar() {
                 className={`text-sm py-2.5 px-4 rounded-xl transition-all group flex items-center justify-between border-l-4 font-bold ${
                   isActive
                     ? "bg-primary/10 text-primary border-primary shadow-sm" 
-                    : "text-slate-600 dark:text-slate-400 hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
+                    : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -91,7 +91,7 @@ export function Sidebar() {
       
       <Separator className="my-4 opacity-50" />
       {/* Footer Info */}
-      <div className="px-4 text-[10px] text-slate-400 space-y-1">
+      <div className="px-4 text-[10px] text-muted-foreground space-y-1">
          <p className="font-bold">MENTOR IP APP v1.0</p>
          <p>&copy; MENTOR IP 2025</p>
       </div>

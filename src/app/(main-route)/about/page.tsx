@@ -85,9 +85,9 @@ export default async function AboutPage() {
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900">
-           <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
+      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
+        <div className="absolute inset-0 bg-muted">
+           <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent dark:from-blue-600/20 dark:via-background dark:to-background" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                 style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
            <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-linear(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
@@ -97,7 +97,7 @@ export default async function AboutPage() {
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
             The MentorIP Story
           </Badge>
-          <h1 className="text-xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
+          <h1 className="text-xl md:text-7xl font-black text-foreground md:tracking-tighter md:leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
             PROTECTING <span className="text-primary italic">IDEAS</span>.<br /> 
             EMPOWERING <span className="text-blue-600 dark:text-blue-400">BRANDS</span>.
           </h1>
@@ -112,15 +112,15 @@ export default async function AboutPage() {
             <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-black text-[10px] px-4 py-1.5 rounded-full">
               WHO WE ARE
             </Badge>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
+            <h3 className="text-4xl md:text-5xl font-black text-foreground leading-[1.1] tracking-tight">
               {whoWeAreData?.title}
             </h3>
           </div>
           
-          <div className="relative border-y border-slate-200 dark:border-white/10 py-8">
+          <div className="relative border-y border-border py-8">
             {/* Newspaper Style Callout / Badge */}
             {stats.slice(0, 1).map((stat, i) => (
-              <div key={i} className="float-left mr-10 mb-6 relative group/stat flex flex-col items-center justify-center p-10 md:p-14 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default shrink-0">
+              <div key={i} className="float-left mr-10 mb-6 relative group/stat flex flex-col items-center justify-center p-10 md:p-14 bg-card text-foreground border border-border rounded-3xl shadow-2xl transform -rotate-3 hover:rotate-0 hover:scale-105 transition-all duration-500 cursor-default shrink-0">
                 <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-lg" />
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-lg" />
                 
@@ -135,7 +135,7 @@ export default async function AboutPage() {
             ))}
 
             <div className="space-y-6">
-              <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium text-justify">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium text-justify">
                 {whoWeAreData?.subtitle}
               </p>
               
@@ -143,10 +143,10 @@ export default async function AboutPage() {
                 <h4 className="text-xl font-black text-primary flex items-center gap-2">
                   <ExternalLink className="w-5 h-5" /> Client Portals
                 </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                <p className="text-sm text-muted-foreground font-medium leading-relaxed">
                   For a complete view of your IP portfolio—and for details on how to renew all IP rights through one login in just a few clicks—please access the <strong>Client Portal</strong>.
                 </p>
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">
+                <p className="text-sm text-muted-foreground font-medium">
                   Please use this link for a full overview of your IP portfolio and renewal instructions:
                 </p>
                 <Link href="https://app.mentorip.com/login" target="_blank" className="block">
@@ -166,14 +166,14 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="lg:col-span-4 relative aspect-3/4 rounded-4xl md:rounded-[3rem] overflow-hidden group shadow-2xl border-4 border-white dark:border-slate-800">
+        <div className="lg:col-span-4 relative aspect-3/4 rounded-4xl md:rounded-[3rem] overflow-hidden group shadow-2xl border-4 border-white dark:border-border">
            <Image
               src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000"
               alt="Legal Expertise"
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-1000"
            />
-           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-slate-900/40 to-transparent" />
+           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-background/40 to-transparent" />
         </div>
       </section>
 
@@ -181,13 +181,13 @@ export default async function AboutPage() {
       {/* Leadership Section - Newspaper Style */}
       <section className="space-y-12">
         {/* Newspaper Header */}
-        <div className="space-y-6 border-b-2 border-slate-900 dark:border-white/20 pb-10">
+        <div className="space-y-6 border-b-2 border-foreground/20 pb-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-4">
                  <Badge variant="outline" className="border-primary/30 text-primary dark:text-amber-400 font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
                     OUR FOUNDER • EDITORIAL
                  </Badge>
-                 <h3 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+                 <h3 className="text-4xl md:text-7xl font-black text-foreground leading-[0.85] tracking-tighter">
                    ARCHITECT OF GLOBAL<br />
                    <span className="text-primary dark:text-amber-400 font-black text-3xl md:text-8xl">IP Strategy</span>
                  </h3>
@@ -215,7 +215,7 @@ export default async function AboutPage() {
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent h-1/3" />
               </div>
               <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
-                 <p className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
+                 <p className="text-xl font-black text-foreground tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
                  <p className="text-[11px] text-primary dark:text-amber-400 font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
               </div>
             </div>
@@ -250,19 +250,19 @@ export default async function AboutPage() {
       <section className="space-y-16">
         <div className="text-center space-y-4">
           <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR JOURNEY</h2>
-          <h3 className="text-4xl font-black text-slate-900 dark:text-white transition-transform duration-700 hover:scale-105 inline-block">Milestones of Growth</h3>
+          <h3 className="text-4xl font-black text-foreground transition-transform duration-700 hover:scale-105 inline-block">Milestones of Growth</h3>
         </div>
         
         <div className="max-w-4xl mx-auto space-y-12">
             {timeline.map((step, i) => (
               <div key={i} className="relative flex flex-col md:flex-row gap-8 items-start group/step">
-                <div className="hidden md:flex absolute left-0 w-16 h-16 rounded-full bg-white dark:bg-slate-900 border-x border-slate-100 dark:border-slate-800 items-center justify-center z-10 shadow-sm transition-all duration-500 group-hover/step:border-primary group-hover/step:scale-110 group-hover/step:rotate-360">
-                  <span className="text-xs font-black text-slate-400 group-hover/step:text-primary transition-colors">{step.year}</span>
+                <div className="hidden md:flex absolute left-0 w-16 h-16 rounded-full bg-card border-x border-border items-center justify-center z-10 shadow-sm transition-all duration-500 group-hover/step:border-primary group-hover/step:scale-110 group-hover/step:rotate-360">
+                  <span className="text-xs font-black text-muted-foreground group-hover/step:text-primary transition-colors">{step.year}</span>
                 </div>
                 
-                <div className="md:ml-24 flex-1 p-8 rounded-4xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800/50 hover:border-primary/50 hover:bg-white dark:hover:bg-slate-800 transition-all duration-300 shadow-sm hover:shadow-xl">
-                    <h4 className="text-xl font-black text-slate-900 dark:text-white mb-2 group-hover/step:text-primary transition-colors">{step.title}</h4>
-                    <p className="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">{step.desc}</p>
+                <div className="md:ml-24 flex-1 p-8 rounded-4xl bg-muted border border-border hover:border-primary/50 hover:bg-card transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <h4 className="text-xl font-black text-foreground mb-2 group-hover/step:text-primary transition-colors">{step.title}</h4>
+                    <p className="text-muted-foreground font-medium leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -274,22 +274,22 @@ export default async function AboutPage() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
            <div className="space-y-4">
              <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR NETWORK</h2>
-             <h3 className="text-4xl font-black text-slate-900 dark:text-white group-hover:translate-x-2 transition-transform cursor-default">Global Presence</h3>
+             <h3 className="text-4xl font-black text-foreground group-hover:translate-x-2 transition-transform cursor-default">Global Presence</h3>
            </div>
-           <p className="max-w-md text-slate-500 dark:text-slate-400 font-medium">
+           <p className="max-w-md text-muted-foreground font-medium">
              Connecting with innovators across continents through our specialized international liaison offices.
            </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
            {offices.map((office, i) => (
-             <Card key={i} className="group border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900/50 rounded-[2.5rem] p-8 space-y-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="w-14 h-14 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:rotate-12">
-                   <office.icon className="w-6 h-6 text-slate-400 group-hover:text-white" />
+             <Card key={i} className="group border-border bg-card rounded-[2.5rem] p-8 space-y-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:rotate-12">
+                   <office.icon className="w-6 h-6 text-muted-foreground group-hover:text-white" />
                 </div>
                 <div className="space-y-1">
-                   <h4 className="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">{office.country}</h4>
-                   <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">{office.city}</p>
+                   <h4 className="text-lg font-black text-foreground uppercase tracking-tight">{office.country}</h4>
+                   <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">{office.city}</p>
                    <p className="text-[10px] text-primary font-black uppercase tracking-[0.2em] pt-2">{office.type}</p>
                 </div>
              </Card>
@@ -298,7 +298,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Practice Areas */}
-      <section className="relative p-12 md:p-20 rounded-[3rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 overflow-hidden shadow-sm">
+      <section className="relative p-12 md:p-20 rounded-[3rem] bg-muted border border-border overflow-hidden shadow-sm">
          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
               style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
          
@@ -307,23 +307,23 @@ export default async function AboutPage() {
              <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 px-4 py-1.5 uppercase tracking-[0.3em] font-black text-[10px] rounded-full">
                CORE CAPABILITIES
              </Badge>
-             <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+             <h3 className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
                Comprehensive IP Solutions
              </h3>
            </div>
  
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
              {practices.map((practice, i) => (
-               <div key={i} className="group/card relative p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all duration-500 text-center flex flex-col items-center justify-center gap-6 min-h-[180px] shadow-sm hover:shadow-xl">
+               <div key={i} className="group/card relative p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-500 text-center flex flex-col items-center justify-center gap-6 min-h-[180px] shadow-sm hover:shadow-xl">
                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover/card:opacity-100 transition-opacity">
-                    <span className="text-3xl font-serif italic font-black text-slate-900 dark:text-white">{i + 1}</span>
+                    <span className="text-3xl font-black text-foreground">{i + 1}</span>
                  </div>
                  
                  <div className="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary group-hover/card:scale-110 transition-transform duration-500">
                    <practice.icon className="w-6 h-6" />
                  </div>
                  
-                 <p className="text-sm md:text-xl font-black text-slate-900 dark:text-white uppercase leading-tight max-w-[200px]">
+                 <p className="text-sm md:text-xl font-black text-foreground uppercase leading-tight max-w-[200px]">
                    {practice.name}
                  </p>
                  
@@ -336,10 +336,10 @@ export default async function AboutPage() {
 
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto">
-            <div className="bg-slate-50 dark:bg-slate-950 p-10 md:p-16 rounded-[3rem] border border-slate-100 dark:border-white/10 text-center space-y-8 relative overflow-hidden shadow-2xl group/cta">
+            <div className="bg-muted p-10 md:p-16 rounded-[3rem] border border-border text-center space-y-8 relative overflow-hidden shadow-2xl group/cta">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-                <h4 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover/cta:scale-[1.01] transition-transform">Need expert legal guidance?</h4>
-                <p className="text-slate-600 dark:text-slate-400 font-medium text-lg max-w-2xl mx-auto">
+                <h4 className="text-2xl md:text-3xl font-black text-foreground uppercase tracking-tight group-hover/cta:scale-[1.01] transition-transform">Need expert legal guidance?</h4>
+                <p className="text-muted-foreground font-medium text-lg max-w-2xl mx-auto">
                   Whether you are protecting your innovation or launching a new business, we are here to help you navigate the legal landscape.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
@@ -358,10 +358,10 @@ export default async function AboutPage() {
           <Badge variant="outline" className="border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
             RESOURCES • USEFUL LINKS
           </Badge>
-          <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+          <h3 className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
             Important <span className="text-primary italic font-serif">Resources</span>
           </h3>
-          <p className="text-slate-500 max-w-2xl mx-auto font-medium">
+          <p className="text-muted-foreground max-w-2xl mx-auto font-medium">
             Quick access to official intellectual property departments and international organizations.
           </p>
         </div>
@@ -383,16 +383,16 @@ export default async function AboutPage() {
               key={i} 
               href={link.url} 
               target="_blank"
-              className="group p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between"
+              className="group p-6 rounded-3xl bg-card border border-border hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xl font-black text-slate-900 dark:text-white group-hover:text-primary transition-colors">{link.name}</h4>
-                  <ExternalLink className="w-4 h-4 text-slate-300 group-hover:text-primary transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <h4 className="text-xl font-black text-foreground group-hover:text-primary transition-colors">{link.name}</h4>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground/30 group-hover:text-primary transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </div>
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{link.full}</p>
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{link.full}</p>
               </div>
-              <div className="mt-6 pt-4 border-t border-slate-50 dark:border-white/5 flex items-center gap-2 text-[10px] font-black text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+              <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-[10px] font-black text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
                 VISIT OFFICIAL WEBSITE <ChevronRight className="w-3 h-3" />
               </div>
             </Link>

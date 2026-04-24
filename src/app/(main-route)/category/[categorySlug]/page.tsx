@@ -56,7 +56,7 @@ export default async function DynamicCategoryPage({
   const categoryPosts = category.posts || [];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <CategoryHeader
         title={category.name}
         description={category.description}
@@ -80,7 +80,7 @@ export default async function DynamicCategoryPage({
           ))}
         </div>
       ) : (
-        <div className="p-20 text-center border-2 border-dashed rounded-2xl border-slate-100 dark:border-slate-800">
+        <div className="p-20 text-center border-2 border-dashed rounded-2xl border-border">
            <p className="text-muted-foreground font-medium">No posts available in this category yet.</p>
         </div>
       )}

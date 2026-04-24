@@ -72,9 +72,9 @@ export default async function TeamOfLawyers() {
   return (
     <div className="pb-20 space-y-24">
       {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-slate-100 dark:border-white/5 group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900">
-           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-slate-900 dark:to-slate-900" />
+      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
+        <div className="absolute inset-0 bg-muted">
+           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-blue-600/20 dark:via-background dark:to-background" />
            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                 style={{ backgroundImage: 'radial-linear(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
            <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000 bg-[radial-linear(circle_at_50%_120%,rgba(56,189,248,0.5),transparent_50%)]" />
@@ -84,11 +84,11 @@ export default async function TeamOfLawyers() {
           <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
             Our Professionals <Sparkles className="w-3 h-3 ml-2" />
           </Badge>
-          <h1 className="text-3xl md:text-7xl font-black text-slate-900 dark:text-white md:tracking-tighter md:leading-[0.9]">
+          <h1 className="text-3xl md:text-7xl font-black text-foreground md:tracking-tighter md:leading-[0.9]">
             THE <span className="text-primary italic">EXPERTISE</span><br /> 
             BEHIND <span className="text-blue-600 dark:text-blue-400">MENTORIP</span>.
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed max-w-2xl">
+          <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-2xl">
             &quot;A collaborative team of elite attorneys, specialists, and support staff dedicated to your intellectual interests.&quot;
           </p>
         </div>
@@ -97,20 +97,20 @@ export default async function TeamOfLawyers() {
       {/* Head of Chambers Spotlight - Newspaper Style */}
       <section className="space-y-12">
         {/* Newspaper Header */}
-        <div className="space-y-6 border-b-2 border-slate-900 dark:border-white/20 pb-10">
+        <div className="space-y-6 border-b-2 border-foreground/20 pb-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-4">
                  <Badge variant="outline" className="border-primary/30 text-primary dark:text-amber-400 font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
                     LEADERSHIP • FEATURE
                  </Badge>
-                 <h3 className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.85] tracking-tighter">
+                 <h3 className="text-4xl md:text-7xl font-black text-foreground leading-[0.85] tracking-tighter">
                    ARCHITECTING THE FUTURE OF<br />
                    <span className="text-primary font-serif italic text-3xl md:text-8xl">IP Law in Bangladesh</span>
                  </h3>
               </div>
               <div className="hidden md:block text-right">
-                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PUBLISHED</p>
-                 <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">JANUARY 2026 EDITION</p>
+                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">PUBLISHED</p>
+                 <p className="text-sm font-black text-foreground uppercase tracking-tight">JANUARY 2026 EDITION</p>
               </div>
            </div>
         </div>
@@ -119,18 +119,18 @@ export default async function TeamOfLawyers() {
           {/* Image Sidebar */}
           <div className="lg:col-span-4 space-y-8">
             <div className="relative group/leader">
-              <div className="absolute -inset-1 bg-slate-900 dark:bg-white/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
-              <div className="aspect-3/4 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl relative group/img">
+              <div className="absolute -inset-1 bg-foreground dark:bg-primary/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
+              <div className="aspect-3/4 bg-muted rounded-2xl overflow-hidden border-4 border-border shadow-xl relative group/img">
                 <Image 
                   src="/Barrister Shaleh Akram Somrat.png" 
                   alt="Barrister Shaleh Akram Somrat"
                   fill
                   className="object-cover group-hover/img:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent h-1/3" />
+                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-background/80 via-background/40 to-transparent h-1/3" />
               </div>
               <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
-                 <p className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
+                 <p className="text-xl font-black text-foreground tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
                  <p className="text-[11px] text-primary dark:text-amber-400 font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
               </div>
             </div>
@@ -138,7 +138,7 @@ export default async function TeamOfLawyers() {
           
           {/* Article Content */}
           <div className="lg:col-span-8">
-            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
+            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-muted-foreground leading-relaxed font-medium text-justify">
               <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
                 Barrister Shaleh Akram is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. His interest in IP law began during his LL.M. in IP at the University of Dhaka, where he published a research paper titled “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” A regular contributor to national newspapers, Barrister Akram has authored numerous articles on Intellectual Property law, including contributions to the prestigious Springer international journal. To date, he has published 14 articles in major national dailies.
               </p>
@@ -163,16 +163,16 @@ export default async function TeamOfLawyers() {
       <section className="space-y-16">
         <div className="text-center space-y-4">
           <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">LEGAL EXPERTS</h2>
-          <h3 className="text-4xl font-black text-slate-900 dark:text-white transition-transform hover:scale-105">Attorneys & Specialists</h3>
-          <p className="max-w-2xl mx-auto text-slate-500 font-medium italic text-sm">
+          <h3 className="text-4xl font-black text-foreground transition-transform hover:scale-105">Attorneys & Specialists</h3>
+          <p className="max-w-2xl mx-auto text-muted-foreground font-medium italic text-sm">
             Our elite wing of legal practitioners ensuring effective representation in all matters related to intellectual property.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
            {attorneys.map((member: Attorney, i: number) => (
-             <Card key={i} className="py-0 group border-slate-100 dark:border-white/5 bg-white dark:bg-slate-900/50 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
-                <div className="relative aspect-3/4 w-full overflow-hidden bg-slate-50 dark:bg-slate-800">
+             <Card key={i} className="py-0 group border-border bg-card rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
+                <div className="relative aspect-3/4 w-full overflow-hidden bg-muted">
                    {member.image ? (
                      <Image 
                        src={member.image} 
@@ -183,19 +183,19 @@ export default async function TeamOfLawyers() {
                      />
                    ) : (
                      <div className="absolute inset-0 flex items-center justify-center">
-                       <member.icon className="w-20 h-20 text-slate-200 dark:text-slate-700 group-hover:text-primary/20 transition-colors duration-500" />
+                       <member.icon className="w-20 h-20 text-muted-foreground/20 group-hover:text-primary/20 transition-colors duration-500" />
                      </div>
                    )}
-                   <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                   <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 <div className="p-8 pt-0 space-y-6 flex-1 flex flex-col">
                    <div className="space-y-2 relative z-10">
-                      <h4 className="text-xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">{member.name}</h4>
+                      <h4 className="text-xl font-black text-foreground tracking-tight group-hover:text-primary transition-colors">{member.name}</h4>
                       <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{member.role}</p>
                    </div>
-                   <Separator className="bg-slate-100 dark:bg-white/5" />
-                   <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed relative z-10 flex-1">
+                   <Separator className="bg-border" />
+                   <p className="text-sm text-muted-foreground font-medium leading-relaxed relative z-10 flex-1">
                       {member.qualifications.join(", ")}
                    </p>
                 </div>
@@ -205,19 +205,19 @@ export default async function TeamOfLawyers() {
       </section>
 
       {/* Operations & Research */}
-      <section className="bg-slate-50 dark:bg-black rounded-[3rem] p-12 lg:p-20 text-slate-900 dark:text-white relative overflow-hidden group/ops shadow-sm dark:shadow-3xl border border-slate-100 dark:border-white/5">
-         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.03] bg-[radial-linear(circle_at_center,#000_1px,transparent_0)] dark:bg-[radial-linear(circle_at_center,white_1px,transparent_0)] bg-size-[30px_30px]" />
+      <section className="bg-muted rounded-[3rem] p-12 lg:p-20 text-foreground relative overflow-hidden group/ops shadow-sm dark:shadow-3xl border border-border">
+         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.03] bg-[radial-linear(circle_at_center,black_1px,transparent_0)] dark:bg-[radial-linear(circle_at_center,white_1px,transparent_0)] bg-size-[30px_30px]" />
          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 blur-[120px] rounded-full" />
          
          <div className="relative space-y-16">
             <div className="text-center space-y-4">
                <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">WINGS</h2>
-               <h3 className="text-4xl font-black text-slate-900 dark:text-white transition-transform group-hover/ops:scale-105 duration-700">Operations & Research Team</h3>
+               <h3 className="text-4xl font-black text-foreground transition-transform group-hover/ops:scale-105 duration-700">Operations & Research Team</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                {operationsMembers.map((member: Attorney, i: Key | null | undefined) => (
-                 <div key={i} className="group/card p-8 rounded-4xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all hover:bg-white/50 dark:hover:bg-white/10 shadow-sm hover:shadow-xl">
+                 <div key={i} className="group/card p-8 rounded-4xl bg-card border border-border hover:border-primary/50 transition-all hover:bg-muted shadow-sm hover:shadow-xl">
                     <div className="flex items-center gap-4 mb-6">
                        <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover/card:scale-110 group-hover/card:rotate-12 transition-all relative overflow-hidden">
                           {member.image ? (
@@ -233,11 +233,11 @@ export default async function TeamOfLawyers() {
                           )}
                        </div>
                        <div>
-                          <p className="font-black text-lg text-slate-900 dark:text-white">{member.name}</p>
-                          <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{member.role}</p>
+                          <p className="font-black text-lg text-foreground">{member.name}</p>
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{member.role}</p>
                        </div>
                     </div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed line-clamp-3">
+                    <p className="text-xs text-muted-foreground font-medium leading-relaxed line-clamp-3">
                       {member.qualifications.join(", ")}
                     </p>
                  </div>
@@ -251,18 +251,18 @@ export default async function TeamOfLawyers() {
          <div className="flex items-end justify-between">
             <div className="space-y-4">
                <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">SUPPORT SYSTEM</h2>
-               <h3 className="text-4xl font-black text-slate-900 dark:text-white">Office Staffs</h3>
+               <h3 className="text-4xl font-black text-foreground">Office Staffs</h3>
             </div>
-            <p className="max-w-md text-slate-500 font-medium italic text-right hidden md:block">
+            <p className="max-w-md text-muted-foreground font-medium italic text-right hidden md:block">
               The backbone of our firm, ensuring precision in documentation and seamless administrative excellence.
             </p>
          </div>
 
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {staffMembers.map((s: { name: string; pos: string; image?: string; expertise: string[] }, i: number) => (
-               <div key={i} className="flex flex-col p-6 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 hover:border-primary/20 hover:shadow-xl transition-all group cursor-default overflow-hidden relative">
+               <div key={i} className="flex flex-col p-6 rounded-3xl bg-card border border-border hover:border-primary/20 hover:shadow-xl transition-all group cursor-default overflow-hidden relative">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0 border border-slate-100 dark:border-white/10 group-hover:scale-105 transition-transform">
+                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-muted shrink-0 border border-border group-hover:scale-105 transition-transform">
                       {s.image ? (
                         <Image 
                           src={s.image} 
@@ -278,14 +278,14 @@ export default async function TeamOfLawyers() {
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight group-hover:text-primary transition-colors truncate">{s.name}</p>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5 truncate">{s.pos}</p>
+                      <p className="text-sm font-black text-foreground uppercase tracking-tight group-hover:text-primary transition-colors truncate">{s.name}</p>
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5 truncate">{s.pos}</p>
                     </div>
                   </div>
                   
                   {s.expertise && s.expertise.length > 0 && (
-                    <div className="pt-3 border-t border-slate-50 dark:border-white/5">
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed italic">
+                    <div className="pt-3 border-t border-border">
+                      <p className="text-[10px] text-muted-foreground line-clamp-2 leading-relaxed italic">
                         {s.expertise.join(", ")}
                       </p>
                     </div>
