@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Bot, User, Loader2, Sparkles } from "lucide-react";
+import { MessageSquare, X, Send, Bot, User, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -114,14 +114,14 @@ export function AIChat() {
             {/* Header */}
             <div className="p-4 bg-primary text-primary-foreground flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center backdrop-blur-sm">
                   <Bot className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm">Mentor IP Assistant</h3>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-[10px] opacity-80 uppercase tracking-wider">Online Assistant</span>
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-[10px] opacity-80 uppercase">Online Assistant</span>
                   </div>
                 </div>
               </div>
@@ -175,7 +175,7 @@ export function AIChat() {
                         <Bot className="w-4 h-4" />
                       </div>
                       <div className="bg-muted p-3 rounded-2xl rounded-tl-none shadow-sm">
-                        <Loader2 className="w-4 h-4 animate-spin text-primary" />
+                        <span className="text-sm italic text-primary">Thinking...</span>
                       </div>
                     </div>
                   )}
@@ -220,7 +220,7 @@ export function AIChat() {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className={cn(
-            "h-16 w-16 rounded-full shadow-2xl p-0 transition-all duration-300 relative group overflow-hidden",
+            "h-12 w-12 rounded-full shadow-2xl p-0 transition-all duration-300 relative group overflow-hidden",
             isOpen 
               ? "bg-muted text-foreground border border-border" 
               : "bg-primary text-primary-foreground"
@@ -230,10 +230,10 @@ export function AIChat() {
             <X className="w-7 h-7" />
           ) : (
             <>
-              <div className="absolute inset-0 bg-linear-to-tr from-primary via-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-tr from-primary via-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10 flex flex-col items-center">
                 <MessageSquare className="w-7 h-7" />
-                <Sparkles className="w-3 h-3 absolute -top-1 -right-1 animate-pulse text-yellow-300" />
+                <Sparkles className="w-3 h-3 absolute -top-1 -right-1 animate-pulse text-primary-foreground" />
               </div>
             </>
           )}
