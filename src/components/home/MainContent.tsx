@@ -52,14 +52,14 @@ export async function MainDashboardContent() {
                   )}
                   
                   <div className="absolute top-10 left-10 opacity-10 rotate-12 pointer-events-none">
-                    <div className="w-32 h-32 border-16 border-white rounded-full flex items-center justify-center">
-                      <div className="w-12 h-12 bg-white rounded-sm" />
+                    <div className="w-32 h-32 border-16 border-foreground rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-foreground rounded-sm" />
                     </div>
                   </div>
 
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-primary-foreground p-12 text-center select-none">
                     
-                    <Badge className="absolute bottom-8 right-8 bg-muted/40 hover:bg-muted/60 text-primary-foreground backdrop-blur-xl border-white/10 px-3 py-1 text-[10px] font-bold">
+                    <Badge className="absolute bottom-8 right-8 bg-muted/40 hover:bg-muted/60 text-primary-foreground backdrop-blur-xl border-foreground/10 px-3 py-1 text-[10px] font-bold">
                       <Clock className="w-3 h-3 mr-1.5 opacity-70" /> {heroPost.readTime?.split(' ')[0]} min read
                     </Badge>
                   </div>
