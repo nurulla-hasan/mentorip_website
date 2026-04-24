@@ -101,7 +101,7 @@
   --card-foreground: oklch(0.94 0.01 48.70);
   --popover: oklch(0.32 0.02 339.89);
   --popover-foreground: oklch(0.94 0.01 48.70);
-  --primary: oklch(0.74 0.16 34.57);
+  --primary: oklch(65.557% 0.14421 34.919);
   --primary-foreground: oklch(1.00 0 0);
   --secondary: oklch(0.36 0.02 342.33);
   --secondary-foreground: oklch(0.94 0.01 48.70);
@@ -145,6 +145,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom Scrollbar Styles */
