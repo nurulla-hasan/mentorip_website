@@ -211,16 +211,16 @@ export function Navbar() {
                 <>
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-black tracking-tight">
+                      <p className="text-sm font-semibold tracking-wider">
                         {currentUser?.name}
                       </p>
-                      <p className="text-[10px] font-bold text-muted-foreground tracking-widest leading-none">
+                      <p className="text-xs text-muted-foreground tracking-widest">
                         {currentUser?.email}
                       </p>
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild className="cursor-pointer font-bold text-sm">
+                  <DropdownMenuItem asChild className="cursor-pointer uppercase text-xs tracking-wider">
                     <Link href="/profile" className="flex items-center gap-2 w-full">
                       <User className="text-primary w-4 h-4" />
                       <span>View Profile</span>
@@ -231,7 +231,7 @@ export function Navbar() {
                 <>
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-black italic tracking-tight">
+                      <p className="text-sm font-semibold">
                         Welcome to MentorIP
                       </p>
                       <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none">
@@ -242,7 +242,7 @@ export function Navbar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     asChild
-                    className="cursor-pointer font-bold text-sm"
+                    className="cursor-pointer uppercase text-xs tracking-wider"
                   >
                     <Link href="/auth/login">
                       <LogOut className="rotate-180 text-primary" />
@@ -251,7 +251,7 @@ export function Navbar() {
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     asChild
-                    className="cursor-pointer font-bold text-sm"
+                    className="cursor-pointer uppercase text-xs tracking-wider"
                   >
                     <Link href="/auth/register">
                       <Users className="text-primary" />
