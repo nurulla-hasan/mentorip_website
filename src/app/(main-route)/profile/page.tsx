@@ -117,8 +117,8 @@ export default async function ProfilePage() {
                       <Calendar className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Joined Date</p>
-                      <p className="text-sm font-bold text-slate-700 dark:text-slate-300">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-tight">Joined Date</p>
+                      <p className="text-sm font-bold text-foreground">
                         {userData.createdAt ? format(new Date(userData.createdAt), "MMMM yyyy") : "January 2026"}
                       </p>
                     </div>

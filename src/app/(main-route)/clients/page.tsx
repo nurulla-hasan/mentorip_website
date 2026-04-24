@@ -244,7 +244,7 @@ export default async function ClientsPage() {
              <Card key={i} className="group border border-border bg-card rounded-[2.5rem] p-8 space-y-6 hover:shadow-[0_20px_50px_rgba(56,189,248,0.1)] hover:-translate-y-2 transition-all duration-500 cursor-pointer overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700" />
                 <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 relative z-10">
-                   <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-white transition-colors" />
+                   <item.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
                 </div>
                 <div className="space-y-2 relative z-10">
                    <h4 className="text-lg font-black text-foreground tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
@@ -313,10 +313,10 @@ export default async function ClientsPage() {
           <div className="lg:col-span-4 relative group/visual hidden lg:block">
              <div className="sticky top-24 aspect-3/4 bg-background rounded-4xl overflow-hidden shadow-2xl border-4 border-border">
                 <div className="absolute inset-0 bg-linear-to-tr from-primary/40 via-transparent to-blue-600/40 mix-blend-overlay" />
-                <div className="absolute inset-x-0 bottom-0 p-10 space-y-4 text-white z-10">
+                <div className="absolute inset-x-0 bottom-0 p-10 space-y-4 text-primary-foreground z-10">
                    <MapPin className="w-10 h-10 text-primary animate-bounce" />
                    <h5 className="text-3xl font-black leading-tight tracking-tighter uppercase">Direct Support<br />Worldwide</h5>
-                   <p className="text-xs font-bold text-white/60 uppercase tracking-widest">Cross-Border Excellence</p>
+                   <p className="text-xs font-bold text-primary-foreground/60 uppercase tracking-widest">Cross-Border Excellence</p>
                 </div>
                 <Image 
                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000"

@@ -273,7 +273,7 @@ export default async function TeamOfLawyers() {
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Users className="w-6 h-6 text-slate-300 dark:text-slate-600 group-hover:text-primary/40 transition-colors" />
+                          <Users className="w-6 h-6 text-muted-foreground/20 group-hover:text-primary/40 transition-colors" />
                         </div>
                       )}
                     </div>

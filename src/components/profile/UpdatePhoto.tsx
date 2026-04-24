@@ -80,9 +80,9 @@ export function UpdatePhoto({ initialImage, name }: UpdatePhotoProps) {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-full"
+            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-foreground/40 rounded-full"
           >
-            <Camera className="w-8 h-8 text-white" />
+            <Camera className="w-8 h-8 text-primary-foreground" />
           </button>
         )}
 

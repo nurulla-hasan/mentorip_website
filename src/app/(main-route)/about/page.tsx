@@ -193,8 +193,8 @@ export default async function AboutPage() {
                  </h3>
               </div>
               <div className="hidden md:block text-right">
-                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">PUBLISHED</p>
-                 <p className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">JANUARY 2026 EDITION</p>
+                 <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">PUBLISHED</p>
+                 <p className="text-sm font-black text-foreground uppercase tracking-tight">JANUARY 2026 EDITION</p>
               </div>
            </div>
         </div>
@@ -203,8 +203,8 @@ export default async function AboutPage() {
           {/* Image Sidebar */}
           <div className="lg:col-span-4 space-y-8">
             <div className="relative group/leader">
-              <div className="absolute -inset-1 bg-slate-900 dark:bg-white/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
-              <div className="aspect-3/4 bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl relative group/img">
+              <div className="absolute -inset-1 bg-foreground dark:bg-foreground/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
+              <div className="aspect-3/4 bg-muted rounded-2xl overflow-hidden border-4 border-border shadow-xl relative group/img">
                 <Image
                   src="/Barrister Shaleh Akram Somrat.png"
                   alt="Barrister Shaleh Akram Somrat"
@@ -212,7 +212,7 @@ export default async function AboutPage() {
                   unoptimized
                   className="object-cover group-hover/img:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-900/80 via-slate-900/40 to-transparent h-1/3" />
+                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent h-1/3" />
               </div>
               <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
                  <p className="text-xl font-black text-foreground tracking-tight uppercase leading-tight">Barrister Shaleh Akram</p>
@@ -223,7 +223,7 @@ export default async function AboutPage() {
 
           {/* Article/Biography Content */}
           <div className="lg:col-span-8">
-            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
+            <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-muted-foreground leading-relaxed font-medium text-justify">
               <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
                 Barrister Shaleh Akram is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. His interest in IP law began during his LL.M. in IP at the University of Dhaka, where he published a research paper titled “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” A regular contributor to national newspapers, Barrister Akram has authored numerous articles on Intellectual Property law, including contributions to the prestigious Springer international journal. To date, he has published 14 articles in major national dailies.
               </p>
@@ -285,7 +285,7 @@ export default async function AboutPage() {
            {offices.map((office, i) => (
              <Card key={i} className="group border-border bg-card rounded-[2.5rem] p-8 space-y-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                 <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500 group-hover:rotate-12">
-                   <office.icon className="w-6 h-6 text-muted-foreground group-hover:text-white" />
+                   <office.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground" />
                 </div>
                 <div className="space-y-1">
                    <h4 className="text-lg font-black text-foreground uppercase tracking-tight">{office.country}</h4>
