@@ -23,7 +23,8 @@ export const sendContactEmail = async (data: FieldValues) => {
 export const getOfficeCards = async () => {
   try {
     return await serverFetch(`/office-cards-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {
@@ -37,7 +38,8 @@ export const getOfficeCards = async () => {
 export const getHotlineAndSocials = async () => {
   try {
     return await serverFetch(`/contact-us-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {

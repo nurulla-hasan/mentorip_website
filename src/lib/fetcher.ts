@@ -1,67 +1,143 @@
-import { getValidAccessTokenForServerActions, getValidAccessTokenForServerHandlerGet } from "@/lib/getValidAccessToken";
 
-export const serverFetch = async (
+import { cookies } from "next/headers";
+import { revalidateTag, updateTag } from "next/cache";
+
+type ServerFetchOptions = Omit<RequestInit, "body"> & {
+  body?: unknown;
+  isPublic?: boolean;
+  persistCookies?: boolean;
+  revalidate?: number | false;
+  tags?: string[];
+  /** 
+   * "updateTag": Immediate expiration (Best for Server Actions)
+   * "revalidateTag": Stale-while-revalidate (Best for background updates)
+   */
+  invalidateMode?: "updateTag" | "revalidateTag";
+  updateTag?: string | string[]; 
+  next?: NextFetchRequestConfig;
+};
+
+export type ApiError = Error & {
+  status: number;
+  data: unknown;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const serverFetch = async <T = any>(
   endpoint: string,
-  options: Omit<RequestInit, "body"> & {
-    body?: unknown;
-    tags?: string[];
-    revalidate?: number;
-  } = {}
-) => {
-  const { tags, revalidate, headers, ...rest } = options;
-  
-  const accessToken =
-    !rest.method || rest.method.toUpperCase() === "GET"
-      ? await getValidAccessTokenForServerHandlerGet()
-      : await getValidAccessTokenForServerActions();
-  let body = options.body;
+  options: ServerFetchOptions = {}
+): Promise<T> => {
+  const { 
+    isPublic = false, 
+    body: rawBody, 
+    headers, 
+    method = "GET", 
+    revalidate, 
+    updateTag: tagsToInvalidate,
+    invalidateMode = "updateTag", 
+    tags, 
+    next,
+    persistCookies = false,
+    ...rest 
+  } = options;
 
-  const defaultHeaders: Record<string, string> = {
-    Authorization: `Bearer ${accessToken}`,
-  };
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_API;
+  if (!baseUrl) throw new Error("NEXT_PUBLIC_BASE_API is not defined");
 
-  // Automatically handle body stringification and Content-Type
-  if (body !== undefined && body !== null) {
-    if (body instanceof FormData) {
-      // For FormData, browser sets boundary
-    } else if (typeof body === "object") {
-      body = JSON.stringify(body);
-      defaultHeaders["Content-Type"] = "application/json";
+  const defaultHeaders: Record<string, string> = {};
+
+  // Auth Handling (Next.js 15+ awaits cookies)
+  if (!isPublic) {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+    if (accessToken) {
+      defaultHeaders["Authorization"] = `Bearer ${accessToken}`;
     }
   }
 
-  const url = `${process.env.NEXT_PUBLIC_BASE_API}${endpoint}`;
-
-  // if (process.env.NODE_ENV === "development") {
-  //   console.log(`🚀 [API Request]: ${rest.method || "GET"} ${endpoint}`);
-  // }
-
-  const res = await fetch(url, {
-    ...rest,
-    body: body as BodyInit,
-    headers: {
-      ...defaultHeaders,
-      ...headers,
-    },
-    next: {
-      ...(tags && { tags }),
-      ...(revalidate !== undefined && { revalidate }),
-    },
-  });
-
-  // Handle Non-OK responses
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({}));
-    // if (process.env.NODE_ENV === "development") {
-    //   console.error(`❌ [API Error]: ${endpoint}`, errorData);
-    // }
-    throw new Error(errorData.message || `Fetch failed: ${res.statusText}`);
+  // Handle body
+  let body = rawBody;
+  if (body && typeof body === "object" && !(body instanceof FormData)) {
+    body = JSON.stringify(body);
+    defaultHeaders["Content-Type"] = "application/json";
   }
 
-  // Handle 204 No Content or empty bodies
-  if (res.status === 204 || res.headers.get("content-length") === "0") {
-    return null;
-  }
+  const url = `${baseUrl}${endpoint}`;
 
-  return res.json();
+  try {
+    const res = await fetch(url, {
+      ...rest,
+      method,
+      ...(body ? { body: body as BodyInit } : {}),
+      headers: { ...defaultHeaders, ...headers },
+      next: {
+        revalidate,
+        tags, 
+        ...next,
+      },
+    });
+
+    // New Multi-Argument Invalidation Logic
+    if (res.ok && tagsToInvalidate) {
+      const tagList = Array.isArray(tagsToInvalidate) ? tagsToInvalidate : [tagsToInvalidate];
+      
+      tagList.forEach(tag => {
+        try {
+          if (invalidateMode === "updateTag") {
+            // Newest standard for immediate UI updates
+            updateTag(tag);
+          } else {
+            // Required 2 arguments: tag and profile ("max" is recommended)
+            revalidateTag(tag, "max"); 
+          }
+        } catch {
+          // Fallback if updateTag is called outside Server Action context
+          revalidateTag(tag, "max");
+        }
+      });
+    }
+
+    // Cookie Handling (conditional persist)
+    const setCookieHeader = res.headers.get("set-cookie");
+    if (persistCookies && setCookieHeader) {
+      const cookieStore = await cookies();
+      const cookiesArray = setCookieHeader.split(/,(?=[^;]+=[^;]+)/);
+
+      cookiesArray.forEach((cookieString) => {
+        const [nameValue] = cookieString.split(";");
+        const [name, ...valueParts] = nameValue.split("=");
+        const trimmedName = name.trim();
+        const value = valueParts.join("=");
+
+        if (trimmedName === 'accessToken' || trimmedName === 'refreshToken') {
+          try {
+            cookieStore.set(trimmedName, value, {
+              httpOnly: true,
+              secure: process.env.NODE_ENV === "production",
+              sameSite: "lax",
+              path: "/",
+            });
+          } catch {
+            // Silently fail if context doesn't allow cookie setting
+          }
+        }
+      });
+    }
+
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => null);
+      const error = new Error(errorData?.message || `HTTP ${res.status}`) as ApiError;
+      error.status = res.status;
+      error.data = errorData;
+      throw error;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (res.status === 204 || res.headers.get("content-length") === "0") return null as any;
+
+    return res.json();
+  } catch (error) {
+    console.error("[serverFetch] Error:", error);
+    throw error;
+  }
 };

@@ -7,7 +7,9 @@ import { serverFetch } from '@/lib/fetcher';
 export const getAllGallery = async () => {
   try {
     const result = await serverFetch('/gallery/retrieve', {
-        method: 'GET',
+      method: 'GET',
+      revalidate: 86400,
+      isPublic: true,
     });
     return result;
   } catch (error: any) {

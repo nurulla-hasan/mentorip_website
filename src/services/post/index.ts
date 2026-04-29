@@ -9,7 +9,10 @@ export const getAllPosts = async (
   query: Record<string, string | string[] | undefined> = {}
 ) => {
   try {
-    return await serverFetch(`/post${buildQueryString(query)}`, {});
+    return await serverFetch(`/post${buildQueryString(query)}`, {
+      revalidate: 86400,
+      isPublic: true,
+    });
   } catch {
     return {
       success: false,
@@ -22,7 +25,10 @@ export const getAllPosts = async (
 // GET POST BY SLUG
 export const getPostBySlug = async (slug: string): Promise<any> => {
   try {
-    return await serverFetch(`/post/${slug}`, {});
+    return await serverFetch(`/post/${slug}`, {
+      revalidate: 86400,
+      isPublic: true,
+    });
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : "Failed to load post";

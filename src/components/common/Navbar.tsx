@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import type { Category } from "@/types/category.type";
 import {
   Search,
   User,
@@ -36,6 +37,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -53,7 +55,11 @@ const navLinks = [
   { name: "Gallery", href: "/gallery", icon: ImageIcon },
 ];
 
-export function Navbar() {
+export function Navbar({
+  initialCategories = [],
+}: {
+  initialCategories?: Category[];
+}) {
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
@@ -92,12 +98,21 @@ export function Navbar() {
                     MENTOR IP
                   </SheetTitle>
                 </SheetHeader>
-                <ScrollArea className="flex-1">
-                  <div className="p-4 space-y-6">
-                    <nav className="flex flex-col space-y-1">
-                      <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                        Menu
-                      </p>
+                <Tabs
+                  defaultValue="menu"
+                  className="w-full flex flex-col flex-1"
+                >
+                  <div className="px-4 py-3 border-b shrink-0">
+                    <TabsList className="grid w-full grid-cols-2">
+                      <TabsTrigger value="menu">Navigation</TabsTrigger>
+                      <TabsTrigger value="categories">Categories</TabsTrigger>
+                    </TabsList>
+                  </div>
+                  <div className="p-4">
+                    <TabsContent
+                      value="menu"
+                      className="mt-0 flex flex-col space-y-1"
+                    >
                       {navLinks.map((link) => {
                         const isActive =
                           link.href === "/"
@@ -115,7 +130,9 @@ export function Navbar() {
                           >
                             <link.icon
                               className={`w-4 h-4 ${
-                                isActive ? "text-primary" : "text-muted-foreground"
+                                isActive
+                                  ? "text-primary"
+                                  : "text-muted-foreground"
                               }`}
                             />
                             {link.name}
@@ -132,20 +149,25 @@ export function Navbar() {
                           }`}
                         >
                           <Avatar className="w-5 h-5">
-                            <AvatarImage src={currentUser?.image} alt={currentUser?.image} />
-                            <AvatarFallback className="text-[8px]">{getInitials(currentUser?.name || "")}</AvatarFallback>
+                            <AvatarImage
+                              src={currentUser?.image}
+                              alt={currentUser?.image}
+                            />
+                            <AvatarFallback className="text-[8px]">
+                              {getInitials(currentUser?.name || "")}
+                            </AvatarFallback>
                           </Avatar>
                           Profile
                         </Link>
                       )}
-                    </nav>
-                    <div className="border-t pt-6">
-                      <ScrollArea className="h-[400px]">
-                        <Sidebar />
+                    </TabsContent>
+                    <TabsContent value="categories" className="mt-0">
+                      <ScrollArea className="overflow-y-auto h-[calc(100vh-200px)]">
+                        <Sidebar initialCategories={initialCategories} />
                       </ScrollArea>
-                    </div>
+                    </TabsContent>
                   </div>
-                </ScrollArea>
+                </Tabs>
               </SheetContent>
             </Sheet>
           ) : (
@@ -209,7 +231,10 @@ export function Navbar() {
               <DropdownMenuTrigger asChild>
                 <button type="button" aria-label="User menu">
                   <Avatar className="size-9 border">
-                    <AvatarImage src={currentUser?.image} alt={currentUser?.name} />
+                    <AvatarImage
+                      src={currentUser?.image}
+                      alt={currentUser?.name}
+                    />
                     <AvatarFallback>
                       {getInitials(currentUser?.name || "User")}
                     </AvatarFallback>
@@ -230,8 +255,14 @@ export function Navbar() {
                       </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild className="cursor-pointer uppercase text-xs tracking-wider">
-                      <Link href="/profile" className="flex items-center gap-2 w-full">
+                    <DropdownMenuItem
+                      asChild
+                      className="cursor-pointer uppercase text-xs tracking-wider"
+                    >
+                      <Link
+                        href="/profile"
+                        className="flex items-center gap-2 w-full"
+                      >
                         <User className="text-primary w-4 h-4" />
                         <span>View Profile</span>
                       </Link>

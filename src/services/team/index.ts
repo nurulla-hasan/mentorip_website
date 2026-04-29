@@ -5,7 +5,8 @@ import { serverFetch } from "@/lib/fetcher";
 export const getTeamMembers = async () => {
   try {
     return await serverFetch("/our-team-comp/retrieve", {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {

@@ -7,7 +7,8 @@ import { serverFetch } from "@/lib/fetcher";
 export const getClients = async () => {
   try {
     return await serverFetch(`/client`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {
@@ -22,7 +23,8 @@ export const getClients = async () => {
 export const getClientele = async () => {
   try {
     return await serverFetch(`/our-clientele-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {
@@ -38,7 +40,8 @@ export const getClientele = async () => {
 export const getWeServe = async () => {
   try {
     return await serverFetch(`/industries-we-serve-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {
@@ -53,7 +56,8 @@ export const getWeServe = async () => {
 export const getJurisdictions = async () => {
   try {
     return await serverFetch(`/jurisdictions-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {

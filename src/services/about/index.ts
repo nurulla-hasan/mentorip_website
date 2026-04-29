@@ -6,7 +6,8 @@ import { serverFetch } from "@/lib/fetcher";
 export const getWhoWeAre = async () => {
   try {
     return await serverFetch(`/about-who-we-are-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
     });
   } catch {
     return {

@@ -1,17 +1,20 @@
-"use client";
 
 import { Navbar } from "@/components/common/Navbar";
 import { Sidebar } from "@/components/common/Sidebar";
 import { Footer } from "@/components/common/Footer";
+import { getAllCategories } from "@/services/category";
 
-export default function MainRouteLayout({
+export default async function MainRouteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const res = await getAllCategories();
+  const initialCategories = res?.data || [];
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
+      <Navbar initialCategories={initialCategories} />
       
       <div className="flex-1 flex flex-col">
         <main className="max-w-[1920px] mx-auto w-full px-4 py-8 flex-1">
@@ -19,7 +22,7 @@ export default function MainRouteLayout({
             {/* Left Sidebar - Desktop only here, Mobile in Navbar Sheet */}
             <div className="hidden lg:block w-[280px] shrink-0">
               <div className="sticky top-24">
-                <Sidebar />
+                <Sidebar initialCategories={initialCategories} />
               </div>
             </div>
 

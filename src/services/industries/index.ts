@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { serverFetch } from "@/lib/fetcher";
@@ -8,7 +9,8 @@ import { FieldValues } from "react-hook-form";
 export const getIndustriesWeServe = async () => {
   try {
     return await serverFetch(`/industries-we-serve-comp/retrieve`, {
-      revalidate: 300,
+      revalidate: 86400,
+      isPublic: true,
       tags: ["INDUSTRIES-COMP"],
     });
   } catch {
@@ -22,7 +24,7 @@ export const getIndustriesWeServe = async () => {
 // UPSERT (CREATE OR UPDATE) INDUSTRIES WE SERVE DATA
 export const upsertIndustriesWeServe = async (data: FieldValues) => {
   try {
-    const result = await serverFetch(`/industries-we-serve-comp/create-or-update`, {
+    const result = await serverFetch<any>(`/industries-we-serve-comp/create-or-update`, {
       method: "PUT",
       body: data,
     });
