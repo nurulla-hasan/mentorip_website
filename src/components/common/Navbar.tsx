@@ -305,12 +305,12 @@ export function Navbar({
                           {post.title}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[9px] font-black text-primary/80 uppercase tracking-widest bg-primary/5 px-1.5 py-0.5 rounded">
+                          <span className="text-[10px] font-black text-primary/80 uppercase tracking-widest bg-primary/5 px-1.5 py-0.5 rounded">
                             {post.category?.name || "Uncategorized"}
                           </span>
                           {post.readTime && (
-                            <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-widest">
-                              • {post.readTime}
+                            <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
+                              • {post.readTime.split(" ")[0]} Min read
                             </span>
                           )}
                         </div>
