@@ -33,7 +33,7 @@ export function NewsletterBox() {
 
   return (
     <div className="rounded-xl border bg-card/60 backdrop-blur p-5 shadow-sm">
-      <h3 className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-muted-foreground">
+      <h3 className="text-sm font-bold uppercase text-muted-foreground">
         Subscribe to Newsletter
       </h3>
       <p className="mt-2 text-[12px] text-muted-foreground">

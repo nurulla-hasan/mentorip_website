@@ -22,23 +22,18 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
     <section className="py-12 space-y-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
-        <div className="space-y-3">
+        <div className="space-y-1.5">
           <div className="flex items-center gap-2">
-            <h2 className="text-3xl font-black text-foreground tracking-tight">
+            <h2 className="text-3xl font-bold text-foreground">
               {category.name}
             </h2>
-            <div className="w-2 h-2 rounded-full bg-green-500 mb-1" />
           </div>
-          <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed font-medium">
+          <p className="text-sm text-muted-foreground max-w-3xl">
             {category.description}
           </p>
         </div>
         <Link href={`/category/${categorySlug}`}>
-          <Button
-            variant="outline"
-            size="sm"
-            className="rounded-full border-border font-bold text-[10px] uppercase tracking-widest h-9 px-5 group"
-          >
+          <Button variant="link">
             View {category.name}{" "}
             <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
           </Button>

@@ -35,7 +35,7 @@ export function NewsletterSection() {
     <section className="bg-muted border border-border rounded-3xl p-8 md:p-12 mb-12">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
         <div className="space-y-4 text-center lg:text-left">
-          <h2 className="text-2xl font-black text-foreground tracking-tight leading-tight">
+          <h2 className="text-2xl font-bold text-foreground">
             Subscribe to Newsletter
           </h2>
           <p className="text-sm text-muted-foreground max-w-md font-medium">

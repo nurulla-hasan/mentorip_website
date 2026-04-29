@@ -257,7 +257,7 @@ export async function MainDashboardContent() {
                               )}
                             </div>
                             <div className="flex-1 space-y-1.5">
-                              <p className="text-[10px] font-black text-primary/80 uppercase tracking-widest">
+                              <p className="text-[10px] font-black text-primary uppercase tracking-widest">
                                 {post.category?.name}
                               </p>
                               <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wider group-hover:text-primary transition-colors line-clamp-2">

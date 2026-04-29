@@ -49,7 +49,7 @@ export function Sidebar() {
       <div className="px-4 mb-4">
         <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Categories</h3>
       </div>
-      <div className="flex flex-col space-y-1 mb-6">
+      <div className="flex flex-col space-y-1 mb-6 border-r pr-4">
         {isLoading ? (
           Array.from({ length: 18 }).map((_, i) => (
             <div key={i} className="flex items-center gap-3 px-4 py-2">
@@ -65,24 +65,19 @@ export function Sidebar() {
               <Link 
                 key={i} 
                 href={href} 
-                className={`text-sm py-2.5 px-4 rounded-xl transition-all group flex items-center justify-between border-l-4 font-medium tracking-wider ${
+                className={`text-sm py-2 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 tracking-wider  ${
                   isActive
                     ? "bg-primary/10 text-primary border-primary shadow-sm" 
                     : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
                 }`}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 truncate pr-2">
                   <DynamicIcon 
                     name={cat.iconName} 
-                    className={`w-4 h-4 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} 
+                    className={`w-4 h-4 shrink-0 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-primary"}`} 
                   />
-                  <span>{cat.name}</span>
+                  <span className="truncate">{cat.name}</span>
                 </div>
-                <span className={`text-[10px] px-1.5 py-0.5 rounded transition-opacity ${
-                  isActive ? "bg-primary/10 text-primary opacity-100" : "bg-primary/10 text-primary opacity-0 group-hover:opacity-100"
-                }`}>
-                  {i === 0 ? "New" : "Explore"}
-                </span>
               </Link>
             );
           })
