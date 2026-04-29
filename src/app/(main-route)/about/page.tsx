@@ -462,7 +462,7 @@ export default async function AboutPage() {
             {
               name: "IP India",
               full: "Indian Patent Office/Registry",
-              url: "https://ipindia.gov.bd/",
+              url: "https://ipindia.gov.in/",
             },
             {
               name: "INTA",

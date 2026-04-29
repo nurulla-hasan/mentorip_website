@@ -35,7 +35,7 @@ export function Sidebar({ initialCategories = [] }: { initialCategories?: Catego
               <Link 
                 key={i} 
                 href={href} 
-                className={`text-base font-semibold py-2.5 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 tracking-wider  ${
+                className={`text-sm font-semibold py-2.5 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 tracking-wider  ${
                   isActive
                     ? "bg-primary/10 text-primary font-bold border-primary" 
                     : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
