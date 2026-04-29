@@ -179,7 +179,7 @@ export async function MainDashboardContent() {
                               alt="M"
                               width={10}
                               height={10}
-                              className="w-auto h-auto opacity-70 dark:invert"
+                              className="w-auto h-auto"
                             />
                           </div>
                           <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
@@ -236,7 +236,7 @@ export async function MainDashboardContent() {
                     href={`/category/${post.category?.slug}/${post.slug}`}
                     className="flex flex-col flex-1 group"
                   >
-                    <Card className="relative flex-1 shadow-lg group-hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden p-5 flex flex-col justify-between">
+                    <Card className="relative flex-1 transition-all duration-500 rounded-2xl overflow-hidden p-5 flex flex-col justify-between">
                       <CardContent className="p-0 flex flex-col justify-between h-full gap-4">
                         <div className="flex flex-col gap-4">
                           <div className="flex gap-4 items-center">

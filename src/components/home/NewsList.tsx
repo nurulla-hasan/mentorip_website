@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 
 import { useState } from "react";
@@ -92,7 +92,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                       alt="M"
                       width={10}
                       height={10}
-                      className="w-auto h-auto opacity-50 dark:invert"
+                      className="w-auto h-auto"
                     />
                   </div>
                   <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
@@ -111,15 +111,17 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                 {post.title}
               </h3>
 
-              <div className="pt-4 border-t border-border flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
-                <span className="flex items-center gap-1.5 italic font-medium lowercase first-letter:uppercase">
-                  <Calendar className="w-3 h-3" />
-                  {(post as any).createdAt
-                    ? format(new Date((post as any).createdAt), "MMM d, yyyy")
-                    : "Jan 20, 2026"}
-                </span>
-                <span className="text-border">•</span>
-                <span className="text-primary/70">{post.category?.name}</span>
+              <div className="pt-4 border-t border-border flex justify-between flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
+                  <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                    {format(
+                      new Date(post.createdAt || "2026-01-20T10:00:00Z"),
+                      "MMM dd, yyyy",
+                    )}
+                  </p>
+                </div>
+                <span className="text-primary">{post.category?.name}</span>
               </div>
             </div>
           </Link>
