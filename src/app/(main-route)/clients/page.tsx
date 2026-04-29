@@ -130,7 +130,7 @@ export default async function ClientsPage() {
   return (
     <div className="pb-16 space-y-16">
       {/* Compact Page Header */}
-      <section className="pt-0 pb-8 border-b border-border/50 mb-4">
+      <section className="pt-0 pb-8 border-b border-border/50 mb-10">
         <div className="flex flex-col items-start space-y-3 max-w-4xl">
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             Global Partnerships
@@ -145,16 +145,17 @@ export default async function ClientsPage() {
       </section>
 
       {/* Impact & Narrative Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        <div className="lg:col-span-12 space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b-2 border-foreground dark:border-border pb-10">
+      <section>
+        <div className="lg:col-span-12 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-foreground dark:border-border pb-10">
             <div className="space-y-4">
               <Badge variant="outline" className="border-primary/30 text-primary font-bold uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
                  OUR CLIENTELE • EDITORIAL
               </Badge>
               <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                A DIVERSE PORTFOLIO OF<br />
-                <span className="text-primary text-2xl md:text-5xl">Global Excellence</span>
+                {clienteleData?.title || (
+                  <>A Diverse Portfolio of <span className="text-primary">Global Excellence</span></>
+                )}
               </h3>
             </div>
           </div>
@@ -178,6 +179,57 @@ export default async function ClientsPage() {
         </div>
       </section>
 
+      {/* Dynamic Statistics Grid */}
+      {clienteleData && (
+        <section className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto">
+          {clienteleData.stat1Value && clienteleData.stat1Title && (
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border/50 shadow-2xs flex flex-col justify-center items-center text-center space-y-2 group hover:bg-muted/80 hover:border-primary/20 transition-all duration-300">
+              <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight group-hover:scale-105 transition-transform">
+                {clienteleData.stat1Value}
+              </span>
+              <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                {clienteleData.stat1Title}
+              </span>
+            </div>
+          )}
+
+          {clienteleData.stat2Value && clienteleData.stat2Title && (
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border/50 shadow-2xs flex flex-col justify-center items-center text-center space-y-2 group hover:bg-muted/80 hover:border-primary/20 transition-all duration-300">
+              <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight group-hover:scale-105 transition-transform">
+                {clienteleData.stat2Value}
+              </span>
+              <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                {clienteleData.stat2Title}
+              </span>
+            </div>
+          )}
+
+          {clienteleData.stat3Value && clienteleData.stat3Title && (
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border/50 shadow-2xs flex flex-col justify-center items-center text-center space-y-2 group hover:bg-muted/80 hover:border-primary/20 transition-all duration-300">
+              <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight group-hover:scale-105 transition-transform">
+                {clienteleData.stat3Value}
+              </span>
+              <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                {clienteleData.stat3Title}
+              </span>
+            </div>
+          )}
+
+          {clienteleData.stat4Value && clienteleData.stat4Title && (
+            <div className="p-6 rounded-2xl bg-muted/40 border border-border/50 shadow-2xs flex flex-col justify-center items-center text-center space-y-2 group hover:bg-muted/80 hover:border-primary/20 transition-all duration-300">
+              <span className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight group-hover:scale-105 transition-transform">
+                {clienteleData.stat4Value}
+              </span>
+              <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                {clienteleData.stat4Title}
+              </span>
+            </div>
+          )}
+        </section>
+      )}
+
+
+
       {/* Client Logos Grid - Dynamic */}
       <section className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-foreground dark:border-border pb-8">
@@ -186,8 +238,7 @@ export default async function ClientsPage() {
                  PARTNERSHIPS • GLOBAL
               </Badge>
               <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                 MEJOR<br />
-                <span className="text-primary text-2xl md:text-5xl">Global Partners</span>
+                Major <span className="text-primary">Global Partners</span>
               </h3>
            </div>
         </div>
@@ -221,6 +272,8 @@ export default async function ClientsPage() {
         </div>
       </section>
 
+
+
       {/* Industries Grid */}
       <section className="space-y-8">
         <div className="text-center space-y-2 group/sec">
@@ -247,6 +300,8 @@ export default async function ClientsPage() {
         </div>
       </section>
 
+
+
       <section className="space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 border-b-2 border-foreground dark:border-border pb-12">
            <div className="space-y-4">
@@ -254,12 +309,13 @@ export default async function ClientsPage() {
                  GLOBAL REGISTRY • JURISDICTIONS
               </Badge>
               <h3 className="text-3xl md:text-4xl font-bold text-foreground uppercase">
-                GLOBAL<br />
-                <span className="text-primary text-2xl md:text-5xl normal-case">Trademark Registry</span>
+                {jurisdictionsData?.title || (
+                  <>Global <span className="text-primary normal-case">Trademark Registry</span></>
+                )}
               </h3>
            </div>
            <p className="max-w-xs text-muted-foreground font-bold uppercase tracking-widest text-[11px]">
-             Providing high-standard legal solutions across key growth markets in Asia and Europe.
+             {jurisdictionsData?.subtitle || "Providing high-standard legal solutions across key growth markets in Asia and Europe."}
            </p>
         </div>
 
@@ -307,7 +363,7 @@ export default async function ClientsPage() {
                 <div className="absolute inset-0 bg-linear-to-tr from-primary/40 via-transparent to-primary/40 mix-blend-overlay" />
                 <div className="absolute inset-x-0 bottom-0 p-10 space-y-4 text-primary-foreground z-10">
                    <MapPin className="w-10 h-10 text-primary animate-bounce" />
-                   <h5 className="text-3xl font-bold uppercase">Direct Support<br />Worldwide</h5>
+                   <h5 className="text-3xl font-bold uppercase">Direct Support Worldwide</h5>
                    <p className="text-xs font-bold text-primary-foreground/60 uppercase tracking-widest">Cross-Border Excellence</p>
                 </div>
                 <Image 

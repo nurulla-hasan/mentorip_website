@@ -185,12 +185,8 @@ export default async function AboutPage() {
               >
                 OUR FOUNDER • EDITORIAL
               </Badge>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-[0.85]">
-                ARCHITECT OF GLOBAL
-                <br />
-                <span className="text-primary font-bold text-xl md:text-4xl">
-                  IP Strategy
-                </span>
+              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+                Architect of Global <span className="text-primary">IP Strategy</span>
               </h3>
             </div>
             <div className="hidden md:block text-right">

@@ -95,9 +95,8 @@ export default async function TeamOfLawyers() {
                  <Badge variant="outline" className="border-primary/30 text-primary font-bold uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
                     LEADERSHIP • FEATURE
                  </Badge>
-                 <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-[0.85]">
-                   ARCHITECTING THE FUTURE OF<br />
-                   <span className="text-primary text-3xl md:text-5xl">IP Law in Bangladesh</span>
+                 <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+                   Architecting the Future of <span className="text-primary">IP Law in Bangladesh</span>
                  </h3>
               </div>
               <div className="hidden md:block text-right">

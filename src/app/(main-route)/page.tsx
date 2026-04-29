@@ -53,7 +53,7 @@ export default async function Home() {
           Welcome to MentorIP
         </span>
         <h1 className="text-2xl md:text-4xl font-black text-foreground leading-tight tracking-wide uppercase">
-          Protecting your <span className="text-primary">Ideas</span>.<br />Empowering your <span className="text-primary">Brands</span>.
+          Protecting your <span className="text-primary">Ideas</span>. Empowering your <span className="text-primary">Brands</span>.
         </h1>
         <p className="text-xs md:text-sm text-muted-foreground font-medium leading-relaxed max-w-xl">
           Premier international Intellectual Property law firm. We secure your innovations, trademarks, and creative works globally with boutique precision.
