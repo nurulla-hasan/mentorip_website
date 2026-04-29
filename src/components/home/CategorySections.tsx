@@ -59,7 +59,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                     className="object-cover contrast-[0.95] brightness-[0.98]"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-black text-2xl uppercase opacity-20">
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground font-bold text-2xl uppercase opacity-20">
                     {category.name}
                   </div>
                 )}
@@ -99,7 +99,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
                   </div>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-                    <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                       {format(
                         new Date(category.createdAt || "2026-01-20T10:00:00Z"),
                         "MMM dd, yyyy",

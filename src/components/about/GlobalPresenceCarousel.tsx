@@ -96,21 +96,29 @@ export function GlobalPresenceCarousel() {
           {offices.map((office, i) => (
             <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
               <Card
-                className="group border bg-card rounded-[2.5rem] p-6 space-y-4 overflow-hidden transition-all duration-500 h-full"
+                className="group border border-border bg-card rounded-2xl p-5 space-y-4 overflow-hidden transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 relative cursor-pointer flex flex-col justify-between h-full"
               >
-                <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-500">
-                  <office.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary-foreground" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
+                
+                <div className="relative space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary transition-all duration-700">
+                    <office.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <h4 className="text-base font-bold text-foreground group-hover:text-primary transition-colors uppercase">
+                      {office.country}
+                    </h4>
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
+                      {office.city}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <h4 className="text-lg font-black text-foreground uppercase">
-                    {office.country}
-                  </h4>
-                  <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
-                    {office.city}
-                  </p>
-                  <p className="text-[10px] text-primary font-black uppercase tracking-[0.2em] pt-2">
+                
+                <div className="relative pt-2 border-t border-border/50">
+                  <span className="text-[9px] text-primary font-bold uppercase tracking-[0.2em]">
                     {office.type}
-                  </p>
+                  </span>
                 </div>
               </Card>
             </CarouselItem>

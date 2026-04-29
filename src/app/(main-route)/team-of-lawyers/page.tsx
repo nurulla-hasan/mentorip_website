@@ -77,7 +77,7 @@ export default async function TeamOfLawyers() {
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             Our Elite Team
           </Badge>
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
             Specialists and Support Staff Protecting <span className="text-primary">Your IP</span>.
           </h1>
           <p className="text-sm text-muted-foreground font-medium max-w-2xl">
@@ -92,17 +92,17 @@ export default async function TeamOfLawyers() {
         <div className="space-y-6 border-b-2 border-foreground/20 pb-10">
            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-4">
-                 <Badge variant="outline" className="border-primary/30 text-primary font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
+                 <Badge variant="outline" className="border-primary/30 text-primary font-bold uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full">
                     LEADERSHIP • FEATURE
                  </Badge>
-                 <h3 className="text-3xl md:text-4xl font-black text-foreground leading-[0.85]">
+                 <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-[0.85]">
                    ARCHITECTING THE FUTURE OF<br />
                    <span className="text-primary text-3xl md:text-5xl">IP Law in Bangladesh</span>
                  </h3>
               </div>
               <div className="hidden md:block text-right">
                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">PUBLISHED</p>
-                 <p className="text-sm font-black text-foreground uppercase">JANUARY 2026 EDITION</p>
+                 <p className="text-sm font-bold text-foreground uppercase">JANUARY 2026 EDITION</p>
               </div>
            </div>
         </div>
@@ -117,13 +117,14 @@ export default async function TeamOfLawyers() {
                   src="/Barrister Shaleh Akram Somrat.png" 
                   alt="Barrister Shaleh Akram Somrat"
                   fill
+                  // unoptimized
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-background/80 via-background/40 to-transparent h-1/3" />
               </div>
               <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
-                 <p className="text-xl font-black text-foreground uppercase leading-tight">Barrister Shaleh Akram</p>
-                 <p className="text-[11px] text-primary font-black uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
+                 <p className="text-xl font-bold text-foreground uppercase leading-tight">Barrister Shaleh Akram</p>
+                 <p className="text-[11px] text-primary font-bold uppercase tracking-[0.2em]">Head of Chambers • Founder</p>
               </div>
             </div>
           </div>
@@ -131,7 +132,7 @@ export default async function TeamOfLawyers() {
           {/* Article Content */}
           <div className="lg:col-span-8">
             <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-muted-foreground leading-relaxed font-medium text-justify">
-              <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
+              <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
                 Barrister Shaleh Akram is the founder of MentorIP and is widely recognized for his profound expertise in Intellectual Property (IP) law. His interest in IP law began during his LL.M. in IP at the University of Dhaka, where he published a research paper titled “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” A regular contributor to national newspapers, Barrister Akram has authored numerous articles on Intellectual Property law, including contributions to the prestigious Springer international journal. To date, he has published 14 articles in major national dailies.
               </p>
               <p className="mb-6">
@@ -153,9 +154,9 @@ export default async function TeamOfLawyers() {
  
       {/* Attorneys Grid */}
       <section className="space-y-10">
-        <div className="text-center space-y-4">
-          <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">LEGAL EXPERTS</h2>
-          <h3 className="text-3xl md:text-4xl font-black text-foreground">Attorneys & Specialists</h3>
+        <div className="text-center space-y-2">
+          <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">LEGAL EXPERTS</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">Attorneys & Specialists</h3>
           <p className="max-w-2xl mx-auto text-muted-foreground font-medium text-sm">
             Our elite wing of legal practitioners ensuring effective representation in all matters related to intellectual property.
           </p>
@@ -163,7 +164,7 @@ export default async function TeamOfLawyers() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
            {attorneys.map((member: Attorney, i: number) => (
-             <Card key={i} className="py-0 group border-border bg-card rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
+             <Card key={i} className="py-0 group border-border bg-card rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative flex flex-col h-full">
                 <div className="relative aspect-3/4 w-full overflow-hidden bg-muted">
                    {member.image ? (
                      <Image 
@@ -181,10 +182,10 @@ export default async function TeamOfLawyers() {
                    <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
-                <div className="p-8 pt-0 space-y-6 flex-1 flex flex-col">
+                <div className="p-5 pt-0 space-y-4 flex-1 flex flex-col">
                    <div className="space-y-2 relative z-10">
-                      <h4 className="text-xl font-black text-foreground group-hover:text-primary transition-colors">{member.name}</h4>
-                      <p className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">{member.role}</p>
+                      <h4 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{member.name}</h4>
+                      <p className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">{member.role}</p>
                    </div>
                    <Separator className="bg-border" />
                    <p className="text-sm text-muted-foreground font-medium leading-relaxed relative z-10 flex-1">
@@ -197,19 +198,19 @@ export default async function TeamOfLawyers() {
       </section>
 
       {/* Operations & Research */}
-      <section className="bg-muted rounded-[3rem] p-12 lg:p-20 text-foreground relative overflow-hidden group/ops shadow-sm dark:shadow-3xl border border-border">
+      <section className="bg-muted rounded-3xl p-8 lg:p-12 text-foreground relative overflow-hidden group/ops shadow-sm dark:shadow-3xl border border-border">
          <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.08]" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 dark:bg-primary/10 blur-[120px] rounded-full" />
          
-         <div className="relative space-y-12">
-            <div className="text-center space-y-4">
-               <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">WINGS</h2>
-               <h3 className="text-3xl md:text-4xl font-black text-foreground">Operations & Research Team</h3>
+         <div className="relative space-y-6">
+            <div className="text-center space-y-2">
+               <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">WINGS</h2>
+               <h3 className="text-3xl md:text-4xl font-bold text-foreground">Operations & Research Team</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                {operationsMembers.map((member: Attorney, i: Key | null | undefined) => (
-                 <div key={i} className="group/card p-8 rounded-4xl bg-card border border-border hover:border-primary/50 transition-all hover:bg-muted shadow-sm hover:shadow-xl">
+                 <div key={i} className="group/card p-5 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all hover:bg-muted shadow-sm hover:shadow-xl">
                     <div className="flex items-center gap-4 mb-6">
                        <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center transition-all relative overflow-hidden">
                           {member.image ? (
@@ -225,7 +226,7 @@ export default async function TeamOfLawyers() {
                           )}
                        </div>
                        <div>
-                          <p className="font-black text-lg text-foreground">{member.name}</p>
+                          <p className="font-bold text-lg text-foreground">{member.name}</p>
                           <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{member.role}</p>
                        </div>
                     </div>
@@ -241,9 +242,9 @@ export default async function TeamOfLawyers() {
       {/* Office Executives & Clerks */}
       <section className="space-y-8">
          <div className="flex items-end justify-between">
-            <div className="space-y-4">
-               <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">SUPPORT SYSTEM</h2>
-               <h3 className="text-3xl md:text-4xl font-black text-foreground">Office Staffs</h3>
+            <div className="space-y-2">
+               <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">SUPPORT SYSTEM</h2>
+               <h3 className="text-3xl md:text-4xl font-bold text-foreground">Office Staffs</h3>
             </div>
             <p className="max-w-md text-muted-foreground font-medium text-right hidden md:block">
               The backbone of our firm, ensuring precision in documentation and seamless administrative excellence.
@@ -252,7 +253,7 @@ export default async function TeamOfLawyers() {
 
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {staffMembers.map((s: { name: string; pos: string; image?: string; expertise: string[] }, i: number) => (
-               <div key={i} className="flex flex-col p-6 rounded-3xl bg-card border border-border hover:border-primary/20 hover:shadow-xl transition-all group cursor-default overflow-hidden relative">
+               <div key={i} className="flex flex-col p-5 rounded-2xl bg-card border border-border hover:border-primary/20 hover:shadow-xl transition-all group cursor-default overflow-hidden relative">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-muted shrink-0 border border-border transition-transform">
                       {s.image ? (
@@ -270,7 +271,7 @@ export default async function TeamOfLawyers() {
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-black text-foreground uppercase group-hover:text-primary transition-colors truncate">{s.name}</p>
+                      <p className="text-sm font-bold text-foreground uppercase group-hover:text-primary transition-colors truncate">{s.name}</p>
                       <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mt-0.5 truncate">{s.pos}</p>
                     </div>
                   </div>

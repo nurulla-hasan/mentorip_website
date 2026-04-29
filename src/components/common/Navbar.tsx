@@ -301,7 +301,7 @@ export function Navbar() {
                         setCurrentUser(null);
                         router.refresh();
                       }}
-                      className="text-red-500 focus:text-red-500 cursor-pointer font-black text-xs uppercase tracking-[0.2em]"
+                      className="text-red-500 focus:text-red-500 cursor-pointer font-bold text-xs uppercase tracking-[0.2em]"
                     >
                       <LogOut />
                       <span>Log out</span>

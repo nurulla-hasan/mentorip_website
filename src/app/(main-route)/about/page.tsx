@@ -76,7 +76,7 @@ export default async function AboutPage() {
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             The MentorIP Story
           </Badge>
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
             Protecting <span className="text-primary italic">Ideas</span>. Empowering <span className="text-primary">Brands</span>.
           </h1>
           <p className="text-sm text-muted-foreground font-medium max-w-2xl">
@@ -88,14 +88,14 @@ export default async function AboutPage() {
       {/* Narrative Section - Dynamic "Who We Are" */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-8 space-y-6">
-          <div className="space-y-4">
+          <div className="space-y-2">
             <Badge
               variant="outline"
-              className="text-primary border-primary/20 uppercase tracking-[0.3em] font-black text-[10px] px-4 py-1.5 rounded-full"
+              className="text-primary border-primary/20 uppercase tracking-[0.3em] font-bold text-[10px] px-4 py-1.5 rounded-full"
             >
               WHO WE ARE
             </Badge>
-            <h3 className="text-3xl md:text-4xl font-black text-foreground leading-[1.1]">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-[1.1]">
               {whoWeAreData?.title}
             </h3>
           </div>
@@ -110,11 +110,11 @@ export default async function AboutPage() {
                 <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary/50 rounded-tl-lg" />
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-primary/50 rounded-br-lg" />
 
-                <p className="text-4xl md:text-6xl font-black leading-none">
+                <p className="text-4xl md:text-6xl font-bold leading-none">
                   {stat.value}
                 </p>
                 <div className="h-px w-20 bg-primary/40 my-6" />
-                <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-center max-w-[150px] leading-tight opacity-80">
+                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-center max-w-[150px] leading-tight opacity-80">
                   {stat.label}
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default async function AboutPage() {
               </p>
 
               <div className="p-8 rounded-3xl bg-primary/5 border border-primary/10 space-y-4">
-                <h4 className="text-xl font-black text-primary flex items-center gap-2">
+                <h4 className="text-xl font-bold text-primary flex items-center gap-2">
                   <ExternalLink className="w-5 h-5" /> Client Portals
                 </h4>
                 <p className="text-sm text-muted-foreground font-medium leading-relaxed">
@@ -162,7 +162,7 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="lg:col-span-4 relative aspect-3/4 rounded-4xl md:rounded-[3rem] overflow-hidden group shadow-2xl border-4 border-background flex items-center justify-center">
+        <div className="lg:col-span-4 relative aspect-3/4 rounded-3xl overflow-hidden group shadow-2xl border-4 border-background flex items-center justify-center">
           <Image
             src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000"
             alt="Legal Expertise"
@@ -174,21 +174,21 @@ export default async function AboutPage() {
       </section>
 
       {/* Leadership Section - Newspaper Style */}
-      <section className="space-y-8">
+      <section className="space-y-6">
         {/* Newspaper Header */}
-        <div className="space-y-4 border-b-2 border-foreground/20 pb-6">
+        <div className="space-y-2 border-b-2 border-foreground/20 pb-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-4">
               <Badge
                 variant="outline"
-                className="border-primary/30 text-primary font-black uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full"
+                className="border-primary/30 text-primary font-bold uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full"
               >
                 OUR FOUNDER • EDITORIAL
               </Badge>
-              <h3 className="text-3xl md:text-4xl font-black text-foreground leading-[0.85]">
+              <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-[0.85]">
                 ARCHITECT OF GLOBAL
                 <br />
-                <span className="text-primary font-black text-xl md:text-4xl">
+                <span className="text-primary font-bold text-xl md:text-4xl">
                   IP Strategy
                 </span>
               </h3>
@@ -197,7 +197,7 @@ export default async function AboutPage() {
               <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                 PUBLISHED
               </p>
-              <p className="text-sm font-black text-foreground uppercase">
+              <p className="text-sm font-bold text-foreground uppercase">
                 JANUARY 2026 EDITION
               </p>
             </div>
@@ -208,22 +208,22 @@ export default async function AboutPage() {
           {/* Image Sidebar */}
           <div className="lg:col-span-4 space-y-6">
             <div className="relative group/leader">
-              <div className="absolute -inset-1 bg-foreground dark:bg-foreground/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" />
+              {/* <div className="absolute -inset-1 bg-foreground dark:bg-foreground/10 rounded-2xl blur-sm opacity-10 group-hover/leader:opacity-20 transition-opacity" /> */}
               <div className="aspect-3/4 bg-muted rounded-2xl overflow-hidden border-4 border-border shadow-xl relative group/img">
                 <Image
                   src="/Barrister Shaleh Akram Somrat.png"
                   alt="Barrister Shaleh Akram Somrat"
                   fill
-                  unoptimized
+                  // unoptimized
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent h-1/3" />
+                {/* <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-foreground/80 via-foreground/40 to-transparent h-1/3" /> */}
               </div>
               <div className="mt-6 space-y-2 border-l-4 border-primary pl-6 py-1">
-                <p className="text-xl font-black text-foreground uppercase leading-tight">
+                <p className="text-xl font-bold text-foreground uppercase leading-tight">
                   Barrister Shaleh Akram
                 </p>
-                <p className="text-[11px] text-primary font-black uppercase tracking-[0.2em]">
+                <p className="text-[11px] text-primary font-bold uppercase tracking-[0.2em]">
                   Head of Chambers • Founder
                 </p>
               </div>
@@ -233,7 +233,7 @@ export default async function AboutPage() {
           {/* Article/Biography Content */}
           <div className="lg:col-span-8">
             <div className="columns-1 md:columns-2 gap-10 space-y-6 md:space-y-0 text-sm md:text-base text-muted-foreground leading-relaxed font-medium text-justify">
-              <p className="first-letter:text-6xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
+              <p className="first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:float-left first-letter:leading-none mb-6">
                 Barrister Shaleh Akram is the founder of MentorIP and is widely
                 recognized for his profound expertise in Intellectual Property
                 (IP) law. His interest in IP law began during his LL.M. in IP at
@@ -298,28 +298,28 @@ export default async function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="space-y-12">
-        <div className="text-center space-y-4">
-          <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">
+      <section className="space-y-6">
+        <div className="text-center space-y-2">
+          <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">
             OUR JOURNEY
           </h2>
-          <h3 className="text-3xl font-black text-foreground inline-block">Milestones of Growth</h3>
+          <h3 className="text-3xl font-bold text-foreground inline-block">Milestones of Growth</h3>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-4xl mx-auto space-y-6">
           {timeline.map((step, i) => (
             <div
               key={i}
               className="relative flex flex-col md:flex-row gap-8 items-start group/step"
             >
               <div className="hidden md:flex absolute left-0 w-16 h-16 rounded-full bg-card border-x border-border items-center justify-center z-10 shadow-sm transition-all duration-500 group-hover/step:border-primary">
-                <span className="text-xs font-black text-muted-foreground group-hover/step:text-primary transition-colors">
+                <span className="text-xs font-bold text-muted-foreground group-hover/step:text-primary transition-colors">
                   {step.year}
                 </span>
               </div>
 
-              <div className="md:ml-24 flex-1 p-8 rounded-4xl bg-muted border border-border hover:border-primary/50 hover:bg-card transition-all duration-300 shadow-sm hover:shadow-xl">
-                <h4 className="text-xl font-black text-foreground mb-2 group-hover/step:text-primary transition-colors">
+              <div className="md:ml-24 flex-1 p-6 rounded-3xl bg-muted border border-border hover:border-primary/50 hover:bg-card transition-all duration-300 shadow-sm hover:shadow-xl">
+                <h4 className="text-xl font-bold text-foreground mb-2 group-hover/step:text-primary transition-colors">
                   {step.title}
                 </h4>
                 <p className="text-muted-foreground font-medium leading-relaxed">
@@ -332,13 +332,13 @@ export default async function AboutPage() {
       </section>
 
       {/* Global Presence */}
-      <section className="space-y-12">
+      <section className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="space-y-4">
-            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <div className="space-y-2">
+            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">
               OUR NETWORK
             </h2>
-            <h3 className="text-3xl font-black text-foreground cursor-default">Global Presence</h3>
+            <h3 className="text-3xl font-bold text-foreground cursor-default">Global Presence</h3>
           </div>
           <p className="max-w-md text-muted-foreground font-medium">
             Connecting with innovators across continents through our specialized
@@ -350,7 +350,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Practice Areas */}
-      <section className="relative p-8 md:p-12 rounded-[3rem] bg-muted border border-border overflow-hidden shadow-sm">
+      <section className="relative p-8 md:p-12 rounded-3xl bg-muted border border-border overflow-hidden shadow-sm">
         <div
           className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
           style={{
@@ -360,12 +360,12 @@ export default async function AboutPage() {
           }}
         />
 
-        <div className="relative z-10 space-y-12">
-          <div className="text-center space-y-4">
-            <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 px-4 py-1.5 uppercase tracking-[0.3em] font-black text-[10px] rounded-full">
+        <div className="relative z-10 space-y-6">
+          <div className="text-center space-y-2">
+            <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 px-4 py-1.5 uppercase tracking-[0.3em] font-bold text-[10px] rounded-full">
               CORE CAPABILITIES
             </Badge>
-            <h3 className="text-3xl md:text-4xl font-black text-foreground">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground">
               Comprehensive IP Solutions
             </h3>
           </div>
@@ -376,9 +376,9 @@ export default async function AboutPage() {
 
       {/* CTA Section */}
       <section className="max-w-4xl mx-auto">
-        <div className="bg-muted p-6 md:p-10 rounded-[3rem] border border-border text-center space-y-6 relative overflow-hidden shadow-2xl group/cta">
+        <div className="bg-muted p-6 md:p-10 rounded-3xl border border-border text-center space-y-6 relative overflow-hidden shadow-2xl group/cta">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-          <h4 className="text-2xl md:text-3xl font-black text-foreground uppercase">Need expert legal guidance?</h4>
+          <h4 className="text-2xl md:text-3xl font-bold text-foreground uppercase">Need expert legal guidance?</h4>
           <p className="text-muted-foreground font-medium text-lg max-w-2xl mx-auto">
             Whether you are protecting your innovation or launching a new
             business, we are here to help you navigate the legal landscape.
@@ -387,7 +387,7 @@ export default async function AboutPage() {
             <Link href="https://wa.me/8801760308093" target="_blank">
               <Button
                 size="lg"
-                className="rounded-full px-8 py-6 font-black text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn overflow-hidden relative"
+                className="rounded-full px-8 py-6 font-bold text-xs uppercase tracking-[0.2em] shadow-lg active:scale-95 group/btn overflow-hidden relative"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Contact Us Now <Phone className="w-4 h-4" />
@@ -399,15 +399,15 @@ export default async function AboutPage() {
         </div>
       </section>
       {/* Important Resources Section */}
-      <section id="resources" className="space-y-12">
-        <div className="text-center space-y-4">
+      <section id="resources" className="space-y-6">
+        <div className="text-center space-y-2">
           <Badge
             variant="outline"
             className="border-primary/30 text-primary uppercase tracking-[0.3em] text-[10px] px-4 py-1.5 rounded-full"
           >
             RESOURCES • USEFUL LINKS
           </Badge>
-          <h3 className="text-3xl md:text-4xl font-black text-foreground">
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">
             Important{" "}
             <span className="text-primary italic font-serif">Resources</span>
           </h3>
@@ -474,21 +474,31 @@ export default async function AboutPage() {
               key={i}
               href={link.url}
               target="_blank"
-              className="group p-6 rounded-3xl bg-card border border-border hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col justify-between"
+              className="group p-5 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between relative overflow-hidden cursor-pointer"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-xl font-black text-foreground group-hover:text-primary transition-colors">
-                    {link.name}
-                  </h4>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground/30 group-hover:text-primary transition-all group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full -mr-10 -mt-10 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
+              
+              <div className="relative space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-muted text-foreground text-xs font-black flex items-center justify-center border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-500">
+                   {link.name.substring(0, 3).toUpperCase()}
                 </div>
-                <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
-                  {link.full}
-                </p>
+                
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <h4 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                      {link.name}
+                    </h4>
+                    <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+                  </div>
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-relaxed">
+                    {link.full}
+                  </p>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 text-[10px] font-black text-primary opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                VISIT OFFICIAL WEBSITE <ChevronRight className="w-3 h-3" />
+              
+              <div className="relative mt-4 pt-3 border-t border-border/50 flex items-center gap-1.5 text-[9px] font-bold text-primary">
+                <span className="uppercase tracking-widest">Visit Portal</span> 
+                <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </div>
             </Link>
           ))}

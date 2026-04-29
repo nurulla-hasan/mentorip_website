@@ -101,7 +101,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                 </div>
                 <Badge
                   variant="secondary"
-                  className="text-[9px] font-black px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground flex items-center"
+                  className="text-[9px] font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground flex items-center"
                 >
                   {post.readTime?.split(" ")[0]} min read
                 </Badge>
@@ -114,7 +114,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
               <div className="pt-4 border-t border-border flex justify-between flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-                  <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                     {format(
                       new Date(post.createdAt || "2026-01-20T10:00:00Z"),
                       "MMM dd, yyyy",

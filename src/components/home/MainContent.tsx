@@ -88,7 +88,7 @@ export async function MainDashboardContent() {
                   <p className="text-muted-foreground text-sm line-clamp-3 font-medium leading-relaxed max-w-2xl">
                     {heroPost.subtitle}
                   </p>
-                  <div className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground gap-3 mt-1">
+                  <div className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground gap-3 mt-1">
                     <span className="text-muted-foreground/80 dark:text-muted-foreground">
                       By MENTORiP
                     </span>
@@ -156,7 +156,7 @@ export async function MainDashboardContent() {
                           {widePost.category?.name}
                         </span>
                         <div className="w-px h-3 bg-muted-foreground/30" />
-                        <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                           {format(
                             new Date( 
                               widePost.createdAt || "2026-01-20T10:00:00Z",
@@ -251,13 +251,13 @@ export async function MainDashboardContent() {
                                   className="object-cover"
                                 />
                               ) : (
-                                <div className="text-center font-black leading-[0.8] text-primary/20">
+                                <div className="text-center font-bold leading-[0.8] text-primary/20">
                                   <span className="text-[12px]">MENTOR</span>
                                 </div>
                               )}
                             </div>
                             <div className="flex-1 space-y-1.5">
-                              <p className="text-[10px] font-black text-primary uppercase tracking-widest">
+                              <p className="text-[10px] font-bold text-primary uppercase tracking-widest">
                                 {post.category?.name}
                               </p>
                               <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wider group-hover:text-primary transition-colors line-clamp-2">
@@ -273,7 +273,7 @@ export async function MainDashboardContent() {
                         <div className="pt-3 border-t border-border flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-                            <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                               {format(
                                 new Date(
                                   post.createdAt || "2026-01-20T10:00:00Z",
@@ -284,7 +284,7 @@ export async function MainDashboardContent() {
                           </div>
                           <Badge
                             variant="secondary"
-                            className="text-[10px] font-black px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground"
+                            className="text-[10px] font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground"
                           >
                             {post.readTime?.split(" ")[0]} min read
                           </Badge>

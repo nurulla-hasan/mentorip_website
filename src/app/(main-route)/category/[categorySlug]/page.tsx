@@ -54,7 +54,6 @@ export default async function DynamicCategoryPage({
 
   const category = res.data;
   const categoryPosts = category.posts || [];
-
   return (
     <div className="space-y-6">
       <CategoryHeader

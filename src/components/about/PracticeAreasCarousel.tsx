@@ -64,7 +64,7 @@ export function PracticeAreasCarousel() {
                 className="group/card relative p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all duration-500 text-center flex flex-col items-center justify-center gap-6 min-h-[180px] shadow-sm hover:shadow-xl h-full"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover/card:opacity-100 transition-opacity">
-                  <span className="text-3xl font-black text-foreground">
+                  <span className="text-3xl font-bold text-foreground">
                     {i + 1}
                   </span>
                 </div>
@@ -73,7 +73,7 @@ export function PracticeAreasCarousel() {
                   <practice.icon className="w-6 h-6" />
                 </div>
 
-                <p className="text-sm md:text-xl font-black text-foreground uppercase leading-tight max-w-[200px]">
+                <p className="text-sm md:text-xl font-bold text-foreground uppercase leading-tight max-w-[200px]">
                   {practice.name}
                 </p>
 

@@ -54,31 +54,31 @@ export function ContactForm() {
   };
 
   return (
-    <Card className="lg:sticky lg:top-24 border border-border bg-card rounded-[3rem] p-6 shadow-2xl relative overflow-hidden group/form">
+    <Card className="lg:sticky lg:top-24 border border-border bg-card rounded-3xl p-6 shadow-2xl relative overflow-hidden group/form">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-primary to-blue-600 opacity-50 transition-opacity group-hover/form:opacity-100" />
       
       <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
         <div className="space-y-1">
-          <h4 className="text-xl font-black text-foreground italic underline decoration-primary/20 underline-offset-4">Quick Inquiry</h4>
+          <h4 className="text-xl font-bold text-foreground uppercase tracking-tight">Quick Inquiry</h4>
           <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest">Typical response: Under 2 hours</p>
         </div>
         
         <div className="space-y-3">
           <div className="space-y-1.5">
-            <label htmlFor="name" className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground pl-1">Full Name *</label>
+            <label htmlFor="name" className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground pl-1">Full Name *</label>
             <Input 
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Your Name" 
-              className="rounded-2xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
+              className="rounded-xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
               required
             />
           </div>
           
           <div className="space-y-1.5">
-            <label htmlFor="email" className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground pl-1">Email Address *</label>
+            <label htmlFor="email" className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground pl-1">Email Address *</label>
             <Input 
               id="email"
               name="email"
@@ -86,13 +86,13 @@ export function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder="example@company.com" 
-              className="rounded-2xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
+              className="rounded-xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
               required
             />
           </div>
           
           <div className="space-y-1.5">
-            <label htmlFor="phone" className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground pl-1">Phone Number</label>
+            <label htmlFor="phone" className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground pl-1">Phone Number</label>
             <Input 
               id="phone"
               name="phone"
@@ -100,32 +100,32 @@ export function ContactForm() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="+880 1234 567 890" 
-              className="rounded-2xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
+              className="rounded-xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
             />
           </div>
           
           <div className="space-y-1.5">
-            <label htmlFor="subject" className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground pl-1">Subject *</label>
+            <label htmlFor="subject" className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground pl-1">Subject *</label>
             <Input 
               id="subject"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
               placeholder="IP Consultation Request" 
-              className="rounded-2xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
+              className="rounded-xl h-10 bg-muted border-border focus-visible:ring-primary text-sm" 
               required
             />
           </div>
           
           <div className="space-y-1.5">
-            <label htmlFor="message" className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground pl-1">Message *</label>
+            <label htmlFor="message" className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground pl-1">Message *</label>
             <Textarea 
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="How can we assist you with your IP matters?" 
-              className="rounded-2xl bg-muted border-border min-h-[120px] focus-visible:ring-primary p-3 text-sm" 
+              className="rounded-xl bg-muted border-border min-h-[120px] focus-visible:ring-primary p-3 text-sm" 
               required
             />
           </div>
@@ -133,7 +133,7 @@ export function ContactForm() {
           <Button 
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-2xl h-11 bg-primary font-black text-[10px] uppercase tracking-[0.3em] shadow-xl group/btn-send relative overflow-hidden disabled:opacity-50"
+            className="w-full rounded-xl h-11 bg-primary font-bold text-[10px] uppercase tracking-[0.3em] shadow-xl group/btn-send relative overflow-hidden disabled:opacity-50"
           >
             <span className="relative z-10 flex items-center gap-2">
               {isSubmitting ? "Sending..." : "Send Message"} 

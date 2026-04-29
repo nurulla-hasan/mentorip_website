@@ -10,7 +10,6 @@ interface PostCardProps {
   categorySlug: string;
   imageUrl?: string;
   tags?: string[];
-  author?: string;
   date?: string;
   readTime?: string;
   baseHref?: string;
@@ -23,7 +22,6 @@ export function PostCard({
   categorySlug,
   imageUrl,
   tags = [],
-  author = "MENTORIP, Bangladesh",
   date,
   readTime = "",
   baseHref = "category",
@@ -75,7 +73,7 @@ export function PostCard({
               height={25}
               className="object-cover rounded-full p-1 border bg-primary/20"
             />
-            <span className="font-medium truncate max-w-[120px]">{author}</span>
+            <span className="font-medium tracking-widest truncate uppercase">MENTORIP, Bangladesh</span>
             {date && (
               <div className="flex items-center gap-1 opacity-70">
                 <Calendar className="w-2.5 h-2.5" />

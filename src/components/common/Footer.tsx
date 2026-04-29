@@ -33,11 +33,11 @@ export function Footer() {
              { name: "USPTO", url: "https://www.uspto.gov/" },
              { name: "IP India", url: "https://ipindia.gov.bd/" }
            ].map((link) => (
-             <Link key={link.name} href={link.url} target="_blank" className="text-[10px] font-black text-muted-foreground hover:text-primary uppercase tracking-[0.2em] transition-colors">
+             <Link key={link.name} href={link.url} target="_blank" className="text-[10px] font-bold text-muted-foreground hover:text-primary uppercase tracking-[0.2em] transition-colors">
                {link.name}
              </Link>
            ))}
-           <Link href="/about#resources" className="text-[10px] font-black text-primary bg-primary/5 px-3 py-1.5 rounded-full uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all">
+           <Link href="/about#resources" className="text-[10px] font-bold text-primary bg-primary/5 px-3 py-1.5 rounded-full uppercase tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all">
              View All Resources
            </Link>
         </div>
@@ -46,7 +46,7 @@ export function Footer() {
         <div className="flex flex-col items-center md:items-end gap-2">
            <div className="flex items-center gap-2 group/credit cursor-pointer">
               <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">Created by</p>
-              <span className="text-[10px] font-black text-foreground uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
+              <span className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
                 SmartEdge Technologies
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
               </span>

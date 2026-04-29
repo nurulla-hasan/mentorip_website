@@ -112,7 +112,7 @@ export default async function ContactPage() {
              <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
                Get In Touch
              </Badge>
-             <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+             <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
                We are Here to Help. <span className="text-primary">Anytime, Anywhere</span>.
              </h1>
              <p className="text-sm text-muted-foreground font-medium max-w-2xl">
@@ -125,23 +125,23 @@ export default async function ContactPage() {
          <section className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left: Contact Info */} 
             <div className="lg:col-span-2 space-y-8">
-               <div className="space-y-4">
-                  <h2 className="text-xs font-black uppercase tracking-[0.4em] text-primary">OUR LOCATIONS</h2>
-                  <h3 className="text-3xl md:text-4xl font-black text-foreground">Global Liaison Offices</h3>
+               <div className="space-y-2">
+                  <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">OUR LOCATIONS</h2>
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground">Global Liaison Offices</h3>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {offices.map((office: { country: string; name: string; person: string; address: string; phone: string; email: string; icon: LucideIcon; color: string }, i: number) => (
-                     <Card key={i} className="group border-border bg-card rounded-[2.5rem] p-8 space-y-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden relative">
+                     <Card key={i} className="group border-border bg-card rounded-2xl p-5 space-y-4 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 overflow-hidden relative">
                         <div className={`absolute top-0 right-0 w-24 h-24 bg-${office.color}/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-700`} />
 
                         <div className="space-y-4 relative z-10">
                            <div className="flex items-center justify-between">
-                              <Badge variant="outline" className="border-primary/20 text-primary font-black text-[10px] uppercase px-3">{office.country}</Badge>
+                              <Badge variant="outline" className="border-primary/20 text-primary font-bold text-[10px] uppercase px-3">{office.country}</Badge>
                               <office.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                            </div>
                            <div className="space-y-1">
-                              <h4 className="text-lg font-black text-foreground">{office.name}</h4>
+                              <h4 className="text-lg font-bold text-foreground">{office.name}</h4>
                               <p className="text-xs font-bold text-muted-foreground">Key Person: {office.person}</p>
                            </div>
                            <p className="text-sm text-muted-foreground font-medium leading-relaxed">
@@ -164,7 +164,7 @@ export default async function ContactPage() {
 
                {/* Quick Connect & Socials */}
                <div className="grid grid-cols-1 gap-8">
-                  <Card className="rounded-[2.5rem] p-8 border-border bg-muted text-foreground relative overflow-hidden group shadow-sm dark:shadow-2xl">
+                  <Card className="rounded-2xl p-6 border-border bg-muted text-foreground relative overflow-hidden group shadow-sm dark:shadow-2xl">
                      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                      <div className="relative z-10 space-y-6">
                         <div className="flex items-center gap-4">
@@ -172,7 +172,7 @@ export default async function ContactPage() {
                               <MessageCircle className="w-6 h-6 text-primary animate-pulse" />
                            </div>
                            <div>
-                              <p className="text-lg font-black">Hotline & Socials</p>
+                              <p className="text-lg font-bold">Hotline & Socials</p>
                               <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Stay Connected 24/7</p>
                            </div>
                         </div>
@@ -182,7 +182,7 @@ export default async function ContactPage() {
                                  <div className="flex items-center gap-3">
                                     <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{hotline.label}</span>
                                  </div>
-                                 <p className="text-sm font-black text-primary">{hotline.value}</p>
+                                 <p className="text-sm font-bold text-primary">{hotline.value}</p>
                               </div>
                            ))}
                            {socialLinks.map((social: SocialLink, i: number) => {
@@ -210,11 +210,11 @@ export default async function ContactPage() {
          </section>
 
          {/* Trusted Banner */}
-         <section className="bg-muted rounded-[3rem] p-12 text-center relative overflow-hidden shadow-sm dark:shadow-2xl border border-border group">
+         <section className="bg-muted rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-sm dark:shadow-2xl border border-border group">
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] dark:opacity-0.05 pointer-events-none" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
             <div className="relative z-10 space-y-6">
-               <Badge variant="outline" className="border text-muted-foreground font-black uppercase tracking-widest text-xs px-4">Confidentiality Assured</Badge>
-               <h3 className="text-3xl font-black text-foreground">Committed to Protecting Your Corporate Secrets</h3>
+               <Badge variant="outline" className="border text-muted-foreground font-bold uppercase tracking-widest text-xs px-4">Confidentiality Assured</Badge>
+               <h3 className="text-3xl font-bold text-foreground">Committed to Protecting Your Corporate Secrets</h3>
                <p className="text-muted-foreground max-w-xl mx-auto font-medium">All communications are end-to-end encrypted and handled with boutique-level legal precision.</p>
             </div>
          </section>
