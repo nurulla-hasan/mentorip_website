@@ -68,7 +68,7 @@ export default async function DynamicPostPage({
       <header className="max-w-7xl mx-auto"> 
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <h1 className="text-lg md:text-2xl font-semibold text-foreground">
+            <h1 className="text-lg md:text-2xl font-bold text-foreground">
               {post.title}
             </h1>
             <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-muted-foreground">
@@ -96,7 +96,7 @@ export default async function DynamicPostPage({
       <div className="flex flex-col lg:flex-row gap-6 items-start max-w-7xl mx-auto">
         <article className="flex-1 min-w-0">
           <div
-            className="prose prose-slate dark:prose-invert prose-headings:scroll-mt-24 max-w-none mx-auto md:pb-[650px]"
+            className="prose prose-slate dark:prose-invert prose-headings:scroll-mt-24 max-w-none mx-auto md:pb-[650px] prose-h1:text-xl prose-h1:md:text-3xl prose-h1:font-bold"
             dangerouslySetInnerHTML={{ __html: processedHtml }}
           />
         </article>
@@ -104,7 +104,7 @@ export default async function DynamicPostPage({
         <aside className="w-full lg:w-[320px] shrink-0 space-y-6 sticky top-24">
           <div className="space-y-6">
             {toc.length > 0 && (
-              <div className="hidden lg:block">
+              <div className="hidden sm:block">
                 <TableOfContents toc={toc} />
               </div>
             )}
