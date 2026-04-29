@@ -16,7 +16,7 @@ import {
   FileText,
   Activity,
   Award,
-  ChevronRight
+//   ChevronRight
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -84,38 +84,18 @@ const processes = [
 export default function ServicesPage() {
   return (
     <div className="pb-6 space-y-10">
-      {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-muted">
-           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-primary/20 dark:via-background dark:to-background" />
-           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-           {/* Animated Mesh Effect */}
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle at 50% 120%, rgba(var(--color-primary-rgb) / 0.5), transparent 50%)",
-                }}
-           />
-        </div>
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-10">
-          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
+      {/* Compact Page Header */}
+      <section className="py-8 border-b border-border/50 mb-4">
+        <div className="flex flex-col items-start space-y-3 max-w-4xl">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             Expertise & Solutions
           </Badge>
-          <h1 className="text-xl md:text-6xl font-black text-foreground group-hover/hero:scale-[1.01] transition-transform duration-700">
-            COMPREHENSIVE <span className="text-primary">IP</span>,<br /> 
-            FOUNDED ON <span className="text-primary">PRECISION</span>.
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+            Comprehensive <span className="text-primary">Intellectual Property</span> Services.
           </h1>
-          <p className="text-xl text-muted-foreground font-medium leading-relaxed max-w-2xl">
-            &quot;Navigating the legal landscape to protect your most valuable assets with global standards.&quot;
+          <p className="text-sm text-muted-foreground font-medium max-w-2xl">
+            Boutique administrative precision and global standards protecting your most valuable corporate assets.
           </p>
-          <div className="flex gap-4">
-             <Button size="lg" className="rounded-full px-10 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-xl group/btn overflow-hidden relative active:scale-95 transition-all cursor-default">
-                <span className="relative z-10 flex items-center gap-2">Explore Services <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" /></span>
-                <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/80 to-primary bg-size-[200%_100%] animate-gradient-x opacity-0 group-hover/btn:opacity-100 transition-opacity" />
-             </Button>
-          </div>
         </div>
       </section>
 

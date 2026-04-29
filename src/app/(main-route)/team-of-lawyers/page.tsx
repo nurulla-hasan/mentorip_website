@@ -2,7 +2,7 @@
 import { 
   Users, 
   ShieldCheck, 
-  Sparkles,
+  // Sparkles,
   Briefcase,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -71,30 +71,17 @@ export default async function TeamOfLawyers() {
 
   return (
     <div className="pb-8 space-y-12">
-      {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-muted">
-           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-primary/20 dark:via-background dark:to-background" />
-           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle at 50% 120%, rgba(var(--color-primary-rgb) / 0.5), transparent 50%)",
-                }}
-           />
-        </div>
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-6">
-          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
-            Our Professionals <Sparkles className="w-3 h-3 ml-2" />
+      {/* Compact Page Header */}
+      <section className="py-8 border-b border-border/50 mb-4">
+        <div className="flex flex-col items-start space-y-3 max-w-4xl">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
+            Our Elite Team
           </Badge>
-          <h1 className="text-3xl md:text-6xl font-black text-foreground">
-            THE <span className="text-primary">EXPERTISE</span><br /> 
-            BEHIND <span className="text-primary">MENTORIP</span>.
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+            Specialists and Support Staff Protecting <span className="text-primary">Your IP</span>.
           </h1>
-          <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-2xl">
-            &quot;A collaborative team of elite attorneys, specialists, and support staff dedicated to your intellectual interests.&quot;
+          <p className="text-sm text-muted-foreground font-medium max-w-2xl">
+            A collaborative ecosystem of specialized IP attorneys operating globally with boutique legal precision.
           </p>
         </div>
       </section>

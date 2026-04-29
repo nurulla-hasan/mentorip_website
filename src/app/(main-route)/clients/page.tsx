@@ -13,7 +13,7 @@ import {
   Factory,
   MapPin,
   ChevronRight,
-  Sparkles,
+  // Sparkles,
   Award,
   BarChart3,
   LucideIcon,
@@ -129,30 +129,17 @@ export default async function ClientsPage() {
   ];
   return (
     <div className="pb-8 space-y-12">
-      {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-muted">
-           <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent dark:from-primary/20 dark:via-background dark:to-background" />
-           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-           <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle at 50% 120%, rgba(var(--color-primary-rgb) / 0.5), transparent 50%)",
-                }}
-           />
-        </div>
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-8 md:space-y-10">
-          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
-            Global Partnerships <Sparkles className="w-3 h-3 ml-2" />
+      {/* Compact Page Header */}
+      <section className="py-8 border-b border-border/50 mb-4">
+        <div className="flex flex-col items-start space-y-3 max-w-4xl">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
+            Global Partnerships
           </Badge>
-          <h1 className="text-xl md:text-6xl font-black text-foreground group-hover/hero:scale-[1.01] transition-transform duration-700">
-            TRUSTED BY <span className="text-primary">THOUSANDS</span>,<br /> 
-            VALUED BY <span className="text-primary">GLOBAL LEADERS</span>.
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+            Trusted by Innovators & <span className="text-primary">Global Leaders</span>.
           </h1>
-          <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-2xl">
-            &quot;Your innovation is our priority. Join the elite circle of clients who trust MentorIP.&quot;
+          <p className="text-sm text-muted-foreground font-medium max-w-2xl">
+            Boutique corporate security protecting multinational and domestic brands across multiple jurisdictions.
           </p>
         </div>
       </section>

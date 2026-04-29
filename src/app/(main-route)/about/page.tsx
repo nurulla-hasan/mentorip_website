@@ -70,34 +70,18 @@ export default async function AboutPage() {
 
   return (
     <div className="pb-12 space-y-16">
-      {/* Hero Section */}
-      <section className="relative md:h-[500px] py-8 md:py-0 rounded-4xl md:rounded-[3rem] overflow-hidden border border-border group/hero shadow-2xl">
-        <div className="absolute inset-0 bg-muted">
-          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent dark:from-primary/20 dark:via-background dark:to-background" />
-          <div
-            className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-            style={{
-              backgroundImage: "radial-gradient(#000 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-          <div
-            className="absolute inset-0 opacity-0 group-hover/hero:opacity-20 transition-opacity duration-1000"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 50% 120%, rgba(var(--color-primary-rgb) / 0.5), transparent 50%)",
-            }}
-          />
-        </div>
-
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-6 max-w-4xl mx-auto space-y-8 md:space-y-10">
-          <Badge className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 backdrop-blur-md px-5 py-2 uppercase tracking-[0.3em] font-black text-xs rounded-full">
+      {/* Compact Page Header */}
+      <section className="py-8 border-b border-border/50 mb-4">
+        <div className="flex flex-col items-start space-y-3 max-w-4xl">
+          <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             The MentorIP Story
           </Badge>
-          <h1 className="text-xl md:text-6xl font-black text-foreground md:leading-[0.9] group-hover/hero:scale-[1.01] transition-transform duration-700">
-            PROTECTING <span className="text-primary italic">IDEAS</span>.<br />
-            EMPOWERING <span className="text-primary">BRANDS</span>.
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight tracking-tight">
+            Protecting <span className="text-primary italic">Ideas</span>. Empowering <span className="text-primary">Brands</span>.
           </h1>
+          <p className="text-sm text-muted-foreground font-medium max-w-2xl">
+            Discover MentorIP&apos;s history, global expertise, and our commitment to administrative precision in IP law.
+          </p>
         </div>
       </section>
 
