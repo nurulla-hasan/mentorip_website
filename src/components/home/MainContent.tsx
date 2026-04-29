@@ -40,7 +40,7 @@ export async function MainDashboardContent() {
             >
               <Card className="rounded-2xl group cursor-pointer p-4 gap-4 overflow-hidden">
                 {/* Visual Header */}
-                <div className="relative aspect-24/8 w-full rounded-xl overflow-hidden shadow-xl shadow-primary/10">
+                <div className="relative aspect-16/10 md:aspect-24/8 w-full rounded-xl overflow-hidden shadow-xl shadow-primary/10">
                   {heroPost.coverImage ? (
                     <>
                       <Image
