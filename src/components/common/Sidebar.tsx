@@ -5,10 +5,11 @@ import { useMemo } from "react";
 import { Separator } from "../ui/separator";
 import { DynamicIcon } from "./DynamicIcon";
 import type { Category } from "@/types/category.type";
+import { sortCategories } from "@/lib/utils";
 
 export function Sidebar({ initialCategories = [] }: { initialCategories?: Category[] }) {
   const pathname = usePathname();
-  const categories = initialCategories;
+  const categories = useMemo(() => sortCategories(initialCategories), [initialCategories]);
 
   const sidebarCategories = useMemo(() => {
     return [
@@ -34,9 +35,9 @@ export function Sidebar({ initialCategories = [] }: { initialCategories?: Catego
               <Link 
                 key={i} 
                 href={href} 
-                className={`text-sm py-2 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 tracking-wider  ${
+                className={`text-base font-semibold py-2.5 px-4 rounded-md transition-all group flex items-center justify-between border-l-4 tracking-wider  ${
                   isActive
-                    ? "bg-primary/10 text-primary font-semibold border-primary" 
+                    ? "bg-primary/10 text-primary font-bold border-primary" 
                     : "text-muted-foreground hover:bg-primary/5 hover:text-primary border-transparent hover:border-primary"
                 }`}
               >

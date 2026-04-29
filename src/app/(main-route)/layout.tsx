@@ -17,10 +17,10 @@ export default async function MainRouteLayout({
       <Navbar initialCategories={initialCategories} />
       
       <div className="flex-1 flex flex-col">
-        <main className="max-w-[1920px] mx-auto w-full px-4 py-8 flex-1">
+        <main className="max-w-[1920px] mx-auto w-full px-4 flex-1 mt-4 md:mt-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Left Sidebar - Desktop only here, Mobile in Navbar Sheet */}
-            <div className="hidden lg:block w-[280px] shrink-0">
+            <div className="hidden lg:block w-65 shrink-0">
               <div className="sticky top-24">
                 <Sidebar initialCategories={initialCategories} />
               </div>

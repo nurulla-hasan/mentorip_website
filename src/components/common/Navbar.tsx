@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sidebar } from "@/components/common/Sidebar";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
   SheetContent,
@@ -92,8 +91,8 @@ export function Navbar({
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] p-0 flex flex-col">
-                <SheetHeader className="p-6 border-b shrink-0">
+              <SheetContent side="left" className="w-[300px] flex flex-col">
+                <SheetHeader className="border-b shrink-0">
                   <SheetTitle className="text-left font-bold text-primary">
                     MENTOR IP
                   </SheetTitle>
@@ -102,7 +101,7 @@ export function Navbar({
                   defaultValue="menu"
                   className="w-full flex flex-col flex-1"
                 >
-                  <div className="px-4 py-3 border-b shrink-0">
+                  <div className="px-4 pb-4 border-b shrink-0">
                     <TabsList className="grid w-full grid-cols-2">
                       <TabsTrigger value="menu">Navigation</TabsTrigger>
                       <TabsTrigger value="categories">Categories</TabsTrigger>
@@ -161,10 +160,8 @@ export function Navbar({
                         </Link>
                       )}
                     </TabsContent>
-                    <TabsContent value="categories" className="mt-0">
-                      <ScrollArea className="overflow-y-auto h-[calc(100vh-200px)]">
-                        <Sidebar initialCategories={initialCategories} />
-                      </ScrollArea>
+                    <TabsContent value="categories">
+                      <Sidebar initialCategories={initialCategories} />
                     </TabsContent>
                   </div>
                 </Tabs>

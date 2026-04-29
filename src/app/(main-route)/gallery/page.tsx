@@ -16,7 +16,7 @@ async function GalleryPage() {
   console.log(response)
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 pt-0 pb-12">
       <GalleryClient images={images} />
 
       {images.length === 0 && (

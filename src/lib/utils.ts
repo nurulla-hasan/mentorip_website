@@ -69,3 +69,34 @@ export const generateSlug = (title: string) => {
     .replace(/[\s_-]+/g, "-") // Replace spaces/underscores with -
     .replace(/^-+|-+$/g, ""); // Always remove leading and trailing hyphens
 };
+
+// Sort Categories based on specific client requirements
+export const sortCategories = <T extends { name: string }>(categories: T[]): T[] => {
+  const desiredOrder = [
+    "Trademark Bangladesh",
+    "Patent Bangladesh",
+    "Design Bangladesh",
+    "Renewals",
+    "Litigation",
+    "IPR Enforcement",
+    "Case Study",
+    "IP News",
+    "Utility Model",
+    "Journal",
+    "IP Laws and Rules"
+  ];
+
+  return [...categories].sort((a, b) => {
+    const nameA = a.name.toLowerCase().trim();
+    const nameB = b.name.toLowerCase().trim();
+    
+    const indexA = desiredOrder.findIndex(item => item.toLowerCase().trim() === nameA);
+    const indexB = desiredOrder.findIndex(item => item.toLowerCase().trim() === nameB);
+    
+    if (indexA === -1 && indexB === -1) return 0;
+    if (indexA === -1) return 1;
+    if (indexB === -1) return -1;
+    
+    return indexA - indexB;
+  });
+};

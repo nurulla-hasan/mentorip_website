@@ -107,7 +107,7 @@ export default async function ContactPage() {
    return (
       <div className="pb-16 space-y-16">
          {/* Compact Page Header */}
-         <section className="py-8 border-b border-border/50 mb-4">
+         <section className="pt-0 pb-8 border-b border-border/50 mb-4">
            <div className="flex flex-col items-start space-y-3 max-w-4xl">
              <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
                Get In Touch
