@@ -12,6 +12,7 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { sortCategories } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "MentorIP | Global Intellectual Property Law Firm in Bangladesh",
@@ -43,6 +44,34 @@ export default async function Home() {
 
   return (
     <div className="space-y-12 focus:outline-none">
+      {/* Mobile/Tablet Hero Section (Full-bleed Hero) */}
+      <div className="xl:hidden -mx-4 -mt-4 md:-mx-8 md:-mt-8 px-6 py-12 bg-linear-to-b from-primary/15 via-primary/5 to-transparent flex flex-col gap-5 relative overflow-hidden border-b border-primary/20">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+        
+        <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-widest">
+          Welcome to MentorIP
+        </span>
+        <h1 className="text-2xl md:text-4xl font-black text-foreground leading-tight tracking-wide uppercase">
+          Protecting your <span className="text-primary">Ideas</span>.<br />Empowering your <span className="text-primary">Brands</span>.
+        </h1>
+        <p className="text-xs md:text-sm text-muted-foreground font-medium leading-relaxed max-w-xl">
+          Premier international Intellectual Property law firm. We secure your innovations, trademarks, and creative works globally with boutique precision.
+        </p>
+        <div className="flex gap-3 mt-2 max-w-md">
+          <Link href="/contact" className="flex-1">
+            <Button className="w-full">
+              Get Started
+            </Button>
+          </Link>
+          <Link href="/services" className="flex-1">
+            <Button variant="outline" className="w-full">
+              Our Services
+            </Button>
+          </Link>
+        </div>
+      </div>
+
       {/* Top Hero Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Main Hero Section - Takes up 2 columns */}
@@ -101,7 +130,7 @@ export default async function Home() {
 
                 <CardContent className="px-1 py-1 gap-2.5 flex flex-col">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-lg md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors tracking-tight line-clamp-2 max-w-3xl">
+                    <h2 className="text-lg md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors tracking-wider line-clamp-2 max-w-3xl">
                       {heroPost.title}
                     </h2>
                   </div>

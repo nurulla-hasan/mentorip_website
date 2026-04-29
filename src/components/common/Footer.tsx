@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Linkedin, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -26,14 +26,11 @@ export function Footer() {
               A premier international Intellectual Property law firm protecting ideas and empowering brands with administrative precision.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="https://facebook.com" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
+              <Link href="https://www.facebook.com/mentoripofficial/" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
                 <Facebook className="w-4 h-4" />
               </Link>
-              <Link href="https://linkedin.com" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
+              <Link href="https://www.linkedin.com/in/mentorip/" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
                 <Linkedin className="w-4 h-4" />
-              </Link>
-              <Link href="https://twitter.com" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
-                <Twitter className="w-4 h-4" />
               </Link>
             </div>
           </div>
