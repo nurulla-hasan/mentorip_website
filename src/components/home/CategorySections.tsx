@@ -28,7 +28,7 @@ export async function CategorySection({ categorySlug }: CategorySectionProps) {
               {category.name}
             </h2>
           </div>
-          <p className="text-sm text-muted-foreground max-w-3xl">
+          <p className="text-md text-muted-foreground max-w-3xl">
             {category.description}
           </p>
         </div>

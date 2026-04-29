@@ -107,7 +107,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                 </Badge>
               </div>
 
-              <h3 className="text-sm font-semibold tracking-wider text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors flex-1">
+              <h3 className="text-md font-semibold tracking-wider text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors flex-1">
                 {post.title}
               </h3>
 

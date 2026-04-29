@@ -19,7 +19,7 @@ export async function LatestNews() {
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             Latest <span className="text-primary">News</span>
           </h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-md text-muted-foreground">
             Recent publications and critical legal updates from our experts.
           </p>
         </div>
