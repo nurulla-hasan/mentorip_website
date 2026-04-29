@@ -128,7 +128,7 @@ export default async function ClientsPage() {
     "Bangladesh", "India", "Pakistan", "Afghanistan", "Nepal", "China", "Thailand", "Malaysia", "Singapore", "UAE", "UK", "EU"
   ];
   return (
-    <div className="pb-8 space-y-12">
+    <div className="pb-16 space-y-16">
       {/* Compact Page Header */}
       <section className="py-8 border-b border-border/50 mb-4">
         <div className="flex flex-col items-start space-y-3 max-w-4xl">

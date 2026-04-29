@@ -83,7 +83,7 @@ const processes = [
 
 export default function ServicesPage() {
   return (
-    <div className="pb-6 space-y-10">
+    <div className="pb-16 space-y-16">
       {/* Compact Page Header */}
       <section className="py-8 border-b border-border/50 mb-4">
         <div className="flex flex-col items-start space-y-3 max-w-4xl">
