@@ -57,11 +57,11 @@ export function PostCard({
             </div>
           )}
 
-          <h3 className="text-base font-semibold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2 tracking-wider">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2 tracking-wider">
             {title}
           </h3>
 
-          <p className="text-xs text-muted-foreground line-clamp-2 mb-4 flex-1 leading-relaxed">
+          <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1 tracking-wider">
             {excerpt}
           </p>
 

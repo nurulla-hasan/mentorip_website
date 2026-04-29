@@ -98,7 +98,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm font-medium text-muted-foreground leading-relaxed">
-                  Jiban Bima Bhaban (1st Floor), 121 Motijheel Commercial Area, Dhaka-1000, Bangladesh.
+                  Suit#501, Concord Tower 113 Kazi Nazrul Islam Avenue, Dhaka-1000 Bangladesh.
                 </span>
               </li>
               <li className="flex items-center gap-3">
