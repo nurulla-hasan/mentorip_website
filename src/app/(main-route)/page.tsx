@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const response = await getAllPosts({ page: "1", limit: "5" });
+  const response = await getAllPosts({ page: "1", limit: "5", isFeatured: "true" });
   const allPosts = response?.success ? response.data : [];
 
   const catResponse = await getAllCategories();
