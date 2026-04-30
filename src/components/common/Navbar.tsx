@@ -267,60 +267,62 @@ export function Navbar({
             </span>
           </button>
 
-          <CommandDialog 
-            open={searchDialogOpen} 
-            onOpenChange={setSearchDialogOpen}
-            className="bg-background/95 backdrop-blur-md border border-primary/20 shadow-2xl"
-          >
-            <CommandInput 
-              placeholder="Search across all intellectual property assets..." 
-              value={searchQuery}
-              onValueChange={(v) => setSearchQuery(v)}
-              className="font-medium tracking-wide placeholder:text-muted-foreground/60 focus:ring-primary/20"
-            />
-            <CommandList className="scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent p-2">
-              <CommandEmpty className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide">
-                No legal resources match your search.
-              </CommandEmpty>
-              
-              {searchQuery.trim() !== "" && (
-                <CommandGroup heading="Intellectual Property Articles">
-                  {allPosts.map((post: any) => (
-                    <CommandItem
-                      key={post.slug}
-                      value={post.title}
-                      onSelect={() => {
-                        router.push(`/category/${post.category?.slug || "all"}/${post.slug}`);
-                        setSearchDialogOpen(false);
-                      }}
-                      className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-xl transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
-                    >
-                      {post.coverImage && (
-                        <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted/50 border border-border/50">
-                          <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                        </div>
-                      )}
-                      <div className="flex flex-col gap-1 flex-1 min-w-0">
-                        <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate tracking-wide leading-tight">
-                          {post.title}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-black text-primary/80 uppercase tracking-widest bg-primary/5 px-1.5 py-0.5 rounded">
-                            {post.category?.name || "Uncategorized"}
+          {mounted && (
+            <CommandDialog 
+              open={searchDialogOpen} 
+              onOpenChange={setSearchDialogOpen}
+              className="bg-background/95 backdrop-blur-md border border-primary/20 shadow-2xl"
+            >
+              <CommandInput 
+                placeholder="Search across all intellectual property assets..." 
+                value={searchQuery}
+                onValueChange={(v) => setSearchQuery(v)}
+                className="font-medium tracking-wide placeholder:text-muted-foreground/60 focus:ring-primary/20"
+              />
+              <CommandList className="scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent p-2">
+                <CommandEmpty className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide">
+                  No legal resources match your search.
+                </CommandEmpty>
+                
+                {searchQuery.trim() !== "" && (
+                  <CommandGroup heading="Intellectual Property Articles">
+                    {allPosts.map((post: any) => (
+                      <CommandItem
+                        key={post.slug}
+                        value={post.title}
+                        onSelect={() => {
+                          router.push(`/category/${post.category?.slug || "all"}/${post.slug}`);
+                          setSearchDialogOpen(false);
+                        }}
+                        className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-xl transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
+                      >
+                        {post.coverImage && (
+                          <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted/50 border border-border/50">
+                            <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                          </div>
+                        )}
+                        <div className="flex flex-col gap-1 flex-1 min-w-0">
+                          <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate tracking-wide leading-tight">
+                            {post.title}
                           </span>
-                          {post.readTime && (
-                            <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
-                              • {post.readTime.split(" ")[0]} Min read
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-black text-primary/80 uppercase tracking-widest bg-primary/5 px-1.5 py-0.5 rounded">
+                              {post.category?.name || "Uncategorized"}
                             </span>
-                          )}
+                            {post.readTime && (
+                              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
+                                • {post.readTime.split(" ")[0]} Min read
+                              </span>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              )}
-            </CommandList>
-          </CommandDialog>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                )}
+              </CommandList>
+            </CommandDialog>
+          )}
           {/* User Dropdown */}
           {mounted ? (
             <DropdownMenu>

@@ -1,7 +1,7 @@
 
 import { Metadata } from "next";
 import { getAllPosts } from "@/services/post";
-import { getAllCategories } from "@/services/category";
+import { getAllCategories, getCategoryBySlug } from "@/services/category";
 import { LatestNews } from "@/components/home/LatestNews";
 import { CategorySection } from "@/components/home/CategorySections";
 import Link from "next/link";
@@ -32,11 +32,26 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const response = await getAllPosts({ page: "1", limit: "5" });
-  const allPosts = response?.success ? response.data : [];
+  // Fetch initial global data in parallel
+  const [response, catResponse] = await Promise.all([
+    getAllPosts({ page: "1", limit: "5" }),
+    getAllCategories(),
+  ]);
 
-  const catResponse = await getAllCategories();
+  const allPosts = response?.success ? response.data : [];
   const allCategories = catResponse?.success ? sortCategories(catResponse.data) : [];
+
+  // Fetch all category-specific posts in parallel to speed up build
+  const categoriesWithPosts = await Promise.all(
+    allCategories.map(async (category) => {
+      const res = await getCategoryBySlug(category.slug, { limit: "10" });
+      return {
+        slug: category.slug,
+        data: res?.success ? res.data : null,
+        _id: category._id
+      };
+    })
+  );
 
   const heroPost = allPosts[0];
   const widePost = allPosts[1];
@@ -325,8 +340,12 @@ export default async function Home() {
 
       {/* Category Specific Sections */}
       <div className="space-y-4">
-        {allCategories.map((category) => (
-          <CategorySection key={category._id} categorySlug={category.slug} />
+        {categoriesWithPosts.map((cat) => (
+          <CategorySection 
+            key={cat._id} 
+            categorySlug={cat.slug} 
+            category={cat.data} 
+          />
         ))}
       </div>
     </div>

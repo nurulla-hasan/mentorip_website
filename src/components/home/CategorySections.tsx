@@ -1,21 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getCategoryBySlug } from "@/services/category";
 import { CategoryCarousel } from "./CategoryCarousel";
 
 interface CategorySectionProps {
+  category: any; // Using any for now to match current types
   categorySlug: string;
 }
 
-export async function CategorySection({ categorySlug }: CategorySectionProps) {
-  const response = await getCategoryBySlug(categorySlug, { limit: "10" });
+export function CategorySection({ category, categorySlug }: CategorySectionProps) {
+  if (!category) return null;
 
-  if (!response?.success || !response.data) return null;
-
-  const category = response.data;
   const categoryPosts = category.posts || [];
-  console.log(categoryPosts);
 
   return (
     <section className="py-12 space-y-8">
