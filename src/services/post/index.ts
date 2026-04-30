@@ -10,7 +10,7 @@ export const getAllPosts = async (
 ) => {
   try {
     return await serverFetch(`/post${buildQueryString(query)}`, {
-      revalidate: 3600,
+      revalidate: 86400,
       isPublic: true,
     });
   } catch {
