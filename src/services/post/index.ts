@@ -9,7 +9,7 @@ export const getAllPosts = async (
   query: Record<string, string | string[] | undefined> = {}
 ) => {
   try {
-    return await serverFetch(`/post${buildQueryString(query)}`, {
+    return await serverFetch<any>(`/post${buildQueryString(query)}`, {
       revalidate: 86400,
       isPublic: true,
       tags: ["POST-LIST"],
