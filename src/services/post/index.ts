@@ -12,6 +12,7 @@ export const getAllPosts = async (
     return await serverFetch(`/post${buildQueryString(query)}`, {
       revalidate: 86400,
       isPublic: true,
+      tags: ["POST-LIST"],
     });
   } catch {
     return {
