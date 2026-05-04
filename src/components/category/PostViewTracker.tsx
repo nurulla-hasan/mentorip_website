@@ -1,13 +1,35 @@
 'use client';
 
-import { useEffect } from 'react';
-import { trackPostView } from '@/services/post';
+import { useEffect, useRef } from 'react';
 
-export default function PostViewTracker({ slug }: { slug: string }) {
+export default function PostViewTracker({ postId }: { postId: string }) {
+  const trackedRef = useRef(false);
+
   useEffect(() => {
-    // We don't await here because it's a side effect and we don't want to block anything
-    trackPostView(slug);
-  }, [slug]);
+    // Prevent double tracking in development (Strict Mode)
+    if (trackedRef.current) return;
+
+    const trackView = async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_API;
+        if (!baseUrl || !postId) return;
+
+        const res = await fetch(`${baseUrl}/post/${postId}/view`, {
+          method: 'POST',
+        });
+        
+        if (res.ok) {
+          trackedRef.current = true;
+        }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        // Silently fail to keep console clean
+      }
+
+    };
+
+    trackView();
+  }, [postId]);
 
   return null;
 }

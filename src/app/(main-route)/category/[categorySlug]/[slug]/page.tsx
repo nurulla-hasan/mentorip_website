@@ -64,7 +64,7 @@ export default async function DynamicPostPage({
 
   return (
     <div className="space-y-8">
-      <PostViewTracker slug={slug} />
+      <PostViewTracker postId={post._id} />
       <header className="max-w-7xl mx-auto"> 
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
