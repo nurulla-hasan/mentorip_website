@@ -28,8 +28,26 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Clients & Global Reach | MentorIP",
-  description: "MentorIP represents a prestigious global clientele across various industries including Tech, Fashion, Pharma, and more in multiple jurisdictions.",
-  keywords: ["MentorIP Clients", "Global IP Jurisdictions", "Industries We Serve", "IP Law Partnerships"],
+  description:
+    "MentorIP represents a prestigious global clientele across various industries including Tech, Fashion, Pharma, Automotive, and more in multiple jurisdictions worldwide.",
+  keywords: [
+    "MentorIP Clients",
+    "Global IP Jurisdictions",
+    "Industries We Serve",
+    "IP Law Partnerships",
+    "Multinational IP Clients Bangladesh",
+  ],
+  openGraph: {
+    title: "Our Clients & Global Reach | MentorIP",
+    description:
+      "Trusted by global innovators and leaders across Tech, Fashion, Pharma, and more.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Clients | MentorIP",
+    description:
+      "Prestigious global clientele across multiple industries and jurisdictions.",
+  },
 };
 
 interface Client {

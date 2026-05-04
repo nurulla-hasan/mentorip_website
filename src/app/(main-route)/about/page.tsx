@@ -15,14 +15,26 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | MentorIP - Our Story & Global Expertise",
   description:
-    "Discover MentorIP's history, leadership under Barrister Shaleh Akram, and our international network of liaison offices protecting IP rights globally.",
+    "Discover MentorIP's history, leadership under Barrister Shaleh Akram, and our international network of liaison offices protecting IP rights globally since 2000.",
   keywords: [
     "About MentorIP",
-    "IP Law History",
+    "IP Law History Bangladesh",
     "Barrister Shaleh Akram",
-    "Intellectual Property Experts",
+    "Intellectual Property Experts Bangladesh",
     "Global IP Network",
+    "IP Law Firm History",
   ],
+  openGraph: {
+    title: "About MentorIP | Our Story & Global IP Expertise",
+    description:
+      "25+ years of protecting ideas and empowering brands globally. Meet our founder Barrister Shaleh Akram.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About MentorIP | Our Story & Global IP Expertise",
+    description:
+      "25+ years of protecting ideas and empowering brands globally.",
+  },
 };
 
 const timeline = [

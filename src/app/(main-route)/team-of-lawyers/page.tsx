@@ -15,8 +15,26 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Team | MentorIP - Elite Attorneys & IP Specialists",
-  description: "Meet the collaborative team of elite attorneys, specialists, and support staff at MentorIP, dedicated to protecting your intellectual interests globally.",
-  keywords: ["MentorIP Team", "IP Attorneys Bangladesh", "Legal Specialists", "IP Law Experts"],
+  description:
+    "Meet the collaborative team of elite attorneys, specialists, and support staff at MentorIP, led by Barrister Shaleh Akram, dedicated to protecting your intellectual interests globally.",
+  keywords: [
+    "MentorIP Team",
+    "IP Attorneys Bangladesh",
+    "Legal Specialists Dhaka",
+    "IP Law Experts Bangladesh",
+    "Barrister Shaleh Akram Team",
+  ],
+  openGraph: {
+    title: "Our Team | MentorIP - Elite IP Attorneys",
+    description:
+      "Meet MentorIP's elite team of IP attorneys and specialists protecting your innovations globally.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Team | MentorIP",
+    description:
+      "Elite IP attorneys and specialists at MentorIP.",
+  },
 };
 import { Key } from "react";
 
