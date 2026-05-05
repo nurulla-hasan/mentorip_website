@@ -412,7 +412,7 @@ export default async function AboutPage() {
           <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-bold text-[10px] px-4 py-1.5 rounded-full">
             OUR ACHIEVEMENTS
           </Badge>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground">Landmark <span className="text-primary italic">Wins</span></h3>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">Landmark <span className="text-primary">Wins</span></h3>
           <p className="text-muted-foreground max-w-2xl mx-auto font-medium">Extraordinary legal battles that defined our commitment to justice.</p>
         </div>
 
@@ -521,7 +521,7 @@ export default async function AboutPage() {
           </Badge>
           <h3 className="text-3xl md:text-4xl font-bold text-foreground">
             Important{" "}
-            <span className="text-primary italic font-serif">Resources</span>
+            <span className="text-primary">Resources</span>
           </h3>
           <p className="text-muted-foreground max-w-2xl mx-auto font-medium">
             Quick access to official intellectual property departments and
