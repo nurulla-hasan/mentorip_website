@@ -12,7 +12,6 @@ export const getAllPosts = async (
     return await serverFetch<any>(`/post${buildQueryString(query)}`, {
       revalidate: 86400,
       isPublic: true,
-      tags: ["POST-LIST"],
     });
   } catch {
     return {
@@ -42,6 +41,7 @@ export const trackPostView = async (slug: string): Promise<any> => {
   try {
     return await serverFetch(`/post/${slug}/view`, {
       method: "POST",
+      isPublic: true,
     });
   } catch (error: unknown) {
     const message =

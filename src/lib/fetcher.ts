@@ -31,7 +31,7 @@ export const serverFetch = async <T = any>(
     body: rawBody,
     headers,
     method = "GET",
-    revalidate,
+    revalidate = 300,
     updateTag: tagsToInvalidate,
     invalidateMode = "updateTag",
     tags,

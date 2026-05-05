@@ -8,7 +8,6 @@ export const getAllGallery = async () => {
   try {
     const result = await serverFetch('/gallery/retrieve', {
       method: 'GET',
-      revalidate: 86400,
       isPublic: true,
     });
     return result;
