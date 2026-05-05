@@ -2,6 +2,8 @@ import {
   Phone,
   ExternalLink,
   ChevronRight,
+  Zap,
+  Shield,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +12,8 @@ import { PracticeAreasCarousel } from "@/components/about/PracticeAreasCarousel"
 import Image from "next/image";
 import Link from "next/link";
 import { getWhoWeAre } from "@/services/about";
+import fs from "fs";
+import path from "path";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,24 +43,24 @@ export const metadata: Metadata = {
 
 const timeline = [
   {
-    year: "2000",
-    title: "The Foundation",
-    desc: "Founded under the name 'Law & Legal' by Dr. Qumrul Hossain, specializing in domestic pharmaceutical law.",
-  },
-  {
-    year: "2008",
-    title: "Modern Era",
-    desc: "Mr. Reagan joins the firm, introducing global IP standards and international vision.",
+    year: "2011",
+    title: "Foundation",
+    desc: "Barrister Shaleh Akram Somrat started mentorIP. His IP passion traces back to an LL.M. paper at Dhaka University: “Use of Future IP Law Mechanisms as a Corporate Political Instrument.” Unusual title, unusual thinker.",
   },
   {
     year: "2015",
+    title: "Modern Era",
+    desc: "He pushed for global IP standards. Started writing for newspapers and Springer International. Topics ranged from Brexit to software patents. Fourteen articles so far. Not a huge number, but the range impresses more than the count.",
+  },
+  {
+    year: "2018",
     title: "Transformation",
-    desc: "Acquired and rebranded as MentorIP Law Firm, shifting focus exclusively to Intellectual Property.",
+    desc: "Acquired and rebranded as MentorIP Law Firm—now pure IP focus. He also wrote a book: “The Fundamentals of Legal Drafting and Conveyancing.” Practical, not just theory.",
   },
   {
     year: "2024",
-    title: "Present Day",
-    desc: "Recognized as a premier international IP firm with liaison offices in 5+ countries.",
+    title: "Present",
+    desc: "Liaison offices in 5+ countries. Akram handles patents, litigation, and MNC trust.",
   },
 ];
 
@@ -79,6 +83,69 @@ export default async function AboutPage() {
         { label: "Global Associates", value: "350+" },
         { label: "Success Rate", value: "99%" },
       ];
+
+  const resourceList = [
+    {
+      name: "DPDT",
+      full: "Department of Patents, Designs and Trademarks",
+      url: "https://dpdt.gov.bd/",
+      logo: "/resources/dpdt.png"
+    },
+    {
+      name: "Copyright Office",
+      full: "Copyright Office Bangladesh",
+      url: "https://copyrightoffice.gov.bd/",
+      logo: "/resources/copyright.png"
+    },
+    {
+      name: "Bangladesh Customs",
+      full: "IPR Enforcement",
+      url: "https://bangladeshcustoms.gov.bd/",
+      logo: "/resources/customs.png"
+    },
+    {
+      name: "Supreme Court",
+      full: "Bangladesh Supreme Court",
+      url: "https://supremecourt.gov.bd/",
+      logo: "/resources/supremecourt.png"
+    },
+    {
+      name: "WIPO",
+      full: "World Intellectual Property Organization",
+      url: "https://www.wipo.int/portal/en/index.html",
+      logo: "/resources/wipo.png"
+    },
+    {
+      name: "EPO",
+      full: "European Patent Office",
+      url: "https://www.epo.org/en",
+      logo: "/resources/epo.png"
+    },
+    {
+      name: "EUIPO",
+      full: "European Union Intellectual Property Office",
+      url: "https://www.euipo.europa.eu/en",
+      logo: "/resources/euipo.png"
+    },
+    {
+      name: "USPTO",
+      full: "US Patent and Trademark Office",
+      url: "https://www.uspto.gov/",
+      logo: "/resources/uspto.png"
+    },
+    {
+      name: "IP India",
+      full: "Indian Patent Office/Registry",
+      url: "https://ipindia.gov.in/",
+      logo: "/resources/ipindia.png"
+    },
+    {
+      name: "INTA",
+      full: "International Trademark Association",
+      url: "https://www.inta.org/",
+      logo: "/resources/inta.png"
+    },
+  ];
 
   return (
     <div className="pb-16 space-y-16">
@@ -339,6 +406,43 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* Landmark Wins Section */}
+      <section className="space-y-12">
+        <div className="text-center space-y-4">
+          <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-bold text-[10px] px-4 py-1.5 rounded-full">
+            OUR ACHIEVEMENTS
+          </Badge>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">Landmark <span className="text-primary italic">Wins</span></h3>
+          <p className="text-muted-foreground max-w-2xl mx-auto font-medium">Extraordinary legal battles that defined our commitment to justice.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="p-8 rounded-3xl bg-muted border border-border space-y-6 hover:shadow-xl transition-all duration-500 group">
+             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <Zap className="w-7 h-7" />
+             </div>
+             <div className="space-y-3">
+                <h4 className="text-xl font-bold text-foreground">Patent No. 1OO6093</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium">
+                  Rejected for missing a 21-month deadline under an old 1911 Act. MentorIP appealed. The Patent Department bent its own rules—first time ever.
+                </p>
+             </div>
+          </div>
+
+          <div className="p-8 rounded-3xl bg-muted border border-border space-y-6 hover:shadow-xl transition-all duration-500 group">
+             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <Shield className="w-7 h-7" />
+             </div>
+             <div className="space-y-3">
+                <h4 className="text-xl font-bold text-foreground">Parachute Oil Raid</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed font-medium">
+                  Shut down a secret counterfeit factory for Marico. Billions saved. Marico thanked them publicly.
+                </p>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* Global Presence */}
       <section className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -426,90 +530,57 @@ export default async function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {[
-            {
-              name: "DPDT",
-              full: "Department of Patents, Designs and Trademarks",
-              url: "https://dpdt.gov.bd/",
-            },
-            {
-              name: "Copyright Office",
-              full: "Copyright Office Bangladesh",
-              url: "https://copyrightoffice.gov.bd/",
-            },
-            {
-              name: "Bangladesh Customs",
-              full: "IPR Enforcement",
-              url: "https://bangladeshcustoms.gov.bd/",
-            },
-            {
-              name: "Supreme Court",
-              full: "Bangladesh Supreme Court",
-              url: "https://supremecourt.gov.bd/",
-            },
-            {
-              name: "WIPO",
-              full: "World Intellectual Property Organization",
-              url: "https://www.wipo.int/portal/en/index.html",
-            },
-            {
-              name: "EPO",
-              full: "European Patent Office",
-              url: "https://www.epo.org/en",
-            },
-            {
-              name: "EUIPO",
-              full: "European Union Intellectual Property Office",
-              url: "https://www.euipo.europa.eu/en",
-            },
-            {
-              name: "USPTO",
-              full: "US Patent and Trademark Office",
-              url: "https://www.uspto.gov/",
-            },
-            {
-              name: "IP India",
-              full: "Indian Patent Office/Registry",
-              url: "https://ipindia.gov.in/",
-            },
-            {
-              name: "INTA",
-              full: "International Trademark Association",
-              url: "https://www.inta.org/",
-            },
-          ].map((link, i) => (
-            <Link
-              key={i}
-              href={link.url}
-              target="_blank"
-              className="group p-5 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between relative overflow-hidden cursor-pointer"
-            >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full -mr-10 -mt-10 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
-              
-              <div className="relative space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-muted text-foreground text-xs font-black flex items-center justify-center border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-500">
-                   {link.name.substring(0, 3).toUpperCase()}
+          {resourceList.map((link, i) => {
+            const logoPath = path.join(process.cwd(), "public", link.logo);
+            const hasLogo = fs.existsSync(logoPath);
+            
+            return (
+              <Link
+                key={i}
+                href={link.url}
+                target="_blank"
+                className="group p-5 rounded-2xl bg-card border border-border hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col justify-between relative overflow-hidden cursor-pointer"
+              >
+                <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full -mr-10 -mt-10 group-hover:bg-primary/10 group-hover:scale-150 transition-all duration-1000" />
+                
+                <div className="relative space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-muted overflow-hidden flex items-center justify-center border border-border group-hover:border-primary/30 transition-all duration-500">
+                     {hasLogo ? (
+                       <div className="relative w-full h-full p-2 bg-white">
+                          <Image 
+                            src={link.logo} 
+                            alt={link.name}
+                            fill
+                            className="object-contain p-2 filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                          />
+                       </div>
+                     ) : (
+                       <span className="text-xs font-black text-foreground group-hover:text-primary transition-colors">
+                          {link.name.substring(0, 3).toUpperCase()}
+                       </span>
+                     )}
+                  </div>
+                  
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                        {link.name}
+                      </h4>
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
+                    </div>
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-relaxed">
+                      {link.full}
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
-                      {link.name}
-                    </h4>
-                    <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
-                  </div>
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-relaxed">
-                    {link.full}
-                  </p>
+                <div className="relative mt-4 pt-3 border-t border-border/50 flex items-center gap-1.5 text-[9px] font-bold text-primary">
+                  <span className="uppercase tracking-widest">Visit Portal</span> 
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </div>
-              </div>
-              
-              <div className="relative mt-4 pt-3 border-t border-border/50 flex items-center gap-1.5 text-[9px] font-bold text-primary">
-                <span className="uppercase tracking-widest">Visit Portal</span> 
-                <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </section>
     </div>

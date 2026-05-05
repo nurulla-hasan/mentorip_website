@@ -1,29 +1,27 @@
 
 import { 
-  Users, 
   Globe2, 
   ShieldCheck, 
-  Cpu,
-  Car,
-  ShoppingBag,
-  ShoppingBasket,
-  Stethoscope,
-  Hotel,
-  Monitor,
   Factory,
   MapPin,
   ChevronRight,
-  // Sparkles,
-  Award,
   BarChart3,
-  LucideIcon,
+  Zap,
+  Globe,
+  Lock,
+  Search,
+  FileText,
+  Gavel,
+  Scale,
+  Eye,
+  Handshake
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { getClientele, getWeServe, getJurisdictions, getClients } from "@/services/client";
+import { getClientele, getJurisdictions, getClients } from "@/services/client";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -57,89 +55,82 @@ interface Client {
   logoUrl: string;
 }
 
-// Icon mapping for industries - maps string names to icon components
-const iconMap: Record<string, LucideIcon> = {
-  Cpu,
-  Car,
-  ShoppingBag,
-  ShoppingBasket,
-  Stethoscope,
-  Hotel,
-  Monitor,
-  Factory,
-  Users,
-  Globe2,
-  ShieldCheck,
-  BarChart3,
-  Award,
-};
-
+const industries = [
+  { 
+    name: "Trademarks", 
+    icon: ShieldCheck, 
+    desc: "Protect brand identifiers (names, logos, slogans)." 
+  },
+  { 
+    name: "Patents", 
+    icon: Zap, 
+    desc: "Protect inventions (products/processes) for a limited term." 
+  },
+  { 
+    name: "Industrial Designs", 
+    icon: Factory, 
+    desc: "Protect ornamental, non-functional product features." 
+  },
+  { 
+    name: "Copyrights", 
+    icon: FileText, 
+    desc: "Protect original literary, artistic, musical works." 
+  },
+  { 
+    name: "Geographical Indications (GIs)", 
+    icon: Globe, 
+    desc: "Protect regional product origin & quality." 
+  },
+  { 
+    name: "Trade Secrets", 
+    icon: Lock, 
+    desc: "Protect confidential business info (no registration)." 
+  },
+  { 
+    name: "IP Portfolio Analysis", 
+    icon: BarChart3, 
+    desc: "Review of owned IP assets (strengths/weaknesses)." 
+  },
+  { 
+    name: "IP Due Diligence", 
+    icon: Search, 
+    desc: "Investigate IP ownership & risks in transactions." 
+  },
+  { 
+    name: "FTO (Freedom to Operate)", 
+    icon: Scale, 
+    desc: "Search to ensure product doesn't infringe others' rights." 
+  },
+  { 
+    name: "Trademark Watch", 
+    icon: Eye, 
+    desc: "Monitoring new applications that conflict with existing marks." 
+  },
+  { 
+    name: "Licensing", 
+    icon: Handshake, 
+    desc: "Permitting others to use IP (royalties/terms)." 
+  },
+  { 
+    name: "Litigation", 
+    icon: Gavel, 
+    desc: "Legal enforcement or defense of IP rights in court." 
+  },
+];
 
 
 export default async function ClientsPage() {
   // Fetch all dynamic data
   const clienteleResponse = await getClientele();
-  const weServeResponse = await getWeServe();
   const jurisdictionsResponse = await getJurisdictions();
   const clientsResponse = await getClients();
 
   const clienteleData = clienteleResponse?.data || null;
-  const weServeData = weServeResponse?.data || null;
   const jurisdictionsData = jurisdictionsResponse?.data || null;
   const clientsData = Array.isArray(clientsResponse?.data) ? (clientsResponse.data as Client[]) : [];
 
   // Build industries array from weServe API (supports up to 8 cards)
-  const industries = weServeData ? [
-    weServeData.card1Title && {
-      name: weServeData.card1Title,
-      icon: iconMap[weServeData.card1IconName] || Cpu,
-      desc: weServeData.card1Description,
-    },
-    weServeData.card2Title && {
-      name: weServeData.card2Title,
-      icon: iconMap[weServeData.card2IconName] || Car,
-      desc: weServeData.card2Description,
-    },
-    weServeData.card3Title && {
-      name: weServeData.card3Title,
-      icon: iconMap[weServeData.card3IconName] || ShoppingBag,
-      desc: weServeData.card3Description,
-    },
-    weServeData.card4Title && {
-      name: weServeData.card4Title,
-      icon: iconMap[weServeData.card4IconName] || ShoppingBasket,
-      desc: weServeData.card4Description,
-    },
-    weServeData.card5Title && {
-      name: weServeData.card5Title,
-      icon: iconMap[weServeData.card5IconName] || Stethoscope,
-      desc: weServeData.card5Description,
-    },
-    weServeData.card6Title && {
-      name: weServeData.card6Title,
-      icon: iconMap[weServeData.card6IconName] || Hotel,
-      desc: weServeData.card6Description,
-    },
-    weServeData.card7Title && {
-      name: weServeData.card7Title,
-      icon: iconMap[weServeData.card7IconName] || Monitor,
-      desc: weServeData.card7Description,
-    },
-    weServeData.card8Title && {
-      name: weServeData.card8Title,
-      icon: iconMap[weServeData.card8IconName] || Factory,
-      desc: weServeData.card8Description,
-    },
-  ].filter(Boolean) : [
-    { name: "Consumer Electronics", icon: Cpu, desc: "Protecting next-gen tech and hardware innovations." },
-    { name: "Automotive", icon: Car, desc: "Securing designs and trademarks for global mobility leaders." },
-    { name: "Fashion", icon: ShoppingBag, desc: "Empowering luxury and retail brands against counterfeiting." },
-    { name: "FMCG", icon: ShoppingBasket, desc: "Safeguarding consumer brand identities across markets." },
-    { name: "Pharmaceuticals", icon: Stethoscope, desc: "Specialized IP support for healthcare and life sciences." },
-    { name: "Hospitality", icon: Hotel, desc: "Brand management for international hotels and resorts." },
-    { name: "Media & Tech", icon: Monitor, desc: "Digital assets and content copyright protection." },
-    { name: "Industrial Manufacturing", icon: Factory, desc: "Patent and industrial design security for creators." },
-  ];
+
 
   // Get jurisdictions from API
   const trademarkJurisdictions = jurisdictionsData?.countries || [
@@ -296,9 +287,9 @@ export default async function ClientsPage() {
       <section className="space-y-8">
         <div className="text-center space-y-2 group/sec">
           <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">SECTORS</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground">{weServeData?.title || "Industries We Serve"}</h3>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground">Industries We Serve</h3>
           <p className="text-muted-foreground max-w-2xl mx-auto font-medium">
-            {weServeData?.subtitle || "Cross-industry expertise tailored to the unique challenges of each sector."}
+            Cross-industry expertise tailored to the unique challenges of each sector.
           </p>
         </div>
 

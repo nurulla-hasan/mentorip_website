@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="w-full mt-16 md:mt-24 bg-linear-to-b from-primary/10 via-background to-background border-t border-primary/20">
-      <div className="max-w-[1920px] mx-auto px-6 lg:px-12 py-16">
+      <div className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Col 1: Brand & About */}
           <div className="space-y-6">
@@ -44,7 +44,6 @@ export function Footer() {
               {[
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
-                { name: "Our Clients", href: "/clients" },
                 { name: "Services", href: "/services" },
                 { name: "Team of Lawyers", href: "/team-of-lawyers" },
                 { name: "Gallery", href: "/gallery" },
@@ -101,11 +100,26 @@ export function Footer() {
                   Suit#501, Concord Tower 113 Kazi Nazrul Islam Avenue, Dhaka-1000 Bangladesh.
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-primary shrink-0" />
-                <Link href="tel:+8801760308093" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-                  +880 1760 308093
-                </Link>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <span className="text-sm font-medium text-muted-foreground leading-relaxed">
+                  <span className="text-foreground font-bold block mb-0.5">Court Office</span>
+                  Room#110 (old), Supreme Court Bar Association Building, Dhaka, Bangladesh.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-primary shrink-0 mt-1" />
+                <div className="flex flex-col gap-1.5">
+                  <Link href="tel:+8801760308093" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                    +880 1760 308093
+                  </Link>
+                  <Link href="tel:+880241032320" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                    Tel: 02-410 32 320
+                  </Link>
+                  <Link href="tel:+8801733792305" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                    Cell: 01733792305
+                  </Link>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
