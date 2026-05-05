@@ -13,7 +13,7 @@ export function Sidebar({ initialCategories = [] }: { initialCategories?: Catego
 
   const sidebarCategories = useMemo(() => {
     return [
-      { name: "All Poast", iconName: "LayoutDashboard", slug: "" },
+      { name: "All Posts", iconName: "LayoutDashboard", slug: "" },
       ...categories.map((cat) => ({
         name: cat.name,
         iconName: cat.iconName,

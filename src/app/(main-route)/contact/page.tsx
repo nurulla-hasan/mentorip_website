@@ -20,8 +20,26 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us | MentorIP - Global IP Law Firm",
-  description: "Get in touch with MentorIP for expert guidance on trademarks, patents, and all your IP needs. Our global liaison offices are ready to assist you.",
-  keywords: ["Contact MentorIP", "IP Law Firm Contact", "Trademark Attorney Bangladesh", "Patent Lawyer"],
+  description:
+    "Get in touch with MentorIP for expert guidance on trademarks, patents, copyrights, and all your IP needs. Our global liaison offices in Bangladesh, UK, UAE, Thailand, Malaysia, and India are ready to assist you.",
+  keywords: [
+    "Contact MentorIP",
+    "IP Law Firm Contact Bangladesh",
+    "Trademark Attorney Bangladesh",
+    "Patent Lawyer Dhaka",
+    "IP Consultation",
+  ],
+  openGraph: {
+    title: "Contact Us | MentorIP - Global IP Law Firm",
+    description:
+      "Reach out for expert IP guidance. Global liaison offices ready to assist.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact MentorIP",
+    description:
+      "Get expert IP guidance from our global liaison offices.",
+  },
 };
 
 

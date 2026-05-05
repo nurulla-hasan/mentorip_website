@@ -6,8 +6,24 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gallery | MentorIP - Visualizing Our Journey",
-  description: "Browse through MentorIP's gallery showcasing our events, global offices, and team moments.",
-  keywords: ["MentorIP Gallery", "Law Firm Events", "IP Law Bangladesh Images"],
+  description:
+    "Browse through MentorIP's gallery showcasing our events, global offices, team moments, and milestones in Intellectual Property law.",
+  keywords: [
+    "MentorIP Gallery",
+    "Law Firm Events",
+    "IP Law Bangladesh Images",
+    "MentorIP Photos",
+  ],
+  openGraph: {
+    title: "Gallery | MentorIP",
+    description:
+      "Explore MentorIP's journey through our gallery of events and milestones.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gallery | MentorIP",
+    description: "Our journey in pictures — events, offices, and milestones.",
+  },
 };
 
 async function GalleryPage() {
