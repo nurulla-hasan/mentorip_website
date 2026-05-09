@@ -13,6 +13,7 @@ export const signInUser = async (userData: FieldValues): Promise<any> => {
     const result = await serverFetch('/user/signin', {
       method: 'POST',
       body: userData,
+      isPublic: true
     });
 
     if (result?.success) {
@@ -44,6 +45,7 @@ export const signUpUser = async (userData: FieldValues): Promise<any> => {
     const result = await serverFetch('/user/signup', {
       method: 'POST',
       body: userData,
+      isPublic: true
     });
 
     return result;

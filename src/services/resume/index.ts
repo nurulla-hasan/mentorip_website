@@ -8,6 +8,7 @@ export const applyResume = async (data: FormData) => {
     const result = await serverFetch("/resume-apply", {
       method: "POST",
       body: data,
+      isPublic: true,
     });
     return result;
   } catch (error: any) {

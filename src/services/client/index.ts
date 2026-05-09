@@ -18,7 +18,6 @@ export const getClients = async () => {
   }
 };
 
-
 // GET CLIENTELE
 export const getClientele = async () => {
   try {
@@ -33,8 +32,6 @@ export const getClientele = async () => {
     };
   }
 };
-
-
 
 // WE SERVE
 export const getWeServe = async () => {

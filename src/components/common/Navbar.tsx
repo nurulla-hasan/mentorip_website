@@ -81,21 +81,15 @@ export function Navbar({
   const [searchQuery, setSearchQuery] = useState("");
   const [allPosts, setAllPosts] = useState<any[]>([]);
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
       const currentUser = await getCurrentUser();
       setCurrentUser(currentUser);
     };
-    const fetchPosts = async () => {
-      const res = await getAllPosts({ limit: "100" });
-      if (res?.success) {
-        setAllPosts(res.data);
-      }
-    };
 
     fetchUser();
-    fetchPosts();
 
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -105,10 +99,33 @@ export function Navbar({
     };
 
     document.addEventListener("keydown", down);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  // Server-side search with debounce
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setAllPosts([]);
+      return;
+    }
+
+    const delayDebounceFn = setTimeout(async () => {
+      setIsSearching(true);
+      try {
+        const res = await getAllPosts({ searchTerm: searchQuery });
+        if (res?.success) {
+          setAllPosts(res.data);
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
 
   const isLoggedIn = Boolean(currentUser);
 
@@ -359,7 +376,6 @@ export function Navbar({
             <CommandDialog 
               open={searchDialogOpen} 
               onOpenChange={setSearchDialogOpen}
-              className="bg-background/95 backdrop-blur-md border border-primary/20 shadow-2xl"
             >
               <CommandInput 
                 placeholder="Search across all intellectual property assets..." 
@@ -368,11 +384,18 @@ export function Navbar({
                 className="font-medium tracking-wide placeholder:text-muted-foreground/60 focus:ring-primary/20"
               />
               <CommandList className="scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent p-2">
-                <CommandEmpty className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide">
-                  No legal resources match your search.
-                </CommandEmpty>
+                {isSearching ? (
+                  <div className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide flex items-center justify-center gap-2">
+                    <div className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                    Searching assets...
+                  </div>
+                ) : (
+                  <CommandEmpty className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide">
+                    No legal resources match your search.
+                  </CommandEmpty>
+                )}
                 
-                {searchQuery.trim() !== "" && (
+                {!isSearching && searchQuery.trim() !== "" && (
                   <CommandGroup heading="Intellectual Property Articles">
                     {allPosts.map((post: any) => (
                       <CommandItem

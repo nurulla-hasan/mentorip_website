@@ -9,6 +9,7 @@ export const sendContactEmail = async (data: FieldValues) => {
     const result = await serverFetch(`/contact`, {
       method: "POST",
       body: data,
+      
     });
 
     return result;

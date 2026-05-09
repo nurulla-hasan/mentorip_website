@@ -8,6 +8,7 @@ export const subscribeNewsletter = async (email: string) => {
     const result = await serverFetch("/subscription", {
       method: "POST",
       body: { email },
+      isPublic: true,
     });
     return result;
   } catch (error: any) {

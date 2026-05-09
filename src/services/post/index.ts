@@ -12,7 +12,6 @@ export const getAllPosts = async (
     return await serverFetch<any>(`/post${buildQueryString(query)}`, {
       revalidate: 86400,
       isPublic: true,
-      tags: ["POST-LIST"],
     });
   } catch {
     return {
@@ -33,6 +32,20 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : "Failed to load post";
+    return { success: false, message };
+  }
+};
+
+// TRACK POST VIEW
+export const trackPostView = async (slug: string): Promise<any> => {
+  try {
+    return await serverFetch(`/post/${slug}/view`, {
+      method: "POST",
+      isPublic: true,
+    });
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Failed to track post view";
     return { success: false, message };
   }
 };
