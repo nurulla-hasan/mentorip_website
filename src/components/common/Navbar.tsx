@@ -16,6 +16,7 @@ import {
   LogOut,
   Moon,
   Sun,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -43,6 +44,7 @@ import { useEffect, useState } from "react";
 import type { CurrentUser } from "@/types/user.type";
 import { getCurrentUser, logOut } from "@/services/auth";
 import { getInitials } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 
 import {
   CommandDialog,
@@ -62,6 +64,7 @@ const navLinks = [
   { name: "Contact Us", href: "/contact", icon: Phone },
   { name: "Team of Lawyers", href: "/team-of-lawyers", icon: Users },
   { name: "Gallery", href: "/gallery", icon: ImageIcon },
+  { name: "Access Client Portal", href: "https://app.mentorip.com/login", icon: ChevronRight, isCTA: true },
 ];
 
 export function Navbar({
@@ -127,6 +130,9 @@ export function Navbar({
                   <SheetTitle className="text-left font-bold text-primary">
                     MENTOR IP
                   </SheetTitle>
+                  <div className="mt-2">
+                    <LanguageSwitcher />
+                  </div>
                 </SheetHeader>
                 <Tabs
                   defaultValue="menu"
@@ -148,6 +154,25 @@ export function Navbar({
                           link.href === "/"
                             ? pathname === "/"
                             : pathname.startsWith(link.href);
+                        
+                        if ((link as any).isCTA) {
+                          return (
+                            <a
+                              key={link.name}
+                              href={link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-between gap-3 px-4 py-3 text-sm font-bold rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 mt-4 transition-transform active:scale-95"
+                            >
+                              <div className="flex items-center gap-3">
+                                <Briefcase className="w-4 h-4" />
+                                {link.name}
+                              </div>
+                              <ChevronRight className="w-4 h-4" />
+                            </a>
+                          );
+                        }
+
                         return (
                           <Link
                             key={link.name}
@@ -169,27 +194,6 @@ export function Navbar({
                           </Link>
                         );
                       })}
-                      {isLoggedIn && (
-                        <Link
-                          href="/profile"
-                          className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-md transition-all ${
-                            pathname === "/profile"
-                              ? "bg-primary/5 text-primary"
-                              : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"
-                          }`}
-                        >
-                          <Avatar className="w-5 h-5">
-                            <AvatarImage
-                              src={currentUser?.image}
-                              alt={currentUser?.image}
-                            />
-                            <AvatarFallback className="text-[8px]">
-                              {getInitials(currentUser?.name || "")}
-                            </AvatarFallback>
-                          </Avatar>
-                          Profile
-                        </Link>
-                      )}
                     </TabsContent>
                     <TabsContent value="categories">
                       <Sidebar initialCategories={initialCategories} />
@@ -223,6 +227,22 @@ export function Navbar({
               link.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(link.href);
+
+            if ((link as any).isCTA) {
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2"
+                >
+                  <span>{link.name}</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </a>
+              );
+            }
+
             return (
               <Link
                 key={link.name}
@@ -266,6 +286,11 @@ export function Navbar({
               ⌘K
             </span>
           </button>
+
+          {/* Language Switcher */}
+          <div>
+            <LanguageSwitcher />
+          </div>
 
           {mounted && (
             <CommandDialog 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { Toaster } from "@/components/ui/sonner";
 import NextTopLoader from 'nextjs-toploader';
 import { AIChat } from "@/components/chat/AIChat";
@@ -94,8 +95,10 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
-          {children}
-          <AIChat />
+          <LanguageProvider>
+            {children}
+            <AIChat />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
