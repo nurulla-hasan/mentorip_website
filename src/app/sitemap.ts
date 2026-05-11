@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllCategories } from '@/services/category'
+import { getAllPosts } from '@/services/post'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://mentorip.com'
@@ -63,8 +64,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }))
     }
   } catch {
-    // If API fails, just return static pages
+    // If API fails, continue without category pages
   }
 
-  return [...staticPages, ...categoryPages]
+  // Dynamic post/article pages
+  let postPages: MetadataRoute.Sitemap = []
+  try {
+    const postResponse = await getAllPosts({ limit: '1000' })
+    if (postResponse?.success && postResponse.data) {
+      postPages = postResponse.data
+        .filter((post: { slug: string; category?: { slug: string } }) =>
+          post.slug && post.category?.slug
+        )
+        .map((post: {
+          slug: string;
+          category: { slug: string };
+          updatedAt?: string;
+          createdAt?: string;
+        }) => ({
+          url: `${baseUrl}/category/${post.category.slug}/${post.slug}`,
+          lastModified: post.updatedAt
+            ? new Date(post.updatedAt)
+            : post.createdAt
+              ? new Date(post.createdAt)
+              : new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+        }))
+    }
+  } catch {
+    // If API fails, continue without post pages
+  }
+
+  return [...staticPages, ...categoryPages, ...postPages]
 }
