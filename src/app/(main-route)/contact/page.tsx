@@ -19,9 +19,9 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | MentorIP - Global IP Law Firm",
+  title: "Contact Us - Global IP Law Firm",
   description:
-    "Get in touch with MentorIP for expert guidance on trademarks, patents, copyrights, and all your IP needs. Our global liaison offices in Bangladesh, UK, UAE, Thailand, Malaysia, and India are ready to assist you.",
+    "Get in touch with MentorIP for expert guidance on Trademark Registration, Patent Filing, Copyright Protection, and all your IP needs. Global liaison offices in Bangladesh, UK, UAE, Thailand, Malaysia, and India.",
   keywords: [
     "Contact MentorIP",
     "IP Law Firm Contact Bangladesh",
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
     "IP Consultation",
   ],
   openGraph: {
-    title: "Contact Us | MentorIP - Global IP Law Firm",
+    title: "Contact Us - Global IP Law Firm",
     description:
-      "Reach out for expert IP guidance. Global liaison offices ready to assist.",
+      "Reach out for expert IP guidance. Global liaison offices in Bangladesh, UK, UAE, Thailand, Malaysia, and India ready to assist.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact MentorIP",
+    title: "Contact Us - Global IP Law Firm",
     description:
-      "Get expert IP guidance from our global liaison offices.",
+      "Get expert IP guidance from our global liaison offices across Bangladesh, UK, UAE, and Asia.",
   },
 };
 

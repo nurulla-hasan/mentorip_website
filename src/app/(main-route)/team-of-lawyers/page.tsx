@@ -14,9 +14,9 @@ import { JoinTeamCTA } from "@/components/team/JoinTeamCTA";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Team | MentorIP - Elite Attorneys & IP Specialists",
+  title: "Our Team - Elite Attorneys & IP Specialists",
   description:
-    "Meet the collaborative team of elite attorneys, specialists, and support staff at MentorIP, led by Barrister Shaleh Akram, dedicated to protecting your intellectual interests globally.",
+    "Meet the collaborative team of elite attorneys, specialists, and support staff at MentorIP, led by Barrister Shaleh Akram, dedicated to protecting your intellectual interests globally across multiple jurisdictions.",
   keywords: [
     "MentorIP Team",
     "IP Attorneys Bangladesh",
@@ -25,15 +25,15 @@ export const metadata: Metadata = {
     "Barrister Shaleh Akram Team",
   ],
   openGraph: {
-    title: "Our Team | MentorIP - Elite IP Attorneys",
+    title: "Our Team - Elite Attorneys & IP Specialists",
     description:
-      "Meet MentorIP's elite team of IP attorneys and specialists protecting your innovations globally.",
+      "Meet our elite team of IP attorneys and legal specialists protecting your innovations globally.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Team | MentorIP",
+    title: "Our Team - Elite Attorneys & IP Specialists",
     description:
-      "Elite IP attorneys and specialists at MentorIP.",
+      "Elite attorneys and IP specialists protecting your innovations worldwide.",
   },
 };
 import { Key } from "react";

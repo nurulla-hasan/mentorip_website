@@ -5,9 +5,9 @@ import GalleryClient from '@/components/gallery/GalleryClient'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gallery | MentorIP - Visualizing Our Journey",
+  title: "Gallery - Events, Offices & Milestones",
   description:
-    "Browse through MentorIP's gallery showcasing our events, global offices, team moments, and milestones in Intellectual Property law.",
+    "Browse through MentorIP's gallery showcasing our events, global offices, team moments, and milestones in Intellectual Property law across Bangladesh and international jurisdictions.",
   keywords: [
     "MentorIP Gallery",
     "Law Firm Events",
@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     "MentorIP Photos",
   ],
   openGraph: {
-    title: "Gallery | MentorIP",
+    title: "Gallery - Events, Offices & Milestones",
     description:
-      "Explore MentorIP's journey through our gallery of events and milestones.",
+      "Explore MentorIP's journey through our gallery of IP events, global offices, and team milestones.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gallery | MentorIP",
-    description: "Our journey in pictures — events, offices, and milestones.",
+    title: "Gallery - Events, Offices & Milestones",
+    description: "Our journey in pictures — IP events, offices, and milestones.",
   },
 };
 

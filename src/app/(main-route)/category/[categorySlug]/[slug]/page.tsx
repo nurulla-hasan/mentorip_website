@@ -27,8 +27,8 @@ export async function generateMetadata({
 
   if (!res?.success || !res?.data) {
     return {
-      title: "Post Not Found | MentorIP",
-      description: "The requested post could not be found.",
+      title: "Post Not Found",
+      description: "The requested article could not be found. Explore our library of IP law resources, insights, and expert guidance.",
     };
   }
 
@@ -44,7 +44,7 @@ export async function generateMetadata({
     : [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "MentorIP" }];
 
   return {
-    title: `${post.title} | ${post.category?.name || "Article"} | MENTOR IP`,
+    title: `${post.title} | ${post.category?.name || "Article"}`,
     description,
     keywords: [
       ...(post.tag || []),
@@ -58,7 +58,7 @@ export async function generateMetadata({
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${post.title} | MENTOR IP`,
+      title: `${post.title}`,
       description,
       url: canonicalUrl,
       siteName: "MENTOR IP",
@@ -72,7 +72,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | MENTOR IP`,
+      title: `${post.title}`,
       description,
       images: post.coverImage ? [post.coverImage] : [`${BASE_URL}/og-image.png`],
     },

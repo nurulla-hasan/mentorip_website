@@ -25,9 +25,9 @@ import { getClientele, getJurisdictions, getClients } from "@/services/client";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Clients & Global Reach | MentorIP",
+  title: "Our Clients & Global Reach",
   description:
-    "MentorIP represents a prestigious global clientele across various industries including Tech, Fashion, Pharma, Automotive, and more in multiple jurisdictions worldwide.",
+    "MentorIP represents a prestigious global clientele across diverse industries including Tech, Fashion, Pharma, Automotive, and more, serving their IP needs in multiple jurisdictions worldwide.",
   keywords: [
     "MentorIP Clients",
     "Global IP Jurisdictions",
@@ -36,15 +36,15 @@ export const metadata: Metadata = {
     "Multinational IP Clients Bangladesh",
   ],
   openGraph: {
-    title: "Our Clients & Global Reach | MentorIP",
+    title: "Our Clients & Global Reach",
     description:
-      "Trusted by global innovators and leaders across Tech, Fashion, Pharma, and more.",
+      "Trusted by global innovators and industry leaders across Tech, Fashion, Pharma, Automotive, and more for IP protection worldwide.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Clients | MentorIP",
+    title: "Our Clients & Global Reach",
     description:
-      "Prestigious global clientele across multiple industries and jurisdictions.",
+      "Prestigious global clientele across multiple industries and jurisdictions worldwide.",
   },
 };
 

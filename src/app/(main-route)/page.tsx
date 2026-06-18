@@ -14,9 +14,9 @@ import { sortCategories } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "MentorIP | Global Intellectual Property Law Firm in Bangladesh",
+  title: "Global IP Law Firm - Trademark, Patent & Copyright Protection",
   description:
-    "MentorIP is a leading international IP law firm specializing in Trademarks, Patents, Copyrights, and Industrial Designs with global liaison offices.",
+    "MentorIP is a leading international IP law firm specializing in Trademark Registration, Patent Filing, Copyright Protection, and Industrial Designs with global liaison offices in Bangladesh, UK, UAE, and Asia.",
   keywords: [
     "Intellectual Property",
     "IP Law Firm",
@@ -28,17 +28,17 @@ export const metadata: Metadata = {
     "Legal Services",
   ],
   openGraph: {
-    title: "MentorIP | Global Intellectual Property Law Firm",
+    title: "Global IP Law Firm - Trademark, Patent & Copyright Protection",
     description:
-      "Protecting ideas and empowering brands with world-class IP legal services.",
+      "Protecting ideas and empowering brands worldwide with expert IP legal services across Bangladesh, UK, UAE, and Asia.",
     type: "website",
     siteName: "MentorIP",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MentorIP | Global Intellectual Property Law Firm",
+    title: "Global IP Law Firm - Trademark, Patent & Copyright Protection",
     description:
-      "Protecting ideas and empowering brands with world-class IP legal services.",
+      "Protecting ideas and empowering brands worldwide with expert IP legal services.",
   },
 };
 

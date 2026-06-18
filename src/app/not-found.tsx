@@ -1,5 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description:
+    "The page you're looking for does not exist. Return to MentorIP - your trusted Intellectual Property law firm in Bangladesh.",
+};
 
 export default function NotFound() {
   return (

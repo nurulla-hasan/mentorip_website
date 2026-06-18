@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getCurrentUser, fetchMyProfile, logOut } from "@/services/auth";
 import { 
   Mail, 
@@ -15,6 +16,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { UpdatePhoto } from "@/components/profile/UpdatePhoto";
 import { ChangePassword } from "@/components/profile/ChangePassword";
 import { UpdateUserData } from "@/components/profile/UpdateUserData";
+
+export const metadata: Metadata = {
+  title: "My Profile - Client Portal",
+  description:
+    "Manage your MentorIP client profile, view your IP portfolio, track application status, and access personalized legal services.",
+};
 
 export default async function ProfilePage() {
   const user = await getCurrentUser();

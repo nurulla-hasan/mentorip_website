@@ -14,20 +14,20 @@ export async function generateMetadata({
 
   if (!res?.success || !res?.data) {
     return {
-      title: "Category Not Found | MentorIP",
-      description: "The requested category could not be found.",
+      title: "Category Not Found",
+      description: "The requested IP law category could not be found. Browse our comprehensive Intellectual Property resources and services.",
     };
   }
 
   const category = res.data;
 
   return {
-    title: `${category.name} | MentorIP - Intellectual Property Law Firm`,
-    description: category.description || `Expert legal advice and resources on ${category.name}. MentorIP provides specialized intellectual property services in Bangladesh.`,
+    title: `${category.name} - IP Law Resources & Insights`,
+    description: category.description || `Expert legal resources and insights on ${category.name}. Get specialized intellectual property guidance, registration, and protection from MentorIP in Bangladesh.`,
     keywords: [category.name, "Intellectual Property", "IP Law", "Bangladesh", "MentorIP", "Legal Advice"],
     openGraph: {
-      title: `${category.name} | MentorIP`,
-      description: category.description || `Explore specialized ${category.name} resources at MentorIP.`,
+      title: `${category.name} - IP Law Resources & Insights`,
+      description: category.description || `Explore specialized ${category.name} resources, insights, and IP protection guidance from MentorIP.`,
       images: category.imageUrl ? [{ url: category.imageUrl }] : [],
       type: "website",
     },
