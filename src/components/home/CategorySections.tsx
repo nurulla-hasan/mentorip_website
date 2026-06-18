@@ -17,7 +17,7 @@ export function CategorySection({ category, categorySlug, index = 0 }: CategoryS
   const isEven = index % 2 === 0;
 
   return (
-    <section className={`py-12 space-y-8 -mx-4 px-4 md:-mx-8 md:px-8 ${isEven ? "bg-primary/5" : "bg-primary/10"}`}>
+    <section className={`py-12 space-y-8 -mx-4 px-4 md:-mx-8 md:px-8 ${isEven ? "bg-primary/20" : "bg-primary/70"}`}>
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
         <div className="space-y-1.5">
@@ -26,12 +26,12 @@ export function CategorySection({ category, categorySlug, index = 0 }: CategoryS
               {category.name}
             </h2>
           </div>
-          <p className="text-md text-muted-foreground max-w-3xl">
+          <p className="text-md text-foreground max-w-3xl">
             {category.description}
           </p>
         </div>
         <Link href={`/category/${categorySlug}`}>
-          <Button variant="link">
+          <Button variant="link" className="text-foreground">
             View {category.name}{" "}
             <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
           </Button>

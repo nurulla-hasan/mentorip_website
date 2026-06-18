@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import { getAllPosts } from "@/services/post";
 import { getAllCategories, getCategoryBySlug } from "@/services/category";
@@ -16,19 +15,31 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "MentorIP | Global Intellectual Property Law Firm in Bangladesh",
-  description: "MentorIP is a leading international IP law firm specializing in Trademarks, Patents, Copyrights, and Industrial Designs with global liaison offices.",
-  keywords: ["Intellectual Property", "IP Law Firm", "Bangladesh", "Trademarks", "Patents", "Copyright", "MentorIP", "Legal Services"],
+  description:
+    "MentorIP is a leading international IP law firm specializing in Trademarks, Patents, Copyrights, and Industrial Designs with global liaison offices.",
+  keywords: [
+    "Intellectual Property",
+    "IP Law Firm",
+    "Bangladesh",
+    "Trademarks",
+    "Patents",
+    "Copyright",
+    "MentorIP",
+    "Legal Services",
+  ],
   openGraph: {
     title: "MentorIP | Global Intellectual Property Law Firm",
-    description: "Protecting ideas and empowering brands with world-class IP legal services.",
+    description:
+      "Protecting ideas and empowering brands with world-class IP legal services.",
     type: "website",
     siteName: "MentorIP",
   },
   twitter: {
     card: "summary_large_image",
     title: "MentorIP | Global Intellectual Property Law Firm",
-    description: "Protecting ideas and empowering brands with world-class IP legal services.",
-  }
+    description:
+      "Protecting ideas and empowering brands with world-class IP legal services.",
+  },
 };
 
 export default async function Home() {
@@ -39,7 +50,9 @@ export default async function Home() {
   ]);
 
   const allPosts = response?.success ? response.data : [];
-  const allCategories = catResponse?.success ? sortCategories(catResponse.data) : [];
+  const allCategories = catResponse?.success
+    ? sortCategories(catResponse.data)
+    : [];
 
   // Fetch all category-specific posts in parallel to speed up build
   const categoriesWithPosts = await Promise.all(
@@ -48,9 +61,9 @@ export default async function Home() {
       return {
         slug: category.slug,
         data: res?.success ? res.data : null,
-        _id: category._id
+        _id: category._id,
       };
-    })
+    }),
   );
 
   const heroPost = allPosts[0];
@@ -63,21 +76,22 @@ export default async function Home() {
       <div className="xl:hidden -mx-4 -mt-4 md:-mx-8 md:-mt-8 px-6 py-12 bg-linear-to-b from-primary/15 via-primary/5 to-transparent flex flex-col gap-5 relative overflow-hidden border-b border-primary/20">
         {/* Decorative background element */}
         <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full -mr-10 -mt-10 blur-2xl" />
-        
+
         <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-widest">
           Welcome to MentorIP
         </span>
         <h1 className="text-2xl md:text-4xl font-black text-foreground leading-tight tracking-wide uppercase">
-          Protecting your <span className="text-primary">Ideas</span>. Empowering your <span className="text-primary">Brands</span>.
+          Protecting your <span className="text-primary">Ideas</span>.
+          Empowering your <span className="text-primary">Brands</span>.
         </h1>
         <p className="text-xs md:text-sm text-muted-foreground font-medium leading-relaxed max-w-xl">
-          Premier international Intellectual Property law firm. We secure your innovations, trademarks, and creative works globally with boutique precision.
+          Premier international Intellectual Property law firm. We secure your
+          innovations, trademarks, and creative works globally with boutique
+          precision.
         </p>
         <div className="flex gap-3 mt-2 max-w-md">
           <Link href="/contact" className="flex-1">
-            <Button className="w-full">
-              Get Started
-            </Button>
+            <Button className="w-full">Get Started</Button>
           </Link>
           <Link href="/services" className="flex-1">
             <Button variant="outline" className="w-full">
@@ -208,7 +222,7 @@ export default async function Home() {
                         <div className="w-px h-3 bg-muted-foreground/30" />
                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                           {format(
-                            new Date( 
+                            new Date(
                               widePost.createdAt || "2026-01-20T10:00:00Z",
                             ),
                             "MMM dd, yyyy",
@@ -333,7 +347,7 @@ export default async function Home() {
       </div>
 
       {/* Latest News Section */}
-      <LatestNews />
+        <LatestNews />
 
       {/* Newsletter Section */}
       <NewsletterSection />
@@ -341,11 +355,11 @@ export default async function Home() {
       {/* Category Specific Sections */}
       <div className="space-y-0">
         {categoriesWithPosts.map((cat, index) => (
-          <CategorySection 
-            key={cat._id} 
+          <CategorySection
+            key={cat._id}
             index={index}
-            categorySlug={cat.slug} 
-            category={cat.data} 
+            categorySlug={cat.slug}
+            category={cat.data}
           />
         ))}
       </div>
