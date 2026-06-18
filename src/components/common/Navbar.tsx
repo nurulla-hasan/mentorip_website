@@ -2,25 +2,8 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import type { Category } from "@/types/category.type";
-import {
-  Search,
-  User,
-  Home,
-  Info,
-  Users,
-  Briefcase,
-  Phone,
-  Image as ImageIcon,
-  Menu,
-  LogOut,
-  Moon,
-  Sun,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Sidebar } from "@/components/common/Sidebar";
 import {
   Dialog,
   DialogContent,
@@ -28,56 +11,18 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { CurrentUser } from "@/types/user.type";
+import type { Category } from "@/types/category.type";
 import { getCurrentUser, logOut } from "@/services/auth";
-import { getInitials } from "@/lib/utils";
-import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
-
-import {
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-} from "@/components/ui/command";
 import { getAllPosts } from "@/services/post";
-
-const navLinks = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "About", href: "/about", icon: Info },
-  { name: "Our Clients", href: "/clients", icon: Users },
-  { name: "Service & Practices", href: "/services", icon: Briefcase },
-  { name: "Contact Us", href: "/contact", icon: Phone },
-  { name: "Team of Lawyers", href: "/team-of-lawyers", icon: Users },
-  { name: "Gallery", href: "/gallery", icon: ImageIcon },
-  {
-    name: "Access Client Portal",
-    href: "https://app.mentorip.com/login",
-    icon: ChevronRight,
-    isCTA: true,
-  },
-];
+import { navLinks } from "@/constants/nav-links";
+import { MobileSheet } from "@/components/common/MobileSheet";
+import { DesktopNav } from "@/components/common/DesktopNav";
+import { SearchCommand } from "@/components/common/SearchCommand";
+import { UserDropdown } from "@/components/common/UserDropdown";
 
 export function Navbar({
   initialCategories = [],
@@ -142,170 +87,37 @@ export function Navbar({
 
   const isLoggedIn = Boolean(currentUser);
 
+  const handleLogout = async () => {
+    await logOut();
+    setCurrentUser(null);
+    router.refresh();
+  };
+
+  const handleSelectPost = (slug: string) => {
+    router.push(
+      `/category/${allPosts.find((p: any) => p.slug === slug)?.category?.slug || "all"}/${slug}`,
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="max-w-[1920px] mx-auto px-4 h-16 flex items-center justify-between gap-4">
-        {/* Left: LOGO */}
+        {/* Left: LOGO + Mobile Sheet */}
         <div className="flex items-center gap-4">
           {mounted ? (
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="left"
-                className="w-[300px] flex flex-col p-0 gap-0"
-              >
-                <SheetHeader className="p-4 border-b shrink-0 text-left">
-                  <SheetTitle className="text-left font-bold text-primary">
-                    MENTOR IP
-                  </SheetTitle>
-                  <div className="mt-2">
-                    <LanguageSwitcher />
-                  </div>
-                </SheetHeader>
-
-                <div className="flex-1 overflow-y-auto">
-                  <Tabs defaultValue="menu" className="w-full flex flex-col">
-                    <div className="px-4 py-3 border-b sticky top-0 bg-background z-10">
-                      <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="menu">Navigation</TabsTrigger>
-                        <TabsTrigger value="categories">Categories</TabsTrigger>
-                      </TabsList>
-                    </div>
-
-                    <div className="p-2">
-                      <TabsContent
-                        value="menu"
-                        className="mt-0 flex flex-col space-y-1"
-                      >
-                        {navLinks.map((link) => {
-                          const isActive =
-                            link.href === "/"
-                              ? pathname === "/"
-                              : pathname.startsWith(link.href);
-
-                          if ((link as any).isCTA) {
-                            return (
-                              <button
-                                key={link.name}
-                                onClick={() => setPortalDialogOpen(true)}
-                                className="flex items-center justify-between gap-3 w-full px-4 py-3 text-sm font-bold rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 mx-2 mt-4 mb-2 transition-transform active:scale-95 cursor-pointer"
-                              >
-                                <div className="flex items-center gap-3">
-                                  <Briefcase className="w-4 h-4" />
-                                  {link.name}
-                                </div>
-                                <ChevronRight className="w-4 h-4" />
-                              </button>
-                            );
-                          }
-
-                          return (
-                            <Link
-                              key={link.name}
-                              href={link.href}
-                              className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl transition-all ${
-                                isActive
-                                  ? "bg-primary/10 text-primary font-bold"
-                                  : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"
-                              }`}
-                            >
-                              <link.icon
-                                className={`w-4 h-4 ${
-                                  isActive
-                                    ? "text-primary"
-                                    : "text-muted-foreground"
-                                }`}
-                              />
-                              {link.name}
-                            </Link>
-                          );
-                        })}
-                      </TabsContent>
-                      <TabsContent value="categories">
-                        <Sidebar initialCategories={initialCategories} />
-                      </TabsContent>
-                    </div>
-                  </Tabs>
-                </div>
-
-                {/* Mobile Sidebar Footer: User Profile/Auth Section */}
-                <div className="shrink-0 border-t p-4 bg-muted/20">
-                  {isLoggedIn ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-3 rounded-2xl bg-background border shadow-sm transition-all hover:border-primary/30">
-                        <Avatar className="w-10 h-10 border-2 border-primary/10 shadow-sm">
-                          <AvatarImage
-                            src={currentUser?.image}
-                            alt={currentUser?.name}
-                          />
-                          <AvatarFallback className="bg-primary/5 text-primary font-bold text-xs">
-                            {getInitials(currentUser?.name || "")}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col min-w-0">
-                          <span className="text-sm font-bold text-foreground truncate tracking-tight uppercase">
-                            {currentUser?.name}
-                          </span>
-                          <span className="text-[10px] text-muted-foreground truncate font-medium">
-                            {currentUser?.email}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="rounded-xl text-[10px] font-bold uppercase tracking-widest border-primary/10 hover:bg-primary/5 h-10 transition-all active:scale-95"
-                        >
-                          <Link href="/profile">
-                            <User className="w-3.5 h-3.5 mr-1.5 text-primary" />
-                            Profile
-                          </Link>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={async () => {
-                            await logOut();
-                            setCurrentUser(null);
-                            router.refresh();
-                          }}
-                          className="rounded-xl text-[10px] font-bold uppercase tracking-widest text-destructive hover:bg-destructive/10 h-10 transition-all active:scale-95"
-                        >
-                          <LogOut className="w-3.5 h-3.5 mr-1.5" />
-                          Log Out
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-2">
-                      <Button
-                        asChild
-                        className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 shadow-lg shadow-primary/20 transition-all active:scale-95"
-                      >
-                        <Link href="/auth/login">Login to Account</Link>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        asChild
-                        className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 transition-all active:scale-95"
-                      >
-                        <Link href="/auth/register">Create Account</Link>
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </SheetContent>
-            </Sheet>
+            <MobileSheet
+              initialCategories={initialCategories}
+              currentUser={currentUser}
+              isLoggedIn={isLoggedIn}
+              pathname={pathname}
+              router={router}
+              setCurrentUser={setCurrentUser}
+              setPortalDialogOpen={setPortalDialogOpen}
+              navLinks={navLinks}
+            />
           ) : (
             <Button variant="ghost" size="icon" className="lg:hidden">
-              <Menu className="h-5 w-5" />
+              <MenuIcon />
             </Button>
           )}
 
@@ -321,268 +133,33 @@ export function Navbar({
           </Link>
         </div>
 
-        {/* Center: Navigation Menu (Desktop) */}
-        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
-
-            if ((link as any).isCTA) {
-              return (
-                <button
-                  key={link.name}
-                  onClick={() => setPortalDialogOpen(true)}
-                  className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2 cursor-pointer"
-                >
-                  <span>{link.name}</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              );
-            }
-
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-md transition-all relative ${
-                  isActive
-                    ? "bg-primary/5 text-primary"
-                    : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"
-                }`}
-              >
-                <link.icon
-                  className={`w-4 h-4 ${isActive ? "text-primary" : ""}`}
-                />
-                <span className="hidden xl:inline">{link.name}</span>
-              </Link>
-            );
-          })}
-        </nav>
+        {/* Center: Desktop Navigation */}
+        <DesktopNav
+          navLinks={navLinks}
+          pathname={pathname}
+          setPortalDialogOpen={setPortalDialogOpen}
+        />
 
         {/* Right: Search & User */}
         <div className="flex items-center justify-end space-x-2">
-          {/* Search */}
-          {/* Mobile Search Trigger */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSearchDialogOpen(true)}
-            className="md:hidden rounded-full hover:bg-muted text-muted-foreground hover:text-primary"
-          >
-            <Search className="h-4 w-4" />
-          </Button>
+          <SearchCommand
+            searchDialogOpen={searchDialogOpen}
+            setSearchDialogOpen={setSearchDialogOpen}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            allPosts={allPosts}
+            isSearching={isSearching}
+            onSelectPost={handleSelectPost}
+          />
 
-          {/* Search Trigger (Premium Command Palette) */}
-          <button
-            onClick={() => setSearchDialogOpen(true)}
-            className="hidden md:flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-primary/5 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300 border border-primary/10 hover:border-primary/20 text-xs font-semibold cursor-pointer relative group backdrop-blur-xs"
-          >
-            <Search className="h-4 w-4 text-primary/70 group-hover:text-primary transition-colors duration-300" />
-            <span className="tracking-wider text-foreground/80 group-hover:text-foreground transition-colors duration-300 font-bold uppercase text-[10px]">
-              Search
-            </span>
-            <span className="flex items-center justify-center bg-background/80 border border-border/50 text-[9px] font-bold px-1 py-0.5 rounded text-muted-foreground/80 group-hover:text-primary group-hover:border-primary/30 transition-all duration-300 font-mono">
-              ⌘K
-            </span>
-          </button>
-
-          {/* Language Switcher */}
-          <div>
-            <LanguageSwitcher />
-          </div>
-
-          {mounted && (
-            <CommandDialog
-              open={searchDialogOpen}
-              onOpenChange={setSearchDialogOpen}
-            >
-              <CommandInput
-                placeholder="Search across all intellectual property assets..."
-                value={searchQuery}
-                onValueChange={(v) => setSearchQuery(v)}
-                className="font-medium tracking-wide placeholder:text-muted-foreground/60 focus:ring-primary/20"
-              />
-              <CommandList className="scrollbar-thin scrollbar-thumb-primary/10 scrollbar-track-transparent p-2">
-                {isSearching ? (
-                  <div className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide flex items-center justify-center gap-2">
-                    <div className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                    Searching assets...
-                  </div>
-                ) : (
-                  <CommandEmpty className="py-6 text-center text-muted-foreground text-xs font-medium tracking-wide">
-                    No legal resources match your search.
-                  </CommandEmpty>
-                )}
-
-                {!isSearching && searchQuery.trim() !== "" && (
-                  <CommandGroup heading="Intellectual Property Articles">
-                    {allPosts.map((post: any) => (
-                      <CommandItem
-                        key={post.slug}
-                        value={post.title}
-                        onSelect={() => {
-                          router.push(
-                            `/category/${post.category?.slug || "all"}/${post.slug}`,
-                          );
-                          setSearchDialogOpen(false);
-                        }}
-                        className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-xl transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
-                      >
-                        {post.coverImage && (
-                          <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted/50 border border-border/50">
-                            <Image
-                              src={post.coverImage}
-                              alt={post.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
-                        )}
-                        <div className="flex flex-col gap-1 flex-1 min-w-0">
-                          <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors truncate tracking-wide leading-tight">
-                            {post.title}
-                          </span>
-                          <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-black text-primary/80 uppercase tracking-widest bg-primary/5 px-1.5 py-0.5 rounded">
-                              {post.category?.name || "Uncategorized"}
-                            </span>
-                            {post.readTime && (
-                              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
-                                • {post.readTime.split(" ")[0]} Min read
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                )}
-              </CommandList>
-            </CommandDialog>
-          )}
-          {/* User Dropdown */}
-          {mounted ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button type="button" aria-label="User menu">
-                  <Avatar className="size-9 border">
-                    <AvatarImage
-                      src={currentUser?.image}
-                      alt={currentUser?.name}
-                    />
-                    <AvatarFallback>
-                      {getInitials(currentUser?.name || "User")}
-                    </AvatarFallback>
-                  </Avatar>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-60" align="end">
-                {isLoggedIn ? (
-                  <>
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-semibold tracking-wider">
-                          {currentUser?.name}
-                        </p>
-                        <p className="text-xs text-muted-foreground tracking-widest">
-                          {currentUser?.email}
-                        </p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      asChild
-                      className="cursor-pointer uppercase text-xs tracking-wider"
-                    >
-                      <Link
-                        href="/profile"
-                        className="flex items-center gap-2 w-full"
-                      >
-                        <User className="text-primary w-4 h-4" />
-                        <span>View Profile</span>
-                      </Link>
-                    </DropdownMenuItem>
-                  </>
-                ) : (
-                  <>
-                    <DropdownMenuLabel className="font-normal">
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-semibold">
-                          Welcome to MentorIP
-                        </p>
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest leading-none">
-                          Security for your Innovation
-                        </p>
-                      </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      asChild
-                      className="cursor-pointer uppercase text-xs tracking-wider"
-                    >
-                      <Link href="/auth/login">
-                        <LogOut className="rotate-180 text-primary" />
-                        <span>Log In</span>
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      asChild
-                      className="cursor-pointer uppercase text-xs tracking-wider"
-                    >
-                      <Link href="/auth/register">
-                        <Users className="text-primary" />
-                        <span>Register Account</span>
-                      </Link>
-                    </DropdownMenuItem>
-                  </>
-                )}
-
-                <DropdownMenuSeparator />
-                <div className="flex items-center justify-between px-2 py-1.5 focus:bg-accent focus:text-accent-foreground select-none">
-                  <div className="flex items-center gap-2">
-                    {theme === "dark" ? (
-                      <Moon className="h-4 w-4 text-blue-400" />
-                    ) : (
-                      <Sun className="h-4 w-4 text-amber-500" />
-                    )}
-                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                      Dark Mode
-                    </span>
-                  </div>
-                  <Switch
-                    className="scale-75"
-                    checked={theme === "dark"}
-                    onCheckedChange={(checked) =>
-                      setTheme(checked ? "dark" : "light")
-                    }
-                  />
-                </div>
-
-                {isLoggedIn && (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={async () => {
-                        await logOut();
-                        setCurrentUser(null);
-                        router.refresh();
-                      }}
-                      className="text-red-500 focus:text-red-500 cursor-pointer font-bold text-xs uppercase tracking-[0.2em]"
-                    >
-                      <LogOut />
-                      <span>Log out</span>
-                    </DropdownMenuItem>
-                  </>
-                )}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Avatar className="size-9 border">
-              <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-          )}
+          <UserDropdown
+            currentUser={currentUser}
+            isLoggedIn={isLoggedIn}
+            mounted={mounted}
+            theme={theme}
+            setTheme={setTheme}
+            onLogout={handleLogout}
+          />
         </div>
       </div>
 
@@ -593,13 +170,13 @@ export function Navbar({
             <DialogTitle className="text-xl font-black text-primary tracking-tight">
               Access Client Portal
             </DialogTitle>
-            <DialogDescription className="text-sm leading-relaxed pt-2 space-y-3">
-              <p>
+            <DialogDescription className="text-sm leading-relaxed pt-2 space-y-3 text-foreground">
+              <span className="block">
                 For a complete view of your IP portfolio—and for details on how to renew all IP rights through one login in just a few clicks—please access the Client Portal.
-              </p>
-              <p>
+              </span>
+              <span className="block">
                 Please use this link for a full overview of your IP portfolio and renewal instructions:
-              </p>
+              </span>
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end pt-2">
@@ -617,5 +194,13 @@ export function Navbar({
         </DialogContent>
       </Dialog>
     </header>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
   );
 }
