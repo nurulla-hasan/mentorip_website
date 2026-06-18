@@ -345,7 +345,7 @@ export function Navbar({
                 className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-md transition-all relative ${
                   isActive
                     ? "bg-primary/5 text-primary"
-                    : "text-foreground/75 hover:text-primary dark:hover:text-primary hover:bg-muted"
+                    : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"
                 }`}
               >
                 <link.icon

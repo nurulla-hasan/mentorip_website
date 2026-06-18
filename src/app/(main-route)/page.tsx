@@ -339,10 +339,11 @@ export default async function Home() {
       <NewsletterSection />
 
       {/* Category Specific Sections */}
-      <div className="space-y-4">
-        {categoriesWithPosts.map((cat) => (
+      <div className="space-y-0">
+        {categoriesWithPosts.map((cat, index) => (
           <CategorySection 
             key={cat._id} 
+            index={index}
             categorySlug={cat.slug} 
             category={cat.data} 
           />
