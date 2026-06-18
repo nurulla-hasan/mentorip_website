@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Facebook, Linkedin, ExternalLink } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Linkedin,
+  ExternalLink,
+} from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,7 +17,7 @@ export function Footer() {
   return (
     <footer className="w-full mt-16 md:mt-24 bg-linear-to-b from-primary/10 via-background to-background border-t border-primary/20">
       <div className="max-w-[1920px] mx-auto px-6 lg:px-12 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Col 1: Brand & About */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group">
@@ -23,13 +30,22 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed font-medium">
-              A premier international Intellectual Property law firm protecting ideas and empowering brands with administrative precision.
+              A premier international Intellectual Property law firm protecting
+              ideas and empowering brands with administrative precision.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="https://www.facebook.com/mentoripofficial/" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
+              <Link
+                href="https://www.facebook.com/mentoripofficial/"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              >
                 <Facebook className="w-4 h-4" />
               </Link>
-              <Link href="https://www.linkedin.com/in/mentorip/" target="_blank" className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300">
+              <Link
+                href="https://www.linkedin.com/in/mentorip/"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              >
                 <Linkedin className="w-4 h-4" />
               </Link>
             </div>
@@ -61,7 +77,56 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: IP Resources */}
+          {/* Col 3: Practice Areas */}
+          <div className="space-y-6">
+            <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground border-l-2 border-primary pl-3">
+              Litigation
+            </h4>
+            <ul className="space-y-3">
+              {[
+                {
+                  name: "IP Litigation",
+                  href: "/practice-areas/ip-litigation",
+                },
+                {
+                  name: "Criminal Litigation",
+                  href: "/practice-areas/criminal-litigation",
+                },
+                {
+                  name: "Civil & Commercial Litigation",
+                  href: "/practice-areas/civil-commercial-litigation",
+                },
+                {
+                  name: "Disputes & Arbitration",
+                  href: "/practice-areas/disputes-arbitration",
+                },
+                {
+                  name: "Anti Counterfeiting",
+                  href: "/practice-areas/anti-counterfeiting",
+                },
+                {
+                  name: "Maritime & Admiralty Law",
+                  href: "/practice-areas/maritime-admiralty-law",
+                },
+                {
+                  name: "Insolvency and Bankruptcy",
+                  href: "/practice-areas/insolvency-bankruptcy",
+                },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary group-hover:scale-125 transition-all mr-2" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: IP Resources */}
           <div className="space-y-6">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground border-l-2 border-primary pl-3">
               IP Resources
@@ -70,9 +135,15 @@ export function Footer() {
               {[
                 { name: "DPDT (Bangladesh)", url: "https://dpdt.gov.bd/" },
                 { name: "WIPO (International)", url: "https://www.wipo.int/" },
-                { name: "USPTO (United States)", url: "https://www.uspto.gov/" },
+                {
+                  name: "USPTO (United States)",
+                  url: "https://www.uspto.gov/",
+                },
                 { name: "IP India (India)", url: "https://ipindia.gov.in/" },
-                { name: "Copyright Office BD", url: "https://copyrightoffice.gov.bd/" },
+                {
+                  name: "Copyright Office BD",
+                  url: "https://copyrightoffice.gov.bd/",
+                },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -88,7 +159,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contact Info */}
+          {/* Col 5: Contact Info */}
           <div className="space-y-6">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-foreground border-l-2 border-primary pl-3">
               Contact Info
@@ -97,33 +168,49 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm font-medium text-muted-foreground leading-relaxed">
-                  Suit#501, Concord Tower 113 Kazi Nazrul Islam Avenue, Dhaka-1000 Bangladesh.
+                  Suit#501, Concord Tower 113 Kazi Nazrul Islam Avenue,
+                  Dhaka-1000 Bangladesh.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-sm font-medium text-muted-foreground leading-relaxed">
-                  <span className="text-foreground font-bold block mb-0.5">Court Office</span>
-                  Room#110 (old), Supreme Court Bar Association Building, Dhaka, Bangladesh.
+                  <span className="text-foreground font-bold block mb-0.5">
+                    Court Office
+                  </span>
+                  Room#110 (old), Supreme Court Bar Association Building, Dhaka,
+                  Bangladesh.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-primary shrink-0 mt-1" />
                 <div className="flex flex-col gap-1.5">
-                  <Link href="tel:+8801760308093" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="tel:+8801760308093"
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
                     +880 1760 308093
                   </Link>
-                  <Link href="tel:+880241032320" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="tel:+880241032320"
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Tel: 02-410 32 320
                   </Link>
-                  <Link href="tel:+8801733792305" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="tel:+8801733792305"
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Cell: 01733792305
                   </Link>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <Link href="mailto:info@mentorip.com" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="mailto:info@mentorip.com"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                >
                   info@mentorip.com
                 </Link>
               </li>
@@ -135,9 +222,11 @@ export function Footer() {
           <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
             &copy; {currentYear} MENTOR IP LAW FIRM. ALL RIGHTS RESERVED.
           </p>
-          
+
           <div className="flex items-center gap-2 group/credit cursor-pointer">
-            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">Created by</p>
+            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">
+              Created by
+            </p>
             <span className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
               SmartEdge Technologies
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />

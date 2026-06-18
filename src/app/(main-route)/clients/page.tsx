@@ -1,21 +1,20 @@
 
 import { 
   Globe2, 
-  ShieldCheck, 
-  Factory,
+  ShieldCheck,
   MapPin,
   ChevronRight,
   BarChart3,
-  Zap,
+  PenTool,
   Globe,
   Lock,
   Search,
-  FileText,
   Gavel,
   Scale,
   Eye,
   Handshake
 } from "lucide-react";
+import { TMIcon, PatentPIcon, CopyrightCIcon } from "@/components/common/custom-icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -58,22 +57,22 @@ interface Client {
 const industries = [
   { 
     name: "Trademarks", 
-    icon: ShieldCheck, 
+    icon: TMIcon, 
     desc: "Protect brand identifiers (names, logos, slogans)." 
   },
   { 
     name: "Patents", 
-    icon: Zap, 
+    icon: PatentPIcon, 
     desc: "Protect inventions (products/processes) for a limited term." 
   },
   { 
     name: "Industrial Designs", 
-    icon: Factory, 
+    icon: PenTool, 
     desc: "Protect ornamental, non-functional product features." 
   },
   { 
     name: "Copyrights", 
-    icon: FileText, 
+    icon: CopyrightCIcon, 
     desc: "Protect original literary, artistic, musical works." 
   },
   { 
