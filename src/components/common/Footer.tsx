@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -9,9 +10,11 @@ import {
   Facebook,
   Linkedin,
   ExternalLink,
+  X,
 } from "lucide-react";
 
 export function Footer() {
+  const [showWeChat, setShowWeChat] = useState(false);
   const currentYear = new Date().getFullYear();
 
   return (
@@ -48,6 +51,25 @@ export function Footer() {
               >
                 <Linkedin className="w-4 h-4" />
               </Link>
+              <Link
+                href="https://vm.tiktok.com/ZS9jqjHuUsnSP-PT32U/"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                </svg>
+              </Link>
+              <button
+                onClick={() => setShowWeChat(true)}
+                className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300 cursor-pointer"
+                title="Scan WeChat QR Code"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M9.5 4C5.36 4 2 6.69 2 10c0 1.89 1.08 3.56 2.7 4.69l-.7 2.31 2.6-1.37c.81.3 1.68.5 2.6.56l.02-.01c.22-.02.44-.04.66-.08-.15-.42-.24-.86-.24-1.32 0-2.79 2.68-5.08 6.39-5.43-.72-2.24-3.36-3.85-6.53-3.85zM8 7.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/>
+                  <path d="M22 14c0-3.31-3.36-6-7.5-6S7 10.69 7 14s3.36 6 7.5 6c.86 0 1.69-.12 2.45-.34l2.55 1.36-.7-2.31C19.92 17.56 21 15.89 21 14zM13 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -234,6 +256,41 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* WeChat QR Code Modal */}
+      {showWeChat && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+          onClick={() => setShowWeChat(false)}
+        >
+          <div
+            className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8 max-w-sm w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowWeChat(false)}
+              className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors shadow-lg"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <div className="text-center space-y-4">
+              <h3 className="text-lg font-bold text-foreground">Scan to Connect on WeChat</h3>
+              <p className="text-sm text-muted-foreground">Scan this QR code to add MENTOR IP on WeChat</p>
+              <div className="relative w-56 h-56 mx-auto rounded-xl overflow-hidden border-2 border-primary/20">
+                <Image
+                  src="/wechat.jpeg"
+                  alt="WeChat QR Code"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Or search WeChat ID: <span className="font-mono font-semibold text-foreground">wxid_8cbrabldnseu22</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }
