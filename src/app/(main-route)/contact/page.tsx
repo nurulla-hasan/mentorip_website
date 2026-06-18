@@ -11,7 +11,6 @@ import {
    MessageCircle,
    LucideIcon,
    Facebook,
-   Send,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -80,13 +79,6 @@ const socialIconMap: Record<string, LucideIcon> = {
    facebook: Facebook,
    linkedin: Linkedin,
    mail: Mail,
-};
-
-// Hotline icon mapping
-const hotlineIconMap: Record<string, LucideIcon> = {
-   whatsapp: MessageCircle,
-   telegram: Send,
-   phone: Phone,
 };
 
 const colorMap = ["primary", "primary", "primary", "primary"];
@@ -203,17 +195,14 @@ export default async function ContactPage() {
                            </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           {hotlines.map((hotline: Hotline, i: number) => {
-                              const HotlineIcon = hotlineIconMap[hotline.label.toLowerCase()] || MessageCircle;
-                              return (
+                           {hotlines.map((hotline: Hotline, i: number) => (
                               <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-background border border-border hover:bg-muted/50 transition-colors group/item cursor-pointer">
                                  <div className="flex items-center gap-3">
-                                    <HotlineIcon className="w-4 h-4 text-primary" />
+                                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{hotline.label}</span>
                                  </div>
                                  <p className="text-sm font-bold text-primary">{hotline.value}</p>
                               </div>
-                           );
-                           })}
+                           ))}
                            {socialLinks.map((social: SocialLink, i: number) => {
                               const SocialIcon = socialIconMap[social.icon.toLowerCase()] || ExternalLink;
                               return (
