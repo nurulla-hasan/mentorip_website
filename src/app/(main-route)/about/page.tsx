@@ -150,7 +150,7 @@ export default async function AboutPage() {
   return (
     <div className="pb-16 space-y-16">
       {/* Compact Page Header */}
-      <section className="pb-4 border-b border-border/50 mb-4 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/[0.02]">
+      <section className="pb-4 border-b border-border/50 mb-4">
         <div className="flex flex-col items-start space-y-3 max-w-4xl">
           <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1 uppercase tracking-widest font-bold text-[10px] rounded-full">
             The MentorIP Story
@@ -165,7 +165,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Narrative Section - Dynamic "Who We Are" */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/5">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div className="lg:col-span-8 space-y-6">
           <div className="space-y-2">
             <Badge
@@ -253,7 +253,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Leadership Section - Newspaper Style */}
-      <section className="space-y-6 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/[0.02]">
+      <section className="space-y-6">
         {/* Newspaper Header */}
         <div className="space-y-2 border-b-2 border-foreground/20 pb-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -373,7 +373,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="space-y-6 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/5">
+      <section className="space-y-6">
         <div className="text-center space-y-2">
           <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">
             OUR JOURNEY
@@ -407,7 +407,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Landmark Wins Section */}
-      <section className="space-y-12 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/[0.02]">
+      <section className="space-y-12">
         <div className="text-center space-y-4">
           <Badge variant="outline" className="text-primary border-primary/20 uppercase tracking-[0.3em] font-bold text-[10px] px-4 py-1.5 rounded-full">
             OUR ACHIEVEMENTS
@@ -444,7 +444,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Global Presence */}
-      <section className="space-y-6 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/5">
+      <section className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-2">
             <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">
@@ -511,7 +511,7 @@ export default async function AboutPage() {
         </div>
       </section>
       {/* Important Resources Section */}
-      <section id="resources" className="space-y-6 -mx-4 px-4 md:-mx-8 md:px-8 bg-primary/[0.02]">
+      <section id="resources" className="space-y-6">
         <div className="text-center space-y-2">
           <Badge
             variant="outline"

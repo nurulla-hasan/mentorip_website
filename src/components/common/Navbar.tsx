@@ -22,6 +22,13 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sidebar } from "@/components/common/Sidebar";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import {
   Sheet,
   SheetContent,
   SheetTrigger,
@@ -86,6 +93,7 @@ export function Navbar({
   const [searchQuery, setSearchQuery] = useState("");
   const [allPosts, setAllPosts] = useState<any[]>([]);
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+  const [portalDialogOpen, setPortalDialogOpen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
@@ -182,19 +190,17 @@ export function Navbar({
 
                           if ((link as any).isCTA) {
                             return (
-                              <a
+                              <button
                                 key={link.name}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-between gap-3 px-4 py-3 text-sm font-bold rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 mx-2 mt-4 mb-2 transition-transform active:scale-95"
+                                onClick={() => setPortalDialogOpen(true)}
+                                className="flex items-center justify-between gap-3 w-full px-4 py-3 text-sm font-bold rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 mx-2 mt-4 mb-2 transition-transform active:scale-95 cursor-pointer"
                               >
                                 <div className="flex items-center gap-3">
                                   <Briefcase className="w-4 h-4" />
                                   {link.name}
                                 </div>
                                 <ChevronRight className="w-4 h-4" />
-                              </a>
+                              </button>
                             );
                           }
 
@@ -325,16 +331,14 @@ export function Navbar({
 
             if ((link as any).isCTA) {
               return (
-                <a
+                <button
                   key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2"
+                  onClick={() => setPortalDialogOpen(true)}
+                  className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2 cursor-pointer"
                 >
                   <span>{link.name}</span>
                   <ChevronRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               );
             }
 
@@ -581,6 +585,37 @@ export function Navbar({
           )}
         </div>
       </div>
+
+      {/* Client Portal Dialog */}
+      <Dialog open={portalDialogOpen} onOpenChange={setPortalDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-black text-primary tracking-tight">
+              Access Client Portal
+            </DialogTitle>
+            <DialogDescription className="text-sm leading-relaxed pt-2 space-y-3">
+              <p>
+                For a complete view of your IP portfolio—and for details on how to renew all IP rights through one login in just a few clicks—please access the Client Portal.
+              </p>
+              <p>
+                Please use this link for a full overview of your IP portfolio and renewal instructions:
+              </p>
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-end pt-2">
+            <a
+              href="https://app.mentorip.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="font-bold tracking-wider">
+                Access Client Portal
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }
