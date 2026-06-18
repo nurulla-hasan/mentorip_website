@@ -193,7 +193,7 @@ export const setNewPassword = async (newPassword: string): Promise<any> => {
 // fetchMyProfile
 export const fetchMyProfile = async (): Promise<any> => {
   try {
-    return await serverFetch('/user/profile', { method: 'GET' });
+    return await serverFetch('/user/profile', { method: 'GET', revalidate: 300 });
   } catch (error: any) {
     return { success: false, message: error?.message };
   }
