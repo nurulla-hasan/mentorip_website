@@ -64,7 +64,12 @@ const navLinks = [
   { name: "Contact Us", href: "/contact", icon: Phone },
   { name: "Team of Lawyers", href: "/team-of-lawyers", icon: Users },
   { name: "Gallery", href: "/gallery", icon: ImageIcon },
-  { name: "Access Client Portal", href: "https://app.mentorip.com/login", icon: ChevronRight, isCTA: true },
+  {
+    name: "Access Client Portal",
+    href: "https://app.mentorip.com/login",
+    icon: ChevronRight,
+    isCTA: true,
+  },
 ];
 
 export function Navbar({
@@ -142,7 +147,10 @@ export function Navbar({
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] flex flex-col p-0 gap-0">
+              <SheetContent
+                side="left"
+                className="w-[300px] flex flex-col p-0 gap-0"
+              >
                 <SheetHeader className="p-4 border-b shrink-0 text-left">
                   <SheetTitle className="text-left font-bold text-primary">
                     MENTOR IP
@@ -153,17 +161,14 @@ export function Navbar({
                 </SheetHeader>
 
                 <div className="flex-1 overflow-y-auto">
-                  <Tabs
-                    defaultValue="menu"
-                    className="w-full flex flex-col"
-                  >
+                  <Tabs defaultValue="menu" className="w-full flex flex-col">
                     <div className="px-4 py-3 border-b sticky top-0 bg-background z-10">
                       <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="menu">Navigation</TabsTrigger>
                         <TabsTrigger value="categories">Categories</TabsTrigger>
                       </TabsList>
                     </div>
-                    
+
                     <div className="p-2">
                       <TabsContent
                         value="menu"
@@ -174,7 +179,7 @@ export function Navbar({
                             link.href === "/"
                               ? pathname === "/"
                               : pathname.startsWith(link.href);
-                          
+
                           if ((link as any).isCTA) {
                             return (
                               <a
@@ -228,7 +233,10 @@ export function Navbar({
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 p-3 rounded-2xl bg-background border shadow-sm transition-all hover:border-primary/30">
                         <Avatar className="w-10 h-10 border-2 border-primary/10 shadow-sm">
-                          <AvatarImage src={currentUser?.image} alt={currentUser?.name} />
+                          <AvatarImage
+                            src={currentUser?.image}
+                            alt={currentUser?.name}
+                          />
                           <AvatarFallback className="bg-primary/5 text-primary font-bold text-xs">
                             {getInitials(currentUser?.name || "")}
                           </AvatarFallback>
@@ -243,10 +251,10 @@ export function Navbar({
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          asChild 
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
                           className="rounded-xl text-[10px] font-bold uppercase tracking-widest border-primary/10 hover:bg-primary/5 h-10 transition-all active:scale-95"
                         >
                           <Link href="/profile">
@@ -254,9 +262,9 @@ export function Navbar({
                             Profile
                           </Link>
                         </Button>
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
+                        <Button
+                          variant="ghost"
+                          size="sm"
                           onClick={async () => {
                             await logOut();
                             setCurrentUser(null);
@@ -271,10 +279,17 @@ export function Navbar({
                     </div>
                   ) : (
                     <div className="flex flex-col gap-2">
-                      <Button asChild className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 shadow-lg shadow-primary/20 transition-all active:scale-95">
+                      <Button
+                        asChild
+                        className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 shadow-lg shadow-primary/20 transition-all active:scale-95"
+                      >
                         <Link href="/auth/login">Login to Account</Link>
                       </Button>
-                      <Button variant="ghost" asChild className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 transition-all active:scale-95">
+                      <Button
+                        variant="ghost"
+                        asChild
+                        className="w-full rounded-xl font-bold uppercase tracking-widest text-[10px] h-11 transition-all active:scale-95"
+                      >
                         <Link href="/auth/register">Create Account</Link>
                       </Button>
                     </div>
@@ -330,7 +345,7 @@ export function Navbar({
                 className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-md transition-all relative ${
                   isActive
                     ? "bg-primary/5 text-primary"
-                    : "text-muted-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"
+                    : "text-foreground/75 hover:text-primary dark:hover:text-primary hover:bg-muted"
                 }`}
               >
                 <link.icon
@@ -361,7 +376,9 @@ export function Navbar({
             className="hidden md:flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-primary/5 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300 border border-primary/10 hover:border-primary/20 text-xs font-semibold cursor-pointer relative group backdrop-blur-xs"
           >
             <Search className="h-4 w-4 text-primary/70 group-hover:text-primary transition-colors duration-300" />
-            <span className="tracking-wider text-foreground/80 group-hover:text-foreground transition-colors duration-300 font-bold uppercase text-[10px]">Search</span>
+            <span className="tracking-wider text-foreground/80 group-hover:text-foreground transition-colors duration-300 font-bold uppercase text-[10px]">
+              Search
+            </span>
             <span className="flex items-center justify-center bg-background/80 border border-border/50 text-[9px] font-bold px-1 py-0.5 rounded text-muted-foreground/80 group-hover:text-primary group-hover:border-primary/30 transition-all duration-300 font-mono">
               ⌘K
             </span>
@@ -373,12 +390,12 @@ export function Navbar({
           </div>
 
           {mounted && (
-            <CommandDialog 
-              open={searchDialogOpen} 
+            <CommandDialog
+              open={searchDialogOpen}
               onOpenChange={setSearchDialogOpen}
             >
-              <CommandInput 
-                placeholder="Search across all intellectual property assets..." 
+              <CommandInput
+                placeholder="Search across all intellectual property assets..."
                 value={searchQuery}
                 onValueChange={(v) => setSearchQuery(v)}
                 className="font-medium tracking-wide placeholder:text-muted-foreground/60 focus:ring-primary/20"
@@ -394,7 +411,7 @@ export function Navbar({
                     No legal resources match your search.
                   </CommandEmpty>
                 )}
-                
+
                 {!isSearching && searchQuery.trim() !== "" && (
                   <CommandGroup heading="Intellectual Property Articles">
                     {allPosts.map((post: any) => (
@@ -402,14 +419,21 @@ export function Navbar({
                         key={post.slug}
                         value={post.title}
                         onSelect={() => {
-                          router.push(`/category/${post.category?.slug || "all"}/${post.slug}`);
+                          router.push(
+                            `/category/${post.category?.slug || "all"}/${post.slug}`,
+                          );
                           setSearchDialogOpen(false);
                         }}
                         className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-xl transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
                       >
                         {post.coverImage && (
                           <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted/50 border border-border/50">
-                            <Image src={post.coverImage} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <Image
+                              src={post.coverImage}
+                              alt={post.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
                           </div>
                         )}
                         <div className="flex flex-col gap-1 flex-1 min-w-0">
