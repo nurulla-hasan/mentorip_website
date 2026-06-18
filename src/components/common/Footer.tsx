@@ -52,11 +52,34 @@ export function Footer() {
                 <Linkedin className="w-4 h-4" />
               </Link>
               <Link
+                href="https://www.youtube.com/channel/UC6BUiG8HTQ3NQ5FV6jCCeQw"
+                target="_blank"
+                className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </Link>
+              <Link
                 href="https://vm.tiktok.com/ZS9jqjHuUsnSP-PT32U/"
                 target="_blank"
                 className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-4 h-4"
+                >
                   <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
                 </svg>
               </Link>
@@ -65,9 +88,16 @@ export function Footer() {
                 className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300 cursor-pointer"
                 title="Scan WeChat QR Code"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M9.5 4C5.36 4 2 6.69 2 10c0 1.89 1.08 3.56 2.7 4.69l-.7 2.31 2.6-1.37c.81.3 1.68.5 2.6.56l.02-.01c.22-.02.44-.04.66-.08-.15-.42-.24-.86-.24-1.32 0-2.79 2.68-5.08 6.39-5.43-.72-2.24-3.36-3.85-6.53-3.85zM8 7.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z"/>
-                  <path d="M22 14c0-3.31-3.36-6-7.5-6S7 10.69 7 14s3.36 6 7.5 6c.86 0 1.69-.12 2.45-.34l2.55 1.36-.7-2.31C19.92 17.56 21 15.89 21 14zM13 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path d="M9.5 4C5.36 4 2 6.69 2 10c0 1.89 1.08 3.56 2.7 4.69l-.7 2.31 2.6-1.37c.81.3 1.68.5 2.6.56l.02-.01c.22-.02.44-.04.66-.08-.15-.42-.24-.86-.24-1.32 0-2.79 2.68-5.08 6.39-5.43-.72-2.24-3.36-3.85-6.53-3.85zM8 7.5c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm3 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z" />
+                  <path d="M22 14c0-3.31-3.36-6-7.5-6S7 10.69 7 14s3.36 6 7.5 6c.86 0 1.69-.12 2.45-.34l2.55 1.36-.7-2.31C19.92 17.56 21 15.89 21 14zM13 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm3 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" />
                 </svg>
               </button>
             </div>
@@ -211,21 +241,33 @@ export function Footer() {
                     href="tel:+8801760308093"
                     className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +880 1760 308093
-                  </Link>
-                  <Link
-                    href="tel:+880241032320"
-                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Tel: 02-410 32 320
-                  </Link>
-                  <Link
-                    href="tel:+8801733792305"
-                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Cell: 01733792305
+                    +880 1760 308093 / 01733792305
                   </Link>
                 </div>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-4 h-4 text-primary shrink-0"
+                >
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                  <path d="M9 22v-2h6v2" />
+                  <path d="M12 18h.01" />
+                </svg>
+                <Link
+                  href="tel:+880241032320"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Tel: 02-410 32 320
+                </Link>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
@@ -245,14 +287,23 @@ export function Footer() {
             &copy; {currentYear} MENTOR IP LAW FIRM. ALL RIGHTS RESERVED.
           </p>
 
-          <div className="flex items-center gap-2 group/credit cursor-pointer">
-            <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">
-              Created by
-            </p>
-            <span className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
-              SmartEdge Technologies
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
-            </span>
+          <Link
+            href="/map-view"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 text-xs font-semibold uppercase tracking-widest"
+          >
+            <MapPin className="w-3.5 h-3.5" />
+            Map Location
+          </Link>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 group/credit cursor-pointer">
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.15em]">
+                Created by
+              </p>
+              <span className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] group-hover:text-primary transition-colors relative">
+                SmartEdge Technologies
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -274,8 +325,12 @@ export function Footer() {
               <X className="w-4 h-4" />
             </button>
             <div className="text-center space-y-4">
-              <h3 className="text-lg font-bold text-foreground">Scan to Connect on WeChat</h3>
-              <p className="text-sm text-muted-foreground">Scan this QR code to add MENTOR IP on WeChat</p>
+              <h3 className="text-lg font-bold text-foreground">
+                Scan to Connect on WeChat
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Scan this QR code to add MENTOR IP on WeChat
+              </p>
               <div className="relative w-56 h-56 mx-auto rounded-xl overflow-hidden border-2 border-primary/20">
                 <Image
                   src="/wechat.jpeg"
@@ -285,7 +340,10 @@ export function Footer() {
                 />
               </div>
               <p className="text-xs text-muted-foreground">
-                Or search WeChat ID: <span className="font-mono font-semibold text-foreground">wxid_8cbrabldnseu22</span>
+                Or search WeChat ID:{" "}
+                <span className="font-mono font-semibold text-foreground">
+                  wxid_8cbrabldnseu22
+                </span>
               </p>
             </div>
           </div>

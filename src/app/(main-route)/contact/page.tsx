@@ -11,6 +11,7 @@ import {
    MessageCircle,
    LucideIcon,
    Facebook,
+   Send,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -79,6 +80,13 @@ const socialIconMap: Record<string, LucideIcon> = {
    facebook: Facebook,
    linkedin: Linkedin,
    mail: Mail,
+};
+
+// Hotline icon mapping
+const hotlineIconMap: Record<string, LucideIcon> = {
+   whatsapp: MessageCircle,
+   telegram: Send,
+   phone: Phone,
 };
 
 const colorMap = ["primary", "primary", "primary", "primary"];
@@ -195,14 +203,17 @@ export default async function ContactPage() {
                            </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           {hotlines.map((hotline: Hotline, i: number) => (
+                           {hotlines.map((hotline: Hotline, i: number) => {
+                              const HotlineIcon = hotlineIconMap[hotline.label.toLowerCase()] || MessageCircle;
+                              return (
                               <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-background border border-border hover:bg-muted/50 transition-colors group/item cursor-pointer">
                                  <div className="flex items-center gap-3">
-                                    <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{hotline.label}</span>
+                                    <HotlineIcon className="w-4 h-4 text-primary" />
                                  </div>
                                  <p className="text-sm font-bold text-primary">{hotline.value}</p>
                               </div>
-                           ))}
+                           );
+                           })}
                            {socialLinks.map((social: SocialLink, i: number) => {
                               const SocialIcon = socialIconMap[social.icon.toLowerCase()] || ExternalLink;
                               return (
@@ -234,6 +245,37 @@ export default async function ContactPage() {
                <Badge variant="outline" className="border text-muted-foreground font-bold uppercase tracking-widest text-xs px-4">Confidentiality Assured</Badge>
                <h3 className="text-3xl font-bold text-foreground">Committed to Protecting Your Corporate Secrets</h3>
                <p className="text-muted-foreground max-w-xl mx-auto font-medium">All communications are end-to-end encrypted and handled with boutique-level legal precision.</p>
+            </div>
+         </section>
+
+         {/* Map Location */}
+         <section className="space-y-4">
+            <div className="flex items-center gap-2">
+               <MapPin className="w-5 h-5 text-primary" />
+               <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">Find Us Here</h2>
+            </div>
+            <div className="w-full rounded-2xl overflow-hidden border border-primary/20 shadow-lg">
+               <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.123!2d90.3947394!3d23.7469302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b89638e2c6cd%3A0x7f1ec7c823942cb2!2sMentorIP!5e0!3m2!1sen!2sbd!4v1"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0, display: "block" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="MENTOR IP Law Firm Location"
+                  className="w-full"
+               />
+            </div>
+            <div className="text-center">
+               <a
+                  href="https://www.google.com/maps/place/MentorIP/@23.7469302,90.3947394,17z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-1"
+               >
+                  Open in Google Maps <ExternalLink className="w-3 h-3" />
+               </a>
             </div>
          </section>
       </div>
