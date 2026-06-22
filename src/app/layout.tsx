@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -9,10 +9,10 @@ import NextTopLoader from 'nextjs-toploader';
 import { AIChat } from "@/components/chat/AIChat";
 import { JsonLd } from "@/components/seo/json-ld";
 
-const lato = Lato({
-  variable: "--font-lato",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["100", "300", "400", "700", "900"],
+  weight: ["100", "200", "300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -92,7 +92,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${lato.variable} font-sans antialiased min-h-screen bg-background`}
+        className={`${poppins.variable} font-sans antialiased min-h-screen bg-background`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
