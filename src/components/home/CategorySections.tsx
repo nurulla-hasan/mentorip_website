@@ -10,14 +10,13 @@ interface CategorySectionProps {
   index?: number;
 }
 
-export function CategorySection({ category, categorySlug, index = 0 }: CategorySectionProps) {
+export function CategorySection({ category, categorySlug }: CategorySectionProps) {
   if (!category) return null;
 
   const categoryPosts = category.posts || [];
-  const isEven = index % 2 === 0;
 
   return (
-    <section className={`py-12 space-y-6 px-6 ${isEven ? "bg-primary/10" : "bg-primary/20"}`}>
+    <section className={`py-12 space-y-6`}>
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
         <div className="space-y-1.5">

@@ -61,7 +61,7 @@ export function PostCard({
             {title}
           </h3>
 
-          <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1 tracking-wider">
+          <p className="text-base text-muted-foreground line-clamp-2 mb-4 flex-1 tracking-wider">
             {excerpt}
           </p>
 

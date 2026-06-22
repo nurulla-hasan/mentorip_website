@@ -163,7 +163,7 @@ export default async function Home() {
                       {heroPost.title}
                     </h2>
                   </div>
-                  <p className="text-muted-foreground text-sm line-clamp-3 font-medium leading-relaxed max-w-2xl">
+                  <p className="text-muted-foreground text-base line-clamp-3 font-medium leading-relaxed max-w-2xl">
                     {heroPost.subtitle}
                   </p>
                   <div className="flex items-center text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground gap-3 mt-1">
@@ -232,7 +232,7 @@ export default async function Home() {
                       <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wider group-hover:text-primary transition-colors line-clamp-2">
                         {widePost.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-4 leading-relaxed mt-1">
+                      <p className="text-base text-muted-foreground line-clamp-4 leading-relaxed mt-1">
                         {widePost.subtitle}
                       </p>
                       <div className="flex items-center gap-3 pt-1">
@@ -313,7 +313,7 @@ export default async function Home() {
                             </h3>
                           </div>
                         </div>
-                        <p className="text-sm text-muted-foreground line-clamp-4 leading-relaxed mt-1">
+                        <p className="text-base text-muted-foreground line-clamp-4 leading-relaxed mt-1">
                           {post.subtitle}
                         </p>
                       </div>
@@ -354,10 +354,9 @@ export default async function Home() {
 
       {/* Category Specific Sections */}
       <div className="space-y-0">
-        {categoriesWithPosts.map((cat, index) => (
+        {categoriesWithPosts.map((cat) => (
           <CategorySection
             key={cat._id}
-            index={index}
             categorySlug={cat.slug}
             category={cat.data}
           />
