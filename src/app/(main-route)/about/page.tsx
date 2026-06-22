@@ -224,7 +224,7 @@ export default async function AboutPage() {
                 >
                   <Button className="mt-2 font-bold group">
                     Access Client Portal{" "}
-                    <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <p className="text-xs text-primary bg-primary/5 p-2 rounded-lg inline-block">

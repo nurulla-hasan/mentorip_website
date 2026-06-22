@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
@@ -11,7 +12,7 @@ import {
   CommandGroup,
   CommandItem,
 } from "@/components/ui/command";
-import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
+// import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 
 interface SearchCommandProps {
   searchDialogOpen: boolean;
@@ -47,7 +48,7 @@ export function SearchCommand({
       {/* Search Trigger (Premium Command Palette) */}
       <button
         onClick={() => setSearchDialogOpen(true)}
-        className="hidden md:flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-primary/5 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300 border border-primary/10 hover:border-primary/20 text-xs font-semibold cursor-pointer relative group backdrop-blur-xs"
+        className="hidden md:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-primary/5 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-300 border border-primary/10 hover:border-primary/20 text-xs font-semibold cursor-pointer relative group backdrop-blur-xs"
       >
         <Search className="h-4 w-4 text-primary/70 group-hover:text-primary transition-colors duration-300" />
         <span className="tracking-wider text-foreground/80 group-hover:text-foreground transition-colors duration-300 font-bold uppercase text-[10px]">
@@ -58,10 +59,10 @@ export function SearchCommand({
         </span>
       </button>
 
-      {/* Language Switcher */}
-      <div>
+      {/* Language Switcher hidden temporarily */}
+      {/* <div>
         <LanguageSwitcher />
-      </div>
+      </div> */}
 
       <CommandDialog
           open={searchDialogOpen}
@@ -95,7 +96,7 @@ export function SearchCommand({
                       onSelectPost(post.slug);
                       setSearchDialogOpen(false);
                     }}
-                    className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-xl transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
+                    className="flex items-center gap-3.5 p-2.5 cursor-pointer hover:bg-primary/5 rounded-lg transition-all duration-200 data-[selected=true]:bg-primary/10 group mb-1 border border-transparent hover:border-primary/10"
                   >
                     {post.coverImage && (
                       <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 bg-muted/50 border border-border/50">

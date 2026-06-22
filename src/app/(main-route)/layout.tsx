@@ -27,7 +27,7 @@ export default async function MainRouteLayout({
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 overflow-x-hidden">
               {children}
             </div>
           </div>

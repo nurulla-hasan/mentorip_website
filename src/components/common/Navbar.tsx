@@ -187,7 +187,7 @@ export function Navbar({
             >
               <Button className="font-bold tracking-wider">
                 Access Client Portal
-                <ChevronRight className="w-4 h-4 ml-1" />
+                <ChevronRight/>
               </Button>
             </a>
           </div>

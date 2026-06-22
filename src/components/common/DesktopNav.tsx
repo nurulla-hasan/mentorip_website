@@ -29,7 +29,7 @@ export function DesktopNav({
             <button
               key={link.name}
               onClick={() => setPortalDialogOpen(true)}
-              className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2 cursor-pointer"
+              className="hidden xl:flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold transition-all shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 ml-2 cursor-pointer"
             >
               <span>{link.name}</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -41,7 +41,7 @@ export function DesktopNav({
           <Link
             key={link.name}
             href={link.href}
-            className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-md transition-all relative ${
+            className={`text-sm font-medium flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all relative ${
               isActive
                 ? "bg-primary/5 text-primary"
                 : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"

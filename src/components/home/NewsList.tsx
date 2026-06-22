@@ -95,26 +95,26 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
                       className="w-auto h-auto"
                     />
                   </div>
-                  <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">
                     MENTORIP
                   </span>
                 </div>
                 <Badge
                   variant="secondary"
-                  className="text-[9px] font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground flex items-center"
+                  className="text-xs font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground flex items-center"
                 >
                   {post.readTime?.split(" ")[0]} min read
                 </Badge>
               </div>
 
-              <h3 className="text-md font-semibold tracking-wider text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors flex-1">
+              <h3 className="text-base md:text-lg font-semibold tracking-wider text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors flex-1">
                 {post.title}
               </h3>
 
-              <div className="pt-4 border-t border-border flex justify-between flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-muted-foreground font-bold uppercase tracking-widest">
+              <div className="pt-4 border-t border-border flex justify-between flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground font-bold uppercase tracking-widest">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-                  <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                  <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
                     {format(
                       new Date(post.createdAt || "2026-01-20T10:00:00Z"),
                       "MMM dd, yyyy",
@@ -134,7 +134,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
             onClick={handleLoadMore}
             disabled={loading}
             variant="outline"
-            className="h-10 px-8 rounded-full border-border font-bold text-xs uppercase tracking-widest hover:bg-muted transition-all flex items-center gap-2"
+            className="h-10 px-8 rounded-full border-border font-bold text-sm uppercase tracking-widest hover:bg-muted transition-all flex items-center gap-2"
           >
             <RefreshCw
               className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`}
@@ -145,7 +145,7 @@ export function NewsList({ initialPosts, initialMeta }: NewsListProps) {
       ) : (
         <div className="flex flex-col items-center justify-center pt-10 pb-4 space-y-2 opacity-50">
           <div className="h-px w-20 bg-border" />
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
             You&apos;ve reached the end of the list
           </p>
         </div>

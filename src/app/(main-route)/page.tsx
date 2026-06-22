@@ -73,18 +73,18 @@ export default async function Home() {
   return (
     <div className="space-y-12 focus:outline-none">
       {/* Mobile/Tablet Hero Section (Full-bleed Hero) */}
-      <div className="xl:hidden -mx-4 -mt-4 md:-mx-8 md:-mt-8 px-6 py-12 bg-linear-to-b from-primary/15 via-primary/5 to-transparent flex flex-col gap-5 relative overflow-hidden border-b border-primary/20">
+      <div className="xl:hidden px-6 py-12 bg-linear-to-b from-primary/15 via-primary/5 to-transparent flex flex-col gap-5 relative overflow-hidden border-b border-primary/20">
         {/* Decorative background element */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full -mr-10 -mt-10 blur-2xl" />
+        <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full -mr-10 -mt-10 " />
 
-        <span className="text-primary font-bold text-xs md:text-sm uppercase tracking-widest">
+        <span className="text-primary font-bold text-sm md:text-base uppercase tracking-widest">
           Welcome to MentorIP
         </span>
-        <h1 className="text-2xl md:text-4xl font-black text-foreground leading-tight tracking-wide uppercase">
+        <h1 className="text-3xl md:text-5xl font-black text-foreground leading-tight tracking-wide uppercase">
           Protecting your <span className="text-primary">Ideas</span>.
           Empowering your <span className="text-primary">Brands</span>.
         </h1>
-        <p className="text-xs md:text-sm text-muted-foreground font-medium leading-relaxed max-w-xl">
+        <p className="text-sm md:text-base text-muted-foreground font-medium leading-relaxed max-w-xl">
           Premier international Intellectual Property law firm. We secure your
           innovations, trademarks, and creative works globally with boutique
           precision.
@@ -150,7 +150,7 @@ export default async function Home() {
                   </div>
 
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-primary-foreground p-6 text-center select-none">
-                    <Badge className="absolute bottom-4 right-4 bg-background/80 hover:bg-background/90 text-foreground backdrop-blur-md border border-border/50 px-2 py-0.5 text-[10px] font-bold">
+                    <Badge className="absolute bottom-4 right-4 bg-background/80 hover:bg-background/90 text-foreground backdrop-blur-md border border-border/50 px-2 py-0.5 text-xs font-bold">
                       <Clock className="w-3.5 h-3.5 mr-1 text-muted-foreground" />{" "}
                       {heroPost.readTime?.split(" ")[0]} min read
                     </Badge>
@@ -166,7 +166,7 @@ export default async function Home() {
                   <p className="text-muted-foreground text-sm line-clamp-3 font-medium leading-relaxed max-w-2xl">
                     {heroPost.subtitle}
                   </p>
-                  <div className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground gap-3 mt-1">
+                  <div className="flex items-center text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground gap-3 mt-1">
                     <span className="text-muted-foreground/80 dark:text-muted-foreground">
                       By MENTORiP
                     </span>
@@ -216,11 +216,11 @@ export default async function Home() {
                     </div>
                     <div className="flex-1 space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
+                        <span className="text-xs font-bold uppercase tracking-wider text-primary">
                           {widePost.category?.name}
                         </span>
                         <div className="w-px h-3 bg-muted-foreground/30" />
-                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
                           {format(
                             new Date(
                               widePost.createdAt || "2026-01-20T10:00:00Z",
@@ -246,13 +246,13 @@ export default async function Home() {
                               className="w-auto h-auto"
                             />
                           </div>
-                          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
+                          <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                             MENTORIP
                           </span>
                         </div>
                         <Badge
                           variant="outline"
-                          className="text-[10px] font-semibold border-border text-muted-foreground px-2 py-0.5"
+                          className="text-xs font-semibold border-border text-muted-foreground px-2 py-0.5"
                         >
                           {widePost.readTime?.split(" ")[0]} min read
                         </Badge>
@@ -305,7 +305,7 @@ export default async function Home() {
                             )}
                           </div>
                           <div className="flex-1 space-y-1.5">
-                            <p className="text-[10px] font-bold text-primary uppercase tracking-widest">
+                            <p className="text-xs font-bold text-primary uppercase tracking-widest">
                               {post.category?.name}
                             </p>
                             <h3 className="text-base md:text-lg font-semibold text-foreground tracking-wider group-hover:text-primary transition-colors line-clamp-2">
@@ -317,11 +317,11 @@ export default async function Home() {
                           {post.subtitle}
                         </p>
                       </div>
-
+ 
                       <div className="pt-3 border-t border-border flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
-                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                          <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
                             {format(
                               new Date(
                                 post.createdAt || "2026-01-20T10:00:00Z",
@@ -332,7 +332,7 @@ export default async function Home() {
                         </div>
                         <Badge
                           variant="secondary"
-                          className="text-[10px] font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground"
+                          className="text-xs font-bold px-2 py-0.5 border-0 rounded-lg bg-muted text-muted-foreground"
                         >
                           {post.readTime?.split(" ")[0]} min read
                         </Badge>

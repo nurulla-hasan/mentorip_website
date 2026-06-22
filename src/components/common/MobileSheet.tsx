@@ -14,7 +14,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
+// import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 import { getInitials } from "@/lib/utils";
 import { logOut } from "@/services/auth";
 import type { CurrentUser } from "@/types/user.type";
@@ -58,9 +58,10 @@ export function MobileSheet({
           <SheetTitle className="text-left font-bold text-primary">
             MENTOR IP
           </SheetTitle>
-          <div className="mt-2">
+          {/* Language Switcher hidden temporarily */}
+          {/* <div className="mt-2">
             <LanguageSwitcher />
-          </div>
+          </div> */}
         </SheetHeader>
 
         <div className="flex-1 overflow-y-auto">
@@ -88,7 +89,7 @@ export function MobileSheet({
                       <button
                         key={link.name}
                         onClick={() => setPortalDialogOpen(true)}
-                        className="flex items-center justify-between gap-3 w-full px-4 py-3 text-sm font-bold rounded-xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 mx-2 mt-4 mb-2 transition-transform active:scale-95 cursor-pointer"
+                        className="flex items-center justify-between gap-3 w-full px-4 py-2 text-sm font-bold rounded-md bg-primary text-primary-foreground shadow-lg shadow-primary/20 mt-4 mb-2 transition-transform active:scale-95 cursor-pointer"
                       >
                         <div className="flex items-center gap-3">
                           <Briefcase className="w-4 h-4" />
@@ -103,7 +104,7 @@ export function MobileSheet({
                     <Link
                       key={link.name}
                       href={link.href}
-                      className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-xl transition-all ${
+                      className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium rounded-md transition-all ${
                         isActive
                           ? "bg-primary/10 text-primary font-bold"
                           : "text-foreground hover:text-primary dark:hover:text-primary hover:bg-muted"

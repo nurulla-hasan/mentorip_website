@@ -187,7 +187,7 @@ export default async function DynamicPostPage({
           {(post.tag || []).map((tag: string) => (
             <span
               key={tag}
-              className="rounded-md border border-border bg-muted px-2.5 py-1 text-[11px] font-bold text-muted-foreground"
+              className="rounded-lg border border-border bg-muted px-2.5 py-1 text-[11px] font-bold text-muted-foreground"
             >
               {tag}
             </span>
