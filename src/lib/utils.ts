@@ -1,11 +1,12 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 import { format } from "date-fns";
 import { toast } from "sonner";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
 
 // Success Toast
 export const SuccessToast = (msg: string) => {
@@ -37,16 +38,11 @@ export const getInitials = (name: string) => {
 };
 
 // Format Date
-export const formatDate = (dateString: string) => {
-  if (!dateString) return "N/A";
-  return format(new Date(dateString), "dd MMM yyyy");
+export const formatDate = (date: string | Date) => {
+  if (!date) return "N/A";
+  return format(new Date(date), "dd MMM yyyy");
 };
 
-// Get Image URL
-// export const getImageUrl = (imagePath: string) => {
-//   if (!imagePath) return '';
-//   return imagePath.startsWith('/') ? `${IMAGE_BASE_URL}${imagePath}` : `${IMAGE_BASE_URL}/${imagePath}`;
-// };
 
 // Time Ago
 export const timeAgo = (createdAt: string) => {
@@ -70,33 +66,87 @@ export const generateSlug = (title: string) => {
     .replace(/^-+|-+$/g, ""); // Always remove leading and trailing hyphens
 };
 
-// Sort Categories based on specific client requirements
-export const sortCategories = <T extends { name: string }>(categories: T[]): T[] => {
-  const desiredOrder = [
-    "Trademark Bangladesh",
-    "Patent Bangladesh",
-    "Design Bangladesh",
-    "Renewals",
-    "Litigation",
-    "IPR Enforcement",
-    "Case Study",
-    "IP News",
-    "Utility Model",
-    "Journal",
-    "IP Laws and Rules"
-  ];
+// ============================================
+// 🔧 Text Helpers
+// ============================================
 
-  return [...categories].sort((a, b) => {
-    const nameA = a.name.toLowerCase().trim();
-    const nameB = b.name.toLowerCase().trim();
-    
-    const indexA = desiredOrder.findIndex(item => item.toLowerCase().trim() === nameA);
-    const indexB = desiredOrder.findIndex(item => item.toLowerCase().trim() === nameB);
-    
-    if (indexA === -1 && indexB === -1) return 0;
-    if (indexA === -1) return 1;
-    if (indexB === -1) return -1;
-    
-    return indexA - indexB;
-  });
+// Truncate text with ellipsis
+export const truncate = (text: string, maxLength = 100) => {
+  if (!text || text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trimEnd() + "...";
+};
+
+// Strip HTML tags from string
+export const stripHtml = (html: string) => {
+  if (!html) return "";
+  return html.replace(/<[^>]*>/g, "");
+};
+
+// Pluralize words
+export const pluralize = (count: number, singular: string, plural?: string) => {
+  return count === 1 ? singular : plural ?? `${singular}s`;
+};
+
+// ============================================
+// 💰 Price Helpers
+// ============================================
+
+// Format price with currency
+export const formatPrice = (price: number, currency = "USD") => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(price);
+};
+
+// Calculate total price for nights
+export const calculateTotalPrice = (pricePerNight: number, nights: number) => {
+  return pricePerNight * nights;
+};
+
+// ============================================
+// 🔄 Array / Number Helpers
+// ============================================
+
+// Generate range array [1, 2, 3, ...]
+export const range = (start: number, end: number) => {
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+};
+
+// Clamp number between min and max
+export const clamp = (value: number, min: number, max: number) => {
+  return Math.min(Math.max(value, min), max);
+};
+
+// ============================================
+// ⏱ Async / Performance Helpers
+// ============================================
+
+// Async sleep/delay
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+
+// ============================================
+// 🌐 URL / Validation Helpers
+// ============================================
+
+// Check if string is a valid URL
+export const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_) {
+    return false;
+  }
+};
+
+// Get image URL with fallback
+export const getImageUrl = (url: string | null | undefined, fallback = "/placeholder.svg") => {
+  if (!url || !isValidUrl(url)) return fallback;
+  return url;
 };

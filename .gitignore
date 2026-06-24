@@ -32,7 +32,6 @@ yarn-error.log*
 pnpm-lock.yaml
 
 # env files (can opt-in for committing if needed)
-.env*
 
 # vercel
 .vercel
@@ -40,3 +39,4 @@ pnpm-lock.yaml
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+config.bat
